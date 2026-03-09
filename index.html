@@ -13,7 +13,7 @@
 <body>
 
   <!-- ══ NAV ══════════════════════════════════════════════ -->
-  <nav class="nav" id="main-nav">
+  <nav class="nav nav--hero" id="main-nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">VikVisuals</a>
 
@@ -51,17 +51,33 @@
   </div>
 
   <!-- ══ HERO ══════════════════════════════════════════════ -->
-  <section class="hero">
-    <div class="hero__bg" style="background-image: url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1800&q=80&fit=crop');"></div>
+  <section class="hero hero--home">
+    <!-- Rotating slides -->
+    <div class="hero__slide active" style="background-image: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1600&q=80&fit=crop');"></div>
+    <div class="hero__slide" style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80&fit=crop');"></div>
+    <div class="hero__slide" style="background-image: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80&fit=crop');"></div>
+    <div class="hero__slide" style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80&fit=crop');"></div>
+    <div class="hero__slide" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1600&q=80&fit=crop');"></div>
+
     <div class="hero__overlay"></div>
+
     <div class="hero__content">
       <p class="hero__label">VikVisuals &mdash; London</p>
-      <h1 class="hero__title">VISUAL STORYTELLING FOR BRANDS &amp; ORGANISATIONS</h1>
-      <p class="hero__sub">Photography and videography that captures the people behind what you do.</p>
+      <h1 class="hero__title">Photo and Video, Built Around Your Brand</h1>
+      <p class="hero__sub">Helping brands and businesses build trust through visual storytelling</p>
       <div class="hero__cta-group">
         <a href="contact.html" class="btn btn--navy">Get In Touch</a>
         <a href="work.html" class="btn btn--outline-white">View Work</a>
       </div>
+    </div>
+
+    <!-- Dot indicators -->
+    <div class="hero__dots" id="hero-dots">
+      <button class="hero__dot active" data-slide="0" aria-label="Slide 1"></button>
+      <button class="hero__dot" data-slide="1" aria-label="Slide 2"></button>
+      <button class="hero__dot" data-slide="2" aria-label="Slide 3"></button>
+      <button class="hero__dot" data-slide="3" aria-label="Slide 4"></button>
+      <button class="hero__dot" data-slide="4" aria-label="Slide 5"></button>
     </div>
   </section>
 
@@ -125,16 +141,86 @@
     </div>
   </section>
 
-  <!-- ══ CLIENTS ════════════════════════════════════════════ -->
+  <!-- ══ RECENT WORK CAROUSEL ═════════════════════════════ -->
+  <section class="work-section fade-in">
+    <div class="work-section__header">
+      <p class="label">Recent Work</p>
+      <h2>A Selection of Recent Projects</h2>
+    </div>
+    <div class="work-section__wrapper">
+      <div class="work-carousel-outer">
+        <button class="work-carousel__btn work-carousel__btn--prev" id="carousel-prev" aria-label="Previous">&#8592;</button>
+        <div class="work-carousel" id="work-carousel">
+          <div class="work-card">
+            <img class="work-card__image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop" alt="Sedulo Annual Conference" loading="lazy" />
+            <div class="work-card__caption">Professional &mdash; Sedulo Annual Conference</div>
+          </div>
+          <div class="work-card">
+            <img class="work-card__image" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80&fit=crop" alt="Corporate Gala 2024" loading="lazy" />
+            <div class="work-card__caption">Events &mdash; Corporate Gala 2024</div>
+          </div>
+          <div class="work-card">
+            <img class="work-card__image" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&fit=crop" alt="Sheepscar Bar &amp; Grill" loading="lazy" />
+            <div class="work-card__caption">Food &mdash; Sheepscar Bar &amp; Grill</div>
+          </div>
+          <div class="work-card">
+            <img class="work-card__image" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&fit=crop" alt="Genetic Alliance UK" loading="lazy" />
+            <div class="work-card__caption">Charity &mdash; Genetic Alliance UK</div>
+          </div>
+          <div class="work-card">
+            <img class="work-card__image" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop" alt="Networking Evening" loading="lazy" />
+            <div class="work-card__caption">Events &mdash; Networking Evening</div>
+          </div>
+          <div class="work-card">
+            <img class="work-card__image" src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=600&q=80&fit=crop" alt="Leadership Portraits" loading="lazy" />
+            <div class="work-card__caption">Professional &mdash; Leadership Portraits</div>
+          </div>
+          <div class="work-card">
+            <img class="work-card__image" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&fit=crop" alt="Restaurant Campaign" loading="lazy" />
+            <div class="work-card__caption">Food &mdash; Restaurant Campaign</div>
+          </div>
+        </div>
+        <button class="work-carousel__btn work-carousel__btn--next" id="carousel-next" aria-label="Next">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CLIENTS / MARQUEE ════════════════════════════════ -->
   <section class="clients section fade-in">
     <div class="container">
-      <p class="clients__label">Trusted by organisations across the UK</p>
-      <div class="clients__logos">
-        <span class="clients__logo">Sedulo</span>
-        <span class="clients__logo">Genetic Alliance UK</span>
-        <span class="clients__logo">Nexus</span>
-        <span class="clients__logo">HBA Support</span>
-        <span class="clients__logo">Sedulo Foundation</span>
+      <p class="clients__label">Trusted By</p>
+    </div>
+    <div class="marquee-wrapper">
+      <div class="marquee-track">
+        <span class="marquee-item">Be The Standard</span>
+        <span class="marquee-item">Topaz Detailing</span>
+        <span class="marquee-item">Everlast</span>
+        <span class="marquee-item">Sheepscar Bar &amp; Grill</span>
+        <span class="marquee-item">Velvet</span>
+        <span class="marquee-item">47</span>
+        <span class="marquee-item">Mixala</span>
+        <span class="marquee-item">Achilles Clean &amp; Protect</span>
+        <span class="marquee-item">HBA</span>
+        <span class="marquee-item">Nexus</span>
+        <span class="marquee-item">iGD Sport</span>
+        <span class="marquee-item">Genetic Alliance</span>
+        <span class="marquee-item">Sedulo</span>
+        <span class="marquee-item">Sedulo Foundation</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="marquee-item">Be The Standard</span>
+        <span class="marquee-item">Topaz Detailing</span>
+        <span class="marquee-item">Everlast</span>
+        <span class="marquee-item">Sheepscar Bar &amp; Grill</span>
+        <span class="marquee-item">Velvet</span>
+        <span class="marquee-item">47</span>
+        <span class="marquee-item">Mixala</span>
+        <span class="marquee-item">Achilles Clean &amp; Protect</span>
+        <span class="marquee-item">HBA</span>
+        <span class="marquee-item">Nexus</span>
+        <span class="marquee-item">iGD Sport</span>
+        <span class="marquee-item">Genetic Alliance</span>
+        <span class="marquee-item">Sedulo</span>
+        <span class="marquee-item">Sedulo Foundation</span>
       </div>
     </div>
   </section>
@@ -147,21 +233,31 @@
         <h2>How It Works</h2>
       </div>
     </div>
-    <div class="process__grid">
-      <div class="process__item fade-in">
+    <div class="process__timeline fade-in">
+      <div class="process__item">
         <div class="process__number">01</div>
         <h3 class="process__title">Brief</h3>
-        <p class="process__desc">We start with a conversation about what you need, your audience and how the content will be used.</p>
+        <p class="process__desc">We start with a conversation about your project, goals and how the content will be used.</p>
       </div>
-      <div class="process__item fade-in">
+      <div class="process__item">
         <div class="process__number">02</div>
-        <h3 class="process__title">Shoot</h3>
-        <p class="process__desc">I handle everything on the day — direction, lighting, and capturing what matters.</p>
+        <h3 class="process__title">Pre-Production</h3>
+        <p class="process__desc">Planning, shot lists, location scouting and logistics — everything prepared before the day.</p>
       </div>
-      <div class="process__item fade-in">
+      <div class="process__item process__item--accent">
         <div class="process__number">03</div>
-        <h3 class="process__title">Deliver</h3>
-        <p class="process__desc">Edited, press-ready files delivered quickly, exactly how you need them.</p>
+        <h3 class="process__title">Shoot</h3>
+        <p class="process__desc">I handle everything on the day — direction, lighting, and capturing what matters most.</p>
+      </div>
+      <div class="process__item">
+        <div class="process__number">04</div>
+        <h3 class="process__title">Edit</h3>
+        <p class="process__desc">Careful post-production to deliver polished, on-brand imagery and video.</p>
+      </div>
+      <div class="process__item">
+        <div class="process__number">05</div>
+        <h3 class="process__title">Delivery</h3>
+        <p class="process__desc">Press-ready files delivered quickly, in the formats you need, ready to use immediately.</p>
       </div>
     </div>
   </section>

@@ -5,16 +5,31 @@
 (function () {
   'use strict';
 
-  // ── Sticky Nav Shadow on Scroll ──────────────────────────
+  // ── Nav: hide/show on scroll for hero pages ──────────────
   const nav = document.querySelector('.nav');
   if (nav) {
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 20) {
-        nav.classList.add('scrolled');
+    const isHeroNav = nav.classList.contains('nav--hero');
+
+    function updateNav() {
+      const threshold = window.innerHeight * 0.85;
+      if (isHeroNav) {
+        if (window.scrollY > threshold) {
+          nav.classList.add('nav--scrolled');
+        } else {
+          nav.classList.remove('nav--scrolled');
+        }
       } else {
-        nav.classList.remove('scrolled');
+        // On all other pages: just add/remove shadow
+        if (window.scrollY > 20) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
       }
-    }, { passive: true });
+    }
+
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav(); // run on load
   }
 
   // ── Services Dropdown (desktop hover + click) ────────────
@@ -22,18 +37,15 @@
   if (dropdown) {
     const toggle = dropdown.querySelector('.nav__dropdown-toggle');
 
-    // Click toggle for mobile-friendly interaction
     toggle.addEventListener('click', function (e) {
       e.stopPropagation();
       dropdown.classList.toggle('open');
     });
 
-    // Close when clicking outside
     document.addEventListener('click', function () {
       dropdown.classList.remove('open');
     });
 
-    // Prevent close when clicking inside menu
     const menu = dropdown.querySelector('.nav__dropdown-menu');
     if (menu) {
       menu.addEventListener('click', function (e) {
@@ -52,7 +64,6 @@
       mobileNav.classList.toggle('open');
     });
 
-    // Close mobile nav on link click
     const mobileLinks = mobileNav.querySelectorAll('a');
     mobileLinks.forEach(function (link) {
       link.addEventListener('click', function () {
@@ -82,10 +93,161 @@
       observer.observe(el);
     });
   } else {
-    // Fallback: show all immediately
     fadeEls.forEach(function (el) {
       el.classList.add('visible');
     });
+  }
+
+  // ── Hero Slideshow + Dot Indicators ─────────────────────
+  const heroSlides = document.querySelectorAll('.hero__slide');
+  const heroDots = document.querySelectorAll('.hero__dot');
+
+  if (heroSlides.length > 0) {
+    let currentSlide = 0;
+    let slideshowTimer = null;
+
+    function goToSlide(index) {
+      heroSlides[currentSlide].classList.remove('active');
+      if (heroDots.length > 0) heroDots[currentSlide].classList.remove('active');
+      currentSlide = (index + heroSlides.length) % heroSlides.length;
+      heroSlides[currentSlide].classList.add('active');
+      if (heroDots.length > 0) heroDots[currentSlide].classList.add('active');
+    }
+
+    function startSlideshow() {
+      slideshowTimer = setInterval(function () {
+        goToSlide(currentSlide + 1);
+      }, 5000);
+    }
+
+    // Dot click handlers
+    heroDots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        const index = parseInt(dot.getAttribute('data-slide'), 10);
+        clearInterval(slideshowTimer);
+        goToSlide(index);
+        startSlideshow();
+      });
+    });
+
+    startSlideshow();
+  }
+
+  // ── Work Carousel (drag + prev/next) ────────────────────
+  const carousel = document.getElementById('work-carousel');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+
+  if (carousel) {
+    // Prev / Next buttons
+    function getCardWidth() {
+      const card = carousel.querySelector('.work-card');
+      if (!card) return 300;
+      const gap = parseFloat(getComputedStyle(carousel).gap) || 24;
+      return card.offsetWidth + gap;
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        carousel.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        carousel.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+      });
+    }
+
+    // Mouse drag to scroll
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragScrollLeft = 0;
+
+    carousel.addEventListener('mousedown', function (e) {
+      isDragging = true;
+      dragStartX = e.pageX - carousel.offsetLeft;
+      dragScrollLeft = carousel.scrollLeft;
+      carousel.style.userSelect = 'none';
+    });
+
+    carousel.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - dragStartX) * 1.5;
+      carousel.scrollLeft = dragScrollLeft - walk;
+    });
+
+    function stopDrag() {
+      isDragging = false;
+      carousel.style.userSelect = '';
+    }
+
+    carousel.addEventListener('mouseup', stopDrag);
+    carousel.addEventListener('mouseleave', stopDrag);
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchScrollLeft = 0;
+
+    carousel.addEventListener('touchstart', function (e) {
+      touchStartX = e.touches[0].pageX;
+      touchScrollLeft = carousel.scrollLeft;
+    }, { passive: true });
+
+    carousel.addEventListener('touchmove', function (e) {
+      const walk = touchStartX - e.touches[0].pageX;
+      carousel.scrollLeft = touchScrollLeft + walk;
+    }, { passive: true });
+  }
+
+  // ── Smooth Lerp Scroll (desktop only) ────────────────────
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (!prefersReducedMotion && !isTouchDevice) {
+    // Override CSS scroll-behavior so our manual scrollTo works correctly
+    document.documentElement.style.scrollBehavior = 'auto';
+
+    let targetScrollY = window.scrollY;
+    let currentScrollY = window.scrollY;
+    let isLerping = false;
+    const LERP_FACTOR = 0.08;
+
+    window.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      targetScrollY = Math.max(0, Math.min(
+        targetScrollY + e.deltaY,
+        document.documentElement.scrollHeight - window.innerHeight
+      ));
+
+      if (!isLerping) {
+        isLerping = true;
+        requestAnimationFrame(smoothScrollLoop);
+      }
+    }, { passive: false });
+
+    function smoothScrollLoop() {
+      const diff = targetScrollY - currentScrollY;
+      if (Math.abs(diff) < 0.5) {
+        currentScrollY = targetScrollY;
+        window.scrollTo(0, currentScrollY);
+        isLerping = false;
+        return;
+      }
+      currentScrollY += diff * LERP_FACTOR;
+      window.scrollTo(0, currentScrollY);
+      requestAnimationFrame(smoothScrollLoop);
+    }
+
+    // Keep targetScrollY in sync if scroll happens another way (keyboard, etc.)
+    window.addEventListener('scroll', function () {
+      if (!isLerping) {
+        currentScrollY = window.scrollY;
+        targetScrollY = window.scrollY;
+      }
+    }, { passive: true });
   }
 
   // ── Gallery Filter (work.html) ───────────────────────────
@@ -97,11 +259,9 @@
       btn.addEventListener('click', function () {
         const filter = btn.getAttribute('data-filter');
 
-        // Update active button
         filterBtns.forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
 
-        // Show/hide gallery items
         galleryItems.forEach(function (item) {
           const category = item.getAttribute('data-category');
           if (filter === 'all' || category === filter) {
