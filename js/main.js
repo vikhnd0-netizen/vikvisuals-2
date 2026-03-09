@@ -225,7 +225,7 @@
 
       if (!isScrolling) {
         isScrolling = true;
-        rafLoop();
+        rafId = requestAnimationFrame(rafLoop);
       }
     }, { passive: false });
 
@@ -239,8 +239,17 @@
         currentScrollY = targetScrollY;
         window.scrollTo(0, currentScrollY);
         isScrolling = false;
+        rafId = null;
       }
     }
+
+    // Keep positions in sync when scrolling via keyboard, anchor links, etc.
+    window.addEventListener('scroll', function () {
+      if (!isScrolling) {
+        currentScrollY = window.scrollY;
+        targetScrollY = window.scrollY;
+      }
+    }, { passive: true });
   }
 
   // ── Gallery Filter (work.html) ───────────────────────────
