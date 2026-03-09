@@ -798,7 +798,7 @@ p {
   font-family: var(--font-body);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #C9A84C;
+  color: var(--color-accent);
 }
 
 /* ============================================================
@@ -1004,14 +1004,17 @@ p {
 }
 
 .process__step--accent .process__step-num {
-  color: #C9A84C;
+  color: var(--color-accent);
 }
 
 .process__step--accent.visible .process__step-num {
   opacity: 0.2;
 }
 
-.process__step-content {}
+.process__step-content {
+  display: flex;
+  flex-direction: column;
+}
 
 .process__step-title {
   font-size: 1.3rem;
