@@ -1171,6 +1171,7 @@ p {
   text-align: center;
   display: block;
   width: 100%;
+  max-width: none;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
