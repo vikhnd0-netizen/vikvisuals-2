@@ -207,10 +207,36 @@ p {
   letter-spacing: -0.01em;
   flex-shrink: 0;
   transition: color var(--transition);
+  display: flex;
+  align-items: center;
 }
 
 .nav__logo:hover {
   opacity: 0.8;
+}
+
+.nav__logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+/* Default: show dark logo, hide white logo */
+.nav__logo-img--white {
+  display: none;
+}
+
+.nav__logo-img--dark {
+  display: block;
+}
+
+/* When nav is transparent (homepage hero): show white logo, hide dark logo */
+.nav--transparent .nav__logo-img--dark {
+  display: none;
+}
+
+.nav--transparent .nav__logo-img--white {
+  display: block;
 }
 
 .nav__links {
@@ -476,6 +502,13 @@ p {
   margin-bottom: var(--space-md);
   text-align: center;
   animation: fadeUp 0.9s ease forwards;
+}
+
+.hero__logo-img {
+  height: clamp(64px, 10vw, 100px);
+  width: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .hero--short .hero__title {
@@ -1792,6 +1825,14 @@ p {
   font-weight: 700;
   font-style: italic;
   font-family: var(--font-heading);
+  display: flex;
+  align-items: center;
+}
+
+.footer__logo-img {
+  height: 30px;
+  width: auto;
+  display: block;
 }
 
 .footer__nav {
