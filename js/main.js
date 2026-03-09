@@ -105,50 +105,6 @@
       });
     }
 
-    // ── 5. Lerp smooth scroll (desktop, non-touch) ───────────
-    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-    if (!prefersReduced && !isTouch) {
-      var targetScrollY = window.scrollY;
-      var currentScrollY = window.scrollY;
-      var isScrolling = false;
-
-      window.addEventListener('wheel', function (e) {
-        e.preventDefault();
-        targetScrollY = Math.max(
-          0,
-          Math.min(
-            targetScrollY + e.deltaY,
-            document.body.scrollHeight - window.innerHeight
-          )
-        );
-        if (!isScrolling) {
-          isScrolling = true;
-          function lerpLoop() {
-            currentScrollY += (targetScrollY - currentScrollY) * 0.09;
-            window.scrollTo(0, currentScrollY);
-            if (Math.abs(targetScrollY - currentScrollY) > 0.5) {
-              requestAnimationFrame(lerpLoop);
-            } else {
-              currentScrollY = targetScrollY;
-              window.scrollTo(0, currentScrollY);
-              isScrolling = false;
-            }
-          }
-          requestAnimationFrame(lerpLoop);
-        }
-      }, { passive: false });
-
-      // Sync on keyboard / anchor navigation
-      window.addEventListener('scroll', function () {
-        if (!isScrolling) {
-          targetScrollY = window.scrollY;
-          currentScrollY = window.scrollY;
-        }
-      }, { passive: true });
-    }
-
     // ── 6. IntersectionObserver — fade & slide animations ────
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
