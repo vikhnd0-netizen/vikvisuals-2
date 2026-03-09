@@ -5,9 +5,24 @@
 (function () {
   'use strict';
 
-  // ── Sticky Nav Shadow on Scroll ──────────────────────────
+  // ── Nav element ──────────────────────────────────────────
   const nav = document.querySelector('.nav');
-  if (nav) {
+
+  // ── Transparent Nav — homepage only ─────────────────────
+  const isHomepage = document.body.classList.contains('page-home');
+  if (isHomepage && nav) {
+    nav.classList.add('nav--transparent');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > window.innerHeight * 0.8) {
+        nav.classList.remove('nav--transparent');
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.add('nav--transparent');
+        nav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+  } else if (nav) {
+    // Non-homepage: apply shadow after scroll
     window.addEventListener('scroll', function () {
       if (window.scrollY > 20) {
         nav.classList.add('scrolled');
@@ -22,18 +37,15 @@
   if (dropdown) {
     const toggle = dropdown.querySelector('.nav__dropdown-toggle');
 
-    // Click toggle for mobile-friendly interaction
     toggle.addEventListener('click', function (e) {
       e.stopPropagation();
       dropdown.classList.toggle('open');
     });
 
-    // Close when clicking outside
     document.addEventListener('click', function () {
       dropdown.classList.remove('open');
     });
 
-    // Prevent close when clicking inside menu
     const menu = dropdown.querySelector('.nav__dropdown-menu');
     if (menu) {
       menu.addEventListener('click', function (e) {
@@ -52,7 +64,6 @@
       mobileNav.classList.toggle('open');
     });
 
-    // Close mobile nav on link click
     const mobileLinks = mobileNav.querySelectorAll('a');
     mobileLinks.forEach(function (link) {
       link.addEventListener('click', function () {
@@ -62,10 +73,10 @@
     });
   }
 
-  // ── Intersection Observer — Fade-in on Scroll ────────────
-  const fadeEls = document.querySelectorAll('.fade-in');
+  // ── Intersection Observer — Fade-in + Slide-in + Process nums ──
+  const animEls = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .process__step');
 
-  if (fadeEls.length > 0 && 'IntersectionObserver' in window) {
+  if (animEls.length > 0 && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -78,12 +89,11 @@
       rootMargin: '0px 0px -40px 0px'
     });
 
-    fadeEls.forEach(function (el) {
+    animEls.forEach(function (el) {
       observer.observe(el);
     });
   } else {
-    // Fallback: show all immediately
-    fadeEls.forEach(function (el) {
+    animEls.forEach(function (el) {
       el.classList.add('visible');
     });
   }
@@ -97,11 +107,9 @@
       btn.addEventListener('click', function () {
         const filter = btn.getAttribute('data-filter');
 
-        // Update active button
         filterBtns.forEach(function (b) { b.classList.remove('active'); });
         btn.classList.add('active');
 
-        // Show/hide gallery items
         galleryItems.forEach(function (item) {
           const category = item.getAttribute('data-category');
           if (filter === 'all' || category === filter) {
@@ -111,6 +119,32 @@
           }
         });
       });
+    });
+  }
+
+  // ── Work Carousel — drag to scroll ──────────────────────
+  const carousel = document.getElementById('workCarousel');
+  if (carousel) {
+    let isDragging = false, startX, scrollLeft;
+
+    carousel.addEventListener('mousedown', function (e) {
+      isDragging = true;
+      carousel.classList.add('dragging');
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    document.addEventListener('mouseup', function () {
+      isDragging = false;
+      carousel.classList.remove('dragging');
+    });
+
+    carousel.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
     });
   }
 
