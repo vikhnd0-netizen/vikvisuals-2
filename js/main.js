@@ -75,8 +75,10 @@
 
   // ── Intersection Observer — Fade-in on Scroll ────────────
   const fadeEls = document.querySelectorAll('.fade-in');
+  const processCards = document.querySelectorAll('.process__card');
+  const allAnimEls = [...fadeEls, ...processCards];
 
-  if (fadeEls.length > 0 && 'IntersectionObserver' in window) {
+  if (allAnimEls.length > 0 && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -85,15 +87,15 @@
         }
       });
     }, {
-      threshold: 0.12,
+      threshold: 0.1,
       rootMargin: '0px 0px -40px 0px'
     });
 
-    fadeEls.forEach(function (el) {
+    allAnimEls.forEach(function (el) {
       observer.observe(el);
     });
   } else {
-    fadeEls.forEach(function (el) {
+    allAnimEls.forEach(function (el) {
       el.classList.add('visible');
     });
   }
@@ -202,52 +204,43 @@
     }, { passive: true });
   }
 
-  // ── Smooth Lerp Scroll (desktop only) ────────────────────
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  // ── Smooth Lerp Scroll ───────────────────────────────────
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
 
-  if (!prefersReducedMotion && !isTouchDevice) {
-    // Override CSS scroll-behavior so our manual scrollTo works correctly
+  if (!prefersReduced && !isTouch) {
     document.documentElement.style.scrollBehavior = 'auto';
 
     let targetScrollY = window.scrollY;
     let currentScrollY = window.scrollY;
-    let isLerping = false;
-    const LERP_FACTOR = 0.08;
+    let rafId = null;
+    let isScrolling = false;
 
     window.addEventListener('wheel', function (e) {
       e.preventDefault();
-      targetScrollY = Math.max(0, Math.min(
-        targetScrollY + e.deltaY,
-        document.documentElement.scrollHeight - window.innerHeight
-      ));
+      targetScrollY += e.deltaY;
+      // Clamp to page bounds
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      targetScrollY = Math.max(0, Math.min(targetScrollY, maxScroll));
 
-      if (!isLerping) {
-        isLerping = true;
-        requestAnimationFrame(smoothScrollLoop);
+      if (!isScrolling) {
+        isScrolling = true;
+        rafLoop();
       }
     }, { passive: false });
 
-    function smoothScrollLoop() {
-      const diff = targetScrollY - currentScrollY;
-      if (Math.abs(diff) < 0.5) {
+    function rafLoop() {
+      currentScrollY += (targetScrollY - currentScrollY) * 0.09;
+      window.scrollTo(0, currentScrollY);
+
+      if (Math.abs(targetScrollY - currentScrollY) > 0.5) {
+        rafId = requestAnimationFrame(rafLoop);
+      } else {
         currentScrollY = targetScrollY;
         window.scrollTo(0, currentScrollY);
-        isLerping = false;
-        return;
+        isScrolling = false;
       }
-      currentScrollY += diff * LERP_FACTOR;
-      window.scrollTo(0, currentScrollY);
-      requestAnimationFrame(smoothScrollLoop);
     }
-
-    // Keep targetScrollY in sync if scroll happens another way (keyboard, etc.)
-    window.addEventListener('scroll', function () {
-      if (!isLerping) {
-        currentScrollY = window.scrollY;
-        targetScrollY = window.scrollY;
-      }
-    }, { passive: true });
   }
 
   // ── Gallery Filter (work.html) ───────────────────────────
