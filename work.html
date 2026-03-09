@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work & Gallery — VikVisuals</title>
+  <meta name="description" content="A selection of photography and video from across VikVisuals projects — professional, charity, events and food." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ══ NAV ══════════════════════════════════════════════ -->
+  <nav class="nav" id="main-nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">VikVisuals</a>
+      <ul class="nav__links">
+        <li class="nav__dropdown">
+          <span class="nav__link nav__dropdown-toggle">Services</span>
+          <div class="nav__dropdown-menu">
+            <a href="services/professional.html" class="nav__dropdown-item">Professional Services</a>
+            <a href="services/charity.html" class="nav__dropdown-item">Charity</a>
+            <a href="services/events.html" class="nav__dropdown-item">Events &amp; Hospitality</a>
+            <a href="services/food.html" class="nav__dropdown-item">Food &amp; Restaurant</a>
+          </div>
+        </li>
+        <li><a href="work.html" class="nav__link">Work</a></li>
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__mobile">
+    <span class="nav__mobile-link" style="font-size:0.75rem;letter-spacing:0.1em;opacity:0.5;">SERVICES</span>
+    <a href="services/professional.html" class="nav__mobile-sub">Professional Services</a>
+    <a href="services/charity.html" class="nav__mobile-sub">Charity</a>
+    <a href="services/events.html" class="nav__mobile-sub">Events &amp; Hospitality</a>
+    <a href="services/food.html" class="nav__mobile-sub">Food &amp; Restaurant</a>
+    <a href="work.html" class="nav__mobile-link">Work</a>
+    <a href="about.html" class="nav__mobile-link">About</a>
+    <a href="contact.html" class="nav__mobile-link">Contact</a>
+  </div>
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <section class="hero hero--short">
+    <div class="hero__bg" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1800&q=80&fit=crop');"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__label">VikVisuals &mdash; Portfolio</p>
+      <h1 class="hero__title">WORK</h1>
+      <p class="hero__sub">A selection of photography and video from across my projects.</p>
+    </div>
+  </section>
+
+  <!-- ══ FILTER BAR ════════════════════════════════════════ -->
+  <div class="gallery-filter">
+    <div class="gallery-filter__inner">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="professional">Professional</button>
+      <button class="filter-btn" data-filter="charity">Charity</button>
+      <button class="filter-btn" data-filter="events">Events</button>
+      <button class="filter-btn" data-filter="food">Food</button>
+    </div>
+  </div>
+
+  <!-- ══ MASONRY GALLERY ════════════════════════════════════ -->
+  <section class="gallery-masonry">
+    <div class="gallery-masonry__inner">
+
+      <!-- Professional -->
+      <div class="gallery-item" data-category="professional">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80&fit=crop" alt="Professional team" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Professional</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="events">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop" alt="Conference event" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Events</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="food">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&fit=crop" alt="Food photography" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Food</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="charity">
+        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80&fit=crop" alt="Charity event" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Charity</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="professional">
+        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&q=80&fit=crop" alt="Conference speaker" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Professional</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="food">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80&fit=crop" alt="Plated dish" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Food</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="events">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&q=80&fit=crop" alt="Gala evening" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Events</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="professional">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80&fit=crop" alt="Executive portrait" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Professional</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="charity">
+        <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&q=80&fit=crop" alt="Community gathering" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Charity</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="food">
+        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80&fit=crop" alt="Restaurant dish" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Food</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="events">
+        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80&fit=crop" alt="Awards evening" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Events</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="professional">
+        <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?w=600&q=80&fit=crop" alt="Office environment" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Professional</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="charity">
+        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&q=80&fit=crop" alt="Awareness event" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Charity</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="food">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&fit=crop" alt="Restaurant interior" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Food</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="events">
+        <img src="https://images.unsplash.com/photo-1560523159-4a9692d222ef?w=600&q=80&fit=crop" alt="Networking event" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Events</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="professional">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80&fit=crop" alt="Professional headshot" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Professional</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="charity">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80&fit=crop" alt="Fundraising event" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Charity</span></div>
+      </div>
+
+      <div class="gallery-item" data-category="food">
+        <img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=600&q=80&fit=crop" alt="Food styling" loading="lazy" />
+        <div class="gallery-item__overlay"><span class="gallery-item__label">Food</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ CTA BANNER ═════════════════════════════════════════ -->
+  <section class="cta-banner">
+    <div class="container fade-in">
+      <h2 class="cta-banner__title">Like what you see?</h2>
+      <p class="cta-banner__sub">Get in touch to discuss your project.</p>
+      <a href="contact.html" class="btn btn--white">Get In Touch</a>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ═════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__top">
+        <a href="index.html" class="footer__logo">VikVisuals</a>
+        <nav class="footer__nav">
+          <a href="services/professional.html">Services</a>
+          <a href="work.html">Work</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">&copy; 2025 VikVisuals. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
