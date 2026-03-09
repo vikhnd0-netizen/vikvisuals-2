@@ -879,17 +879,22 @@ p {
 
 .process__card:nth-child(1) { transition-delay: 0s; }
 .process__card:nth-child(2) { transition-delay: 0.12s; }
-.process__card:nth-child(3) { transition-delay: 0.24s; background: var(--color-navy); }
+.process__card:nth-child(3) { transition-delay: 0.24s; }
 .process__card:nth-child(4) { transition-delay: 0.36s; }
 .process__card:nth-child(5) { transition-delay: 0.48s; }
 
-.process__card:nth-child(3) .process__step-num,
-.process__card:nth-child(3) .process__step-title,
-.process__card:nth-child(3) .process__step-desc {
+/* Highlighted card (shoot step) */
+.process__card--highlight {
+  background: var(--color-navy);
+}
+
+.process__card--highlight .process__step-num,
+.process__card--highlight .process__step-title,
+.process__card--highlight .process__step-desc {
   color: white;
 }
 
-.process__card:nth-child(3) .process__step-num {
+.process__card--highlight .process__step-num {
   color: var(--color-accent);
 }
 
