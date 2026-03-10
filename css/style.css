@@ -668,14 +668,15 @@ p {
 .intro-photo__image {
   overflow: hidden;
   border-radius: var(--radius-lg);
+  aspect-ratio: 16 / 9;
 }
 
-.intro-photo__image img {
+.intro-photo__image iframe {
   width: 100%;
-  height: 520px;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
+  height: 100%;
   display: block;
+  border: none;
+  border-radius: var(--radius-lg);
 }
 
 .intro-photo__inner {
@@ -722,9 +723,6 @@ p {
   }
   .intro-photo__image {
     order: -1;
-  }
-  .intro-photo__image img {
-    height: 300px;
   }
 }
 
