@@ -2374,3 +2374,63 @@ p {
     grid-template-columns: 1fr;
   }
 }
+/* ============================================================
+   Video Examples Section
+   ============================================================ */
+
+.video-examples {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-bg);
+}
+
+.video-examples__header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.video-examples__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+  margin-bottom: var(--space-xs);
+}
+
+.video-examples__subtitle {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.video-examples__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.video-examples__embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.video-examples__embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .video-examples__grid {
+    grid-template-columns: 1fr;
+  }
+}
