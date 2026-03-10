@@ -1976,7 +1976,8 @@ p {
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
-  .split__inner {
+  .split__inner,
+  .split__inner--balanced {
     grid-template-columns: 1fr;
     gap: var(--space-md);
   }
