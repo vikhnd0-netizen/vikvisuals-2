@@ -1117,7 +1117,7 @@ p {
   left: 0;
   right: 0;
   padding: 1.5rem 1rem 1rem;
-  background: linear-gradient(to top, rgba(2, 42, 85, 0.8), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45), transparent);
   color: white;
   font-family: var(--font-body);
   font-size: 0.85rem;
@@ -2094,17 +2094,29 @@ p {
 .process-h {
   padding: var(--space-xl) 0;
   overflow: hidden;
+  background-color: var(--color-navy);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 .process-h__header {
   text-align: center;
   margin-bottom: var(--space-lg);
   padding: 0 var(--space-md);
+  color: var(--color-white);
+}
+
+.process-h__header h2 {
+  color: var(--color-white);
+}
+
+.process-h__header .label {
+  color: var(--color-accent);
 }
 
 .process-h__sub {
   font-size: 1rem;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.75);
   max-width: 52ch;
   margin: 0.75rem auto 0;
   font-weight: 300;
@@ -2125,7 +2137,7 @@ p {
   left: calc(var(--space-md) + 9%);
   right: calc(var(--space-md) + 9%);
   height: 2px;
-  background: linear-gradient(90deg, var(--color-navy) 0%, rgba(2,42,85,0.25) 100%);
+  background: linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.15) 100%);
   z-index: 0;
 }
 
@@ -2136,7 +2148,7 @@ p {
   right: -8px;
   top: 50%;
   transform: translateY(-50%);
-  border-left: 10px solid var(--color-navy);
+  border-left: 10px solid rgba(255,255,255,0.5);
   border-top: 6px solid transparent;
   border-bottom: 6px solid transparent;
 }
@@ -2152,8 +2164,8 @@ p {
 
 /* Individual card — same style as process-v2 cards */
 .process-h__card {
-  background: var(--color-white);
-  border: 1.5px solid var(--color-border);
+  background: #0d4a8a;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-lg);
   padding: 1.75rem 1.25rem 1.5rem;
   text-align: center;
@@ -2171,8 +2183,8 @@ p {
 
 .process-h__card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(2, 42, 85, 0.14);
-  border-color: var(--color-navy);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
 .process-h__card-top {
@@ -2187,8 +2199,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-navy);
-  opacity: 0.7;
+  color: var(--color-white);
+  opacity: 0.8;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -2205,32 +2217,32 @@ p {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--color-bg);
-  border: 2px solid var(--color-navy);
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   font-family: var(--font-heading, 'Inter', sans-serif);
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--color-navy);
+  color: var(--color-white);
   position: relative;
   z-index: 2;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 .process-h__card:hover .process-h__card-num {
-  background: var(--color-navy);
+  background: rgba(255, 255, 255, 0.25);
   color: var(--color-white);
 }
 
 .process-h__card-rule {
   border: none;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   margin: 0.75rem 0;
 }
 
 .process-h__card-title {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--color-navy);
+  color: var(--color-white);
   margin-bottom: 0.5rem;
   font-family: var(--font-heading, 'Inter', sans-serif);
   text-transform: uppercase;
@@ -2239,7 +2251,7 @@ p {
 
 .process-h__card-desc {
   font-size: 0.82rem;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
   max-width: 20ch;
   margin: 0 auto;
@@ -2247,8 +2259,8 @@ p {
 
 /* Active card (step 3 — Shoot) */
 .process-h__card--active {
-  background: var(--color-navy);
-  border-color: var(--color-navy);
+  background: #1a6fca;
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .process-h__card--active .process-h__card-num {
