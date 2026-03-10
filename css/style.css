@@ -650,7 +650,7 @@ p {
 
 .intro-photo__split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.15fr;
   gap: var(--space-lg);
   align-items: center;
   max-width: 1200px;
@@ -669,8 +669,8 @@ p {
   overflow: hidden;
   border-radius: var(--radius-lg);
   position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
+  aspect-ratio: 16 / 10;
+  width: 100%;
 }
 
 .intro-photo__image iframe {
@@ -727,7 +727,7 @@ p {
     grid-template-columns: 1fr;
   }
   .intro-photo__image {
-    order: -1;
+    order: 1;
   }
 }
 
@@ -1076,7 +1076,8 @@ p {
 
 .work-carousel {
   display: flex;
-  width: 100%;
+  padding: 0 var(--space-md) var(--space-md);
+  gap: 1.25rem;
   overflow-x: scroll;
   scroll-behavior: auto;
   -webkit-overflow-scrolling: touch;
@@ -1096,16 +1097,17 @@ p {
 
 .work-carousel__card {
   flex: 0 0 auto;
-  width: 33vw;
+  width: 28vw;
+  aspect-ratio: 4 / 5;
   position: relative;
   overflow: hidden;
-  border-radius: 0;
+  border-radius: var(--radius-lg);
 }
 
 .work-carousel__img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
   display: block;
   pointer-events: none;
 }
@@ -2005,7 +2007,7 @@ p {
   }
 
   .work-carousel__card {
-    width: 50vw;
+    width: 38vw;
   }
 }
 
@@ -2032,7 +2034,7 @@ p {
   }
 
   .work-carousel__card {
-    width: 80vw;
+    width: 72vw;
   }
 
   .footer__top {
