@@ -473,10 +473,10 @@ p {
 .hero__content {
   position: relative;
   z-index: 2;
-  text-align: center;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: calc(var(--nav-height) + var(--space-xl)) var(--space-md) var(--space-xl);
   width: 100%;
@@ -641,12 +641,41 @@ p {
    ============================================================ */
 .intro-photo {
   position: relative;
-  padding: var(--space-lg) 0;
-  text-align: center;
+  padding: var(--space-xxl) 0;
   overflow: hidden;
   background-color: var(--color-navy);
   background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+.intro-photo__split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.intro-photo__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  text-align: left;
+}
+
+.intro-photo__image {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.intro-photo__image img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  display: block;
 }
 
 .intro-photo__inner {
@@ -655,6 +684,7 @@ p {
   max-width: 720px;
   margin: 0 auto;
   padding: 0 var(--space-md);
+  text-align: left;
 }
 
 .intro-photo__label {
@@ -666,13 +696,13 @@ p {
   color: var(--color-accent);
   margin-bottom: var(--space-sm);
   font-family: var(--font-body);
-  text-align: center;
+  text-align: left;
 }
 
 .intro-photo__title {
   color: white;
   margin-bottom: var(--space-md);
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
 }
 
@@ -683,20 +713,31 @@ p {
   color: rgba(255, 255, 255, 0.82);
   max-width: none;
   margin-bottom: var(--space-lg);
-  text-align: center;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .intro-photo__split {
+    grid-template-columns: 1fr;
+  }
+  .intro-photo__image {
+    order: -1;
+  }
+  .intro-photo__image img {
+    height: 300px;
+  }
 }
 
 /* Legacy intro section (keep for compatibility) */
 .intro {
   padding: var(--space-xl) 0;
-  text-align: center;
 }
 
 .intro__inner {
   max-width: 720px;
   margin: 0 auto;
   padding: 0 var(--space-md);
-  text-align: center;
+  text-align: left;
 }
 
 .intro__label {
@@ -707,13 +748,13 @@ p {
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: var(--space-sm);
-  text-align: center;
+  text-align: left;
   font-family: var(--font-body);
 }
 
 .intro__title {
   margin-bottom: var(--space-md);
-  text-align: center;
+  text-align: left;
 }
 
 .intro__body {
@@ -722,7 +763,7 @@ p {
   line-height: 1.75;
   color: var(--color-text);
   max-width: none;
-  text-align: center;
+  text-align: left;
 }
 
 /* ============================================================
@@ -733,7 +774,7 @@ p {
 }
 
 .services__header {
-  text-align: center;
+  text-align: left;
   margin-bottom: var(--space-lg);
   padding: 0 var(--space-md);
 }
@@ -938,8 +979,8 @@ p {
 }
 
 .process-v2__card {
-  background: #141c2b;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1e5fa8;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 12px;
   padding: 2rem 2rem 1.75rem;
   transition: border-color 0.3s ease, transform 0.3s ease;
@@ -1089,7 +1130,7 @@ p {
 .cta-banner {
   position: relative;
   padding: var(--space-xxl) var(--space-md);
-  text-align: center;
+  text-align: left;
   overflow: hidden;
 }
 
@@ -1206,11 +1247,10 @@ p {
   padding: var(--space-lg) 0;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-  text-align: center;
 }
 
 .clients__label {
-  text-align: center;
+  text-align: left;
   display: block;
   width: 100%;
   max-width: none;
