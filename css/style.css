@@ -2396,6 +2396,7 @@ p {
   text-transform: uppercase;
   color: var(--color-navy);
   margin-bottom: var(--space-xs);
+   text-align: center;
 }
 
 .video-examples__subtitle {
