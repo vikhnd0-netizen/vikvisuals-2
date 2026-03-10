@@ -130,37 +130,6 @@
       });
     }
 
-    // ── 7. Work carousel drag ────────────────────────────────
-    var carousel = document.querySelector('.work-carousel');
-    if (carousel) {
-      var isDragging = false;
-      var startX, scrollLeft;
-
-      carousel.addEventListener('mousedown', function (e) {
-        isDragging = true;
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-        carousel.style.cursor = 'grabbing';
-      });
-
-      carousel.addEventListener('mouseleave', function () {
-        isDragging = false;
-        carousel.style.cursor = 'grab';
-      });
-
-      carousel.addEventListener('mouseup', function () {
-        isDragging = false;
-        carousel.style.cursor = 'grab';
-      });
-
-      carousel.addEventListener('mousemove', function (e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        var x = e.pageX - carousel.offsetLeft;
-        carousel.scrollLeft = scrollLeft - (x - startX) * 1.5;
-      });
-    }
-
     // ── 8. Gallery filter (work.html) ───────────────────────
     var filterBtns = document.querySelectorAll('.filter-btn');
     var galleryItems = document.querySelectorAll('.gallery-item');
