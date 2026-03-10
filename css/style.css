@@ -641,7 +641,7 @@ p {
    ============================================================ */
 .intro-photo {
   position: relative;
-  padding: var(--space-xxl) 0;
+  padding: var(--space-lg) 0;
   overflow: hidden;
   background-color: var(--color-navy);
   background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
@@ -669,7 +669,7 @@ p {
   overflow: hidden;
   border-radius: var(--radius-lg);
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   width: 100%;
 }
 
@@ -706,14 +706,15 @@ p {
 
 .intro-photo__label {
   display: block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-white);
   margin-bottom: var(--space-sm);
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   text-align: left;
+  line-height: 1.15;
 }
 
 .intro-photo__title {
@@ -724,13 +725,17 @@ p {
 }
 
 .intro-photo__body {
-  font-size: 1.1rem;
-  font-weight: 600;
-  line-height: 1.75;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
   color: rgba(255, 255, 255, 0.82);
   max-width: none;
-  margin-bottom: var(--space-lg);
+  margin-bottom: 0;
   text-align: left;
+}
+
+.intro-photo__body--semibold {
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
