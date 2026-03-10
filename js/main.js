@@ -115,9 +115,9 @@
       var rafId;
 
       function momentumScroll() {
-        if (Math.abs(velX) > 0.5) {
+        if (Math.abs(velX) > 0.3) {
           carousel.scrollLeft -= velX;
-          velX *= 0.92;
+          velX *= 0.96;
           rafId = requestAnimationFrame(momentumScroll);
         }
       }
@@ -152,7 +152,7 @@
         if (!isDragging) return;
         e.preventDefault();
         var x = e.pageX - carousel.offsetLeft;
-        var walk = (x - startX) * 1.2;
+        var walk = (x - startX) * 0.7;
         velX = e.pageX - lastX;
         lastX = e.pageX;
         carousel.scrollLeft = scrollLeft - walk;
