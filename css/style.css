@@ -719,6 +719,7 @@ p {
 
 .intro-photo__title {
   color: white;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
   margin-bottom: var(--space-md);
   text-align: left;
   text-transform: uppercase;
