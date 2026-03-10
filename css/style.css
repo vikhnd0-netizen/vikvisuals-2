@@ -2396,7 +2396,6 @@ p {
   text-transform: uppercase;
   color: var(--color-navy);
   margin-bottom: var(--space-xs);
-   text-align: center;
 }
 
 .video-examples__subtitle {
@@ -2404,7 +2403,6 @@ p {
   font-size: 1rem;
   color: var(--color-muted);
   margin: 0;
-   text-align: center;
 }
 
 .video-examples__grid {
