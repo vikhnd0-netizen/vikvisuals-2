@@ -506,7 +506,7 @@ p {
 }
 
 .hero__logo-img {
-  height: clamp(80px, 12vw, 140px);
+  height: clamp(100px, 14vw, 160px);
   width: auto;
   display: block;
   margin: 0 auto;
