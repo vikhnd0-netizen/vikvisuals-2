@@ -1104,12 +1104,33 @@ p {
   border-radius: var(--radius-lg);
 }
 
+.work-carousel__card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 42, 85, 0.25);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.work-carousel__card:hover::after {
+  opacity: 1;
+}
+
 .work-carousel__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   pointer-events: none;
+  transition: transform 0.45s ease;
+}
+
+.work-carousel__card:hover .work-carousel__img {
+  transform: scale(1.07);
 }
 
 /* ============================================================
