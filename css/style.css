@@ -839,13 +839,13 @@ p {
   font-size: 0.95rem;
   line-height: 1.65;
   max-width: none;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 1rem;
   font-family: var(--font-body);
 }
 
 .service-card__cta {
-  color: var(--color-white);
+  color: var(--color-accent);
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
