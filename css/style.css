@@ -1094,7 +1094,7 @@ p {
 .work-carousel__card {
   flex: 0 0 auto;
   width: 33vw;
-  height: 65vh;
+  height: auto;
   position: relative;
   overflow: hidden;
   border-radius: 0;
@@ -1103,7 +1103,7 @@ p {
 .work-carousel__img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   pointer-events: none;
 }
