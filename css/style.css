@@ -1071,19 +1071,24 @@ p {
   gap: var(--space-md);
 }
 
-@keyframes carousel-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 .work-carousel {
   display: flex;
-  width: max-content;
-  animation: carousel-scroll 60s linear infinite;
+  width: 100%;
+  overflow-x: scroll;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  will-change: scroll-position;
+  user-select: none;
 }
 
-.work-carousel:hover {
-  animation-play-state: paused;
+.work-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.work-carousel:active {
+  cursor: grabbing;
 }
 
 .work-carousel__card {
@@ -1100,6 +1105,7 @@ p {
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
 }
 
 /* ============================================================

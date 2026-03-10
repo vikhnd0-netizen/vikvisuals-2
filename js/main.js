@@ -105,6 +105,81 @@
       });
     }
 
+    // ── 7. Work carousel — momentum drag-scroll ─────────────
+    var carousel = document.querySelector('.work-carousel');
+    if (carousel) {
+      var isDragging = false;
+      var startX, scrollLeft;
+      var velX = 0;
+      var lastX = 0;
+      var rafId;
+
+      function momentumScroll() {
+        if (Math.abs(velX) > 0.5) {
+          carousel.scrollLeft -= velX;
+          velX *= 0.92;
+          rafId = requestAnimationFrame(momentumScroll);
+        }
+      }
+
+      carousel.addEventListener('mousedown', function (e) {
+        isDragging = true;
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+        lastX = e.pageX;
+        velX = 0;
+        cancelAnimationFrame(rafId);
+        carousel.style.cursor = 'grabbing';
+        carousel.style.userSelect = 'none';
+      });
+
+      carousel.addEventListener('mouseleave', function () {
+        if (!isDragging) return;
+        isDragging = false;
+        carousel.style.cursor = 'grab';
+        carousel.style.userSelect = '';
+        requestAnimationFrame(momentumScroll);
+      });
+
+      carousel.addEventListener('mouseup', function () {
+        isDragging = false;
+        carousel.style.cursor = 'grab';
+        carousel.style.userSelect = '';
+        requestAnimationFrame(momentumScroll);
+      });
+
+      carousel.addEventListener('mousemove', function (e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        var x = e.pageX - carousel.offsetLeft;
+        var walk = (x - startX) * 1.2;
+        velX = e.pageX - lastX;
+        lastX = e.pageX;
+        carousel.scrollLeft = scrollLeft - walk;
+      });
+
+      // Touch support
+      var touchStartX, touchScrollLeft, touchLastX;
+      carousel.addEventListener('touchstart', function (e) {
+        touchStartX = e.touches[0].pageX;
+        touchLastX = touchStartX;
+        touchScrollLeft = carousel.scrollLeft;
+        velX = 0;
+        cancelAnimationFrame(rafId);
+      }, { passive: true });
+
+      carousel.addEventListener('touchmove', function (e) {
+        var x = e.touches[0].pageX;
+        velX = x - touchLastX;
+        touchLastX = x;
+        carousel.scrollLeft = touchScrollLeft - (x - touchStartX);
+      }, { passive: true });
+
+      carousel.addEventListener('touchend', function () {
+        requestAnimationFrame(momentumScroll);
+      });
+    }
+
     // ── 6. IntersectionObserver — fade & slide animations ────
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (entries) {
