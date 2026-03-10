@@ -79,6 +79,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-navy);
   line-height: 1.15;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 h1 { font-size: clamp(2.4rem, 6vw, 5rem); letter-spacing: -0.02em; }
@@ -216,7 +217,7 @@ p {
 }
 
 .nav__logo-img {
-  height: 36px;
+  height: 44px;
   width: auto;
   display: block;
 }
@@ -672,11 +673,12 @@ p {
   color: white;
   margin-bottom: var(--space-md);
   text-align: center;
+  text-transform: uppercase;
 }
 
 .intro-photo__body {
   font-size: 1.1rem;
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.82);
   max-width: none;
@@ -768,7 +770,7 @@ p {
 .service-card__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(2, 42, 85, 0.88) 0%, rgba(0, 0, 0, 0.1) 55%, transparent 100%);
+  background: rgba(0, 0, 0, 0.38);
   transition: opacity 0.4s ease;
   z-index: 1;
 }
@@ -879,7 +881,9 @@ p {
    PROCESS V2 — Portfolite-inspired stacked dark cards
    ============================================================ */
 .process-v2 {
-  background: #0a0f1a;
+  background-color: var(--color-navy);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
   padding: var(--space-xl) 0;
 }
 
@@ -958,6 +962,11 @@ p {
   line-height: 1;
 }
 
+.process-v2__card-icon svg {
+  stroke: rgba(255, 255, 255, 0.75);
+  display: block;
+}
+
 .process-v2__card-num {
   font-family: var(--font-heading);
   font-size: 0.85rem;
@@ -972,7 +981,7 @@ p {
   font-weight: 700;
   color: var(--color-white);
   margin-bottom: 0.75rem;
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .process-v2__card-rule {
@@ -1095,7 +1104,7 @@ p {
 .cta-banner__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(2, 42, 85, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   z-index: 1;
 }
 
@@ -1108,7 +1117,7 @@ p {
 
 .cta-banner h2,
 .cta-banner p {
-  color: white;
+  color: var(--color-navy);
 }
 
 .cta-banner p {
