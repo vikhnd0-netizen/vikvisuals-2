@@ -34,8 +34,21 @@
     // ── 2. Services Dropdown ─────────────────────────────────
     var dropdown = document.querySelector('.nav__dropdown');
     if (dropdown) {
-      var toggle = dropdown.querySelector('.nav__dropdown-toggle');
+      var hoverTimer;
 
+      dropdown.addEventListener('mouseenter', function () {
+        clearTimeout(hoverTimer);
+        dropdown.classList.add('open');
+      });
+
+      dropdown.addEventListener('mouseleave', function () {
+        hoverTimer = setTimeout(function () {
+          dropdown.classList.remove('open');
+        }, 100);
+      });
+
+      // Keep click behaviour as a fallback for touch devices
+      var toggle = dropdown.querySelector('.nav__dropdown-toggle');
       toggle.addEventListener('click', function (e) {
         e.stopPropagation();
         dropdown.classList.toggle('open');
@@ -47,6 +60,9 @@
 
       var menu = dropdown.querySelector('.nav__dropdown-menu');
       if (menu) {
+        menu.addEventListener('mouseenter', function () {
+          clearTimeout(hoverTimer);
+        });
         menu.addEventListener('click', function (e) {
           e.stopPropagation();
         });
