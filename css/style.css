@@ -907,7 +907,7 @@ p {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 220px;
+  width: 440px;
   z-index: 2;
   pointer-events: none;
 }
@@ -926,12 +926,8 @@ p {
   display: flex;
   gap: 4rem;
   white-space: nowrap;
-  animation: marquee-scroll 30s linear infinite;
+  animation: marquee-scroll 60s linear infinite;
   width: max-content;
-}
-
-.marquee__track:hover {
-  animation-play-state: paused;
 }
 
 @keyframes marquee-scroll {
@@ -1401,7 +1397,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-lg);
-  align-items: start;
+  align-items: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-md);
