@@ -1455,7 +1455,7 @@ p {
    SERVICES LIST (on service pages)
    ============================================================ */
 .services-list {
-  padding: var(--space-xl) 0;
+  padding: var(--space-md) 0;
   background: var(--color-white);
 }
 
@@ -1504,7 +1504,7 @@ p {
 }
 
 .services-list__group {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .services-list__group-title {
@@ -1519,15 +1519,16 @@ p {
 .services-list__items {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.2rem;
 }
 
 .services-list__item {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--color-text);
   padding-left: 14px;
   position: relative;
   font-weight: 300;
+  line-height: 1.5;
   max-width: none;
 }
 
@@ -1540,25 +1541,28 @@ p {
 }
 
 .services-list__image-wrap {
+  position: relative;
   overflow: hidden;
   border-radius: var(--radius-lg);
 }
 
 .services-list__image-wrap img {
   width: 100%;
-  height: 380px;
+  height: 100%;
   object-fit: cover;
   border-radius: var(--radius-lg);
   display: block;
 }
 
 .services-list__caption {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  margin-top: 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-muted);
-  margin-top: var(--space-xs);
+  color: var(--color-navy);
+  text-align: center;
+  font-family: var(--font-body);
 }
 
 /* ============================================================
@@ -1812,7 +1816,7 @@ p {
 .about-text p {
   font-size: 1.05rem;
   font-weight: 300;
-  line-height: 1.85;
+  line-height: 1.55;
   color: var(--color-text);
   margin-bottom: var(--space-sm);
   max-width: none;
@@ -2453,12 +2457,12 @@ p {
 
 .video-examples__title {
   font-family: var(--font-heading);
-  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-navy);
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0.5rem;
 }
 
 .video-examples__subtitle {
@@ -2469,10 +2473,37 @@ p {
   text-align: center;
 }
 
+.video-examples__subtitle--small {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
 .video-examples__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-md);
+}
+
+/* 2-column video grid variant */
+.video-examples__grid--two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+  .video-examples__grid--two {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Video caption below embed */
+.video-examples__caption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  text-align: center;
+  font-family: var(--font-body);
 }
 
 .video-examples__embed {
