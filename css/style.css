@@ -652,7 +652,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
   gap: var(--space-lg);
-  align-items: center;
+  align-items: stretch;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-md);
@@ -663,14 +663,16 @@ p {
   flex-direction: column;
   gap: var(--space-sm);
   text-align: left;
+  justify-content: center;
 }
 
 .intro-photo__image {
   overflow: hidden;
   border-radius: var(--radius-lg);
   position: relative;
-  aspect-ratio: 16 / 9;
   width: 100%;
+  min-height: 300px;
+  align-self: stretch;
 }
 
 .intro-photo__image iframe {
@@ -1808,7 +1810,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 1.6fr;
   gap: var(--space-lg);
-  align-items: start;
+  align-items: stretch;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--space-md);
@@ -1816,13 +1818,15 @@ p {
 
 .about-portrait {
   position: relative;
+  display: flex;
 }
 
 .about-portrait__img {
   width: 100%;
-  max-width: 380px;
-  aspect-ratio: 3/4;
+  height: 100%;
+  max-width: 100%;
   object-fit: cover;
+  object-position: top center;
   border-radius: var(--radius-lg);
   display: block;
 }
