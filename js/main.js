@@ -8,11 +8,12 @@
   document.addEventListener('DOMContentLoaded', function () {
 
     var nav = document.getElementById('main-nav');
-    var isHomepage = document.body.classList.contains('page-home');
+    var isHomepage    = document.body.classList.contains('page-home');
+    var isServicePage = document.body.classList.contains('page-service');
 
     // ── 1. Nav behaviour ────────────────────────────────────
     if (nav) {
-      if (isHomepage) {
+      if (isHomepage || isServicePage) {
         nav.classList.add('nav--transparent');
         window.addEventListener('scroll', function () {
           if (window.scrollY > window.innerHeight * 0.8) {
