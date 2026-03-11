@@ -905,7 +905,7 @@ p {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 120px;
+  width: 220px;
   z-index: 2;
   pointer-events: none;
 }
@@ -1416,7 +1416,7 @@ p {
 .feature-row__image {
   overflow: hidden;
   border-radius: var(--radius-lg);
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 3 / 2;
 }
 
 .feature-row__image img {
