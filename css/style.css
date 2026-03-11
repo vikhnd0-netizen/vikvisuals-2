@@ -747,6 +747,11 @@ p {
   font-weight: 600;
 }
 
+.intro-photo__body--accent {
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
 @media (max-width: 768px) {
   .intro-photo__split {
     grid-template-columns: 1fr;
@@ -1452,6 +1457,36 @@ p {
 .services-list {
   padding: var(--space-xl) 0;
   background: var(--color-white);
+}
+
+.services-list--dark {
+  background: var(--color-navy);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.services-list--dark h3 {
+  color: var(--color-white);
+}
+
+.services-list--dark .label {
+  color: var(--color-accent);
+}
+
+.services-list--dark .services-list__group-title {
+  color: var(--color-accent);
+}
+
+.services-list--dark .services-list__item {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.services-list--dark .services-list__item::before {
+  color: var(--color-accent);
+}
+
+.services-list--dark .services-list__caption {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .services-list__inner {
