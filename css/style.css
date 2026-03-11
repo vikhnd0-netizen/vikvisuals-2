@@ -279,6 +279,8 @@ p {
 /* Services Dropdown */
 .nav__dropdown {
   position: relative;
+  padding-bottom: 18px;
+  margin-bottom: -18px;
 }
 
 .nav__dropdown-toggle {
