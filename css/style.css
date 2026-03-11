@@ -1357,6 +1357,19 @@ p {
   filter: grayscale(0%);
 }
 
+/* Per-logo size overrides */
+.clients__logo-img--sedulo {
+  height: 36px !important;
+}
+
+.clients__logo-img--hba {
+  height: 72px !important;
+}
+
+.clients__logo-img--be-the-standard {
+  height: 62px !important;
+}
+
 /* ============================================================
    FEATURE ROWS (alternating) — service pages
    ============================================================ */
