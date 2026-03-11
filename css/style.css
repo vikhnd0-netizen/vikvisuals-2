@@ -745,6 +745,7 @@ p {
 
 .intro-photo__body--semibold {
   font-weight: 600;
+  color: var(--color-accent);
 }
 
 .intro-photo__body--accent {
@@ -1493,7 +1494,7 @@ p {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-lg);
-  align-items: start;
+  align-items: stretch;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-md);
@@ -1544,14 +1545,19 @@ p {
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-lg);
+  height: 100%;
+  min-height: 400px;
 }
 
 .services-list__image-wrap img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--radius-lg);
   display: block;
+  border-radius: var(--radius-lg);
 }
 
 .services-list__caption {
@@ -2050,7 +2056,7 @@ p {
 
 .page-cta__body {
   font-size: 1.05rem;
-  font-weight: 300;
+  font-weight: 600;
   line-height: 1.8;
   color: var(--color-text);
   margin-bottom: var(--space-lg);
@@ -2441,13 +2447,24 @@ p {
     grid-template-columns: 1fr;
   }
 }
+/* 3-column variant for values / about page */
+.process-h__grid--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+  .process-h__grid--three {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ============================================================
    Video Examples Section
    ============================================================ */
 
 .video-examples {
   padding: var(--space-xl) 0;
-  background-color: var(--color-bg);
+  background-color: #ffffff;
 }
 
 .video-examples__header {
