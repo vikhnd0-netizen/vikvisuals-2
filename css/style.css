@@ -1741,9 +1741,9 @@ p {
 .gallery-masonry__inner {
   columns: 3;
   column-gap: 12px;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 var(--space-md);
+  padding: 0 8px;
 }
 
 .gallery-item {
