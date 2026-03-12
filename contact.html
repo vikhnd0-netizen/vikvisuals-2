@@ -135,7 +135,7 @@
                   form.reset();
                   replyto.value = '';
                   status.style.color = 'var(--color-navy)';
-                  status.textContent = 'Thanks for getting in touch, I\u2019ll be back to you within 24 hours.';
+                  status.textContent = 'Thanks for getting in touch, I\u2019ll get back to you within 24 hours.';
                 } else {
                   return response.json().then(function (json) {
                     throw new Error(json.error || 'Unknown error occurred');
