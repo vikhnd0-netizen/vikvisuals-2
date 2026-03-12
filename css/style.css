@@ -683,7 +683,7 @@ p {
 .intro-photo__text {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 0;
   text-align: left;
   justify-content: center;
 }
@@ -735,7 +735,7 @@ p {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-accent);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
   font-family: var(--font-body);
   text-align: left;
 }
@@ -752,7 +752,7 @@ p {
 .intro-photo__title {
   color: white;
   font-size: clamp(1.6rem, 3vw, 2.4rem);
-  margin-bottom: var(--space-md);
+  margin-bottom: 0.35rem;
   text-align: left;
   text-transform: uppercase;
 }
@@ -763,7 +763,8 @@ p {
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.82);
   max-width: none;
-  margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: var(--space-md);
   text-align: left;
 }
 
