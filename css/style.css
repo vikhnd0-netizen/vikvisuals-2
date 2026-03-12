@@ -467,7 +467,7 @@ p {
 
 @media (max-width: 768px) {
   .hero__slide--right-mobile {
-    background-position: right center;
+    background-position: 75% center;
   }
 }
 
