@@ -80,7 +80,8 @@
       </div>
 
       <div class="fade-in">
-        <form class="contact-form" action="#" method="post">
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/mpqydbez" method="POST">
+          <input type="hidden" name="_replyto" id="replyto-field" />
           <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your name" required />
@@ -104,9 +105,55 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" placeholder="Tell me about your project&hellip;" required></textarea>
           </div>
-          <button type="submit" class="btn btn--navy" style="align-self:flex-start;">Send Message</button>
-          <p class="form-note">Form submissions coming soon. In the meantime, please email <a href="mailto:hello@vikvisuals.com" style="color:var(--color-navy);text-decoration:underline;">hello@vikvisuals.com</a> directly.</p>
+          <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Send Message</button>
+          <p id="form-status" style="display:none;margin-top:1rem;"></p>
         </form>
+        <script>
+          (function () {
+            var form = document.getElementById('contact-form');
+            var btn = document.getElementById('submit-btn');
+            var status = document.getElementById('form-status');
+            var replyto = document.getElementById('replyto-field');
+
+            form.addEventListener('submit', function (e) {
+              e.preventDefault();
+              replyto.value = form.elements['email'].value;
+
+              btn.disabled = true;
+              btn.textContent = 'Sending\u2026';
+              status.style.display = 'none';
+
+              var data = new FormData(form);
+
+              fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+              })
+              .then(function (response) {
+                if (response.ok) {
+                  form.reset();
+                  replyto.value = '';
+                  status.style.color = 'var(--color-navy)';
+                  status.textContent = 'Thanks for getting in touch \u2014 I\u2019ll be back to you within 24 hours.';
+                } else {
+                  return response.json().then(function (json) {
+                    throw new Error(json.error || 'Unknown error occurred');
+                  });
+                }
+              })
+              .catch(function () {
+                status.style.color = '#c0392b';
+                status.textContent = 'Something went wrong. Please email me directly at hello@vikvisuals.com.';
+              })
+              .finally(function () {
+                btn.disabled = false;
+                btn.textContent = 'Send Message';
+                status.style.display = 'block';
+              });
+            });
+          }());
+        </script>
       </div>
 
     </div>
