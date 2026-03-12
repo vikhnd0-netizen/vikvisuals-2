@@ -522,12 +522,23 @@ p {
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: rgba(255, 255, 255, 0.88);
   max-width: 50ch;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm);
   font-weight: 600;
   line-height: 1.6;
   font-family: var(--font-body);
   animation: fadeUp 0.9s 0.25s ease both;
   text-align: center;
+}
+.hero__location {
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 44ch;
+  margin-bottom: var(--space-lg);
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: var(--font-body);
+  text-align: center;
+  animation: fadeUp 0.9s 0.4s ease both;
 }
 
 .hero__cta-group {
