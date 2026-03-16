@@ -538,6 +538,10 @@ p {
   animation: fadeUp 0.9s 0.2s ease both;
   text-align: center;
 }
+.page-service .hero__sub,
+body:not(.page-home) .hero__sub {
+  font-weight: 600;
+}
 .hero__location {
   font-size: clamp(0.9rem, 1.6vw, 1.05rem);
   color: rgba(255, 255, 255, 0.88);
@@ -829,7 +833,7 @@ p {
    SERVICES GRID — Full-bleed overlay cards
    ============================================================ */
 .services {
-  padding: var(--space-xl) 0;
+  padding: var(--space-md) 0 var(--space-xl);
 }
 
 .services__header {
@@ -1124,7 +1128,7 @@ p {
    ============================================================ */
 .work-carousel-section {
   overflow: hidden;
-  padding: 0;
+  padding: var(--space-lg) 0 0;
 }
 
 .work-carousel-section__header {
@@ -1437,7 +1441,8 @@ p {
 .feature-row__image {
   overflow: hidden;
   border-radius: var(--radius-lg);
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3;
+  min-height: 420px;
 }
 
 .feature-row__image img {
@@ -1579,7 +1584,7 @@ p {
   overflow: hidden;
   border-radius: var(--radius-lg);
   height: 100%;
-  min-height: 560px;
+  min-height: 400px;
 }
 
 .services-list__image-wrap img {
