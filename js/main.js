@@ -245,12 +245,6 @@
         });
       });
 
-      // Reveal gallery immediately — gallery items no longer use fade-in individually
-      var galleryMasonry = document.getElementById('gallery-masonry');
-      if (galleryMasonry) {
-        galleryMasonry.style.visibility = 'visible';
-        galleryMasonry.style.opacity = '1';
-      }
     }
 
   });
