@@ -1131,7 +1131,7 @@ body:not(.page-home) .hero__sub {
   padding: var(--space-lg) 0 0;
 }
 .page-home .work-carousel-section {
-  padding: var(--space-md) 0 0;
+  padding: var(--space-xs) 0 0;
 }
 
 .work-carousel-section__header {
@@ -1765,6 +1765,7 @@ body:not(.page-home) .hero__sub {
 
 .gallery-masonry {
   padding: var(--space-xl) 0;
+  transition: opacity 0.3s ease;
 }
 
 .gallery-masonry__inner {
