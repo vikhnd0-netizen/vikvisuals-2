@@ -667,7 +667,7 @@ body:not(.page-home) .hero__sub {
    ============================================================ */
 .intro-photo {
   position: relative;
-  padding: var(--space-lg) 0;
+  padding: var(--space-xl) 0;
   overflow: hidden;
   background-color: var(--color-navy);
   background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
@@ -780,6 +780,20 @@ body:not(.page-home) .hero__sub {
 .intro-photo__body--accent {
   font-weight: 600;
   color: var(--color-accent);
+}
+
+.intro-photo__accent-banner {
+  text-align: center;
+  padding: 0 var(--space-md) var(--space-md);
+}
+
+.intro-photo__accent-banner__text {
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  font-weight: 600;
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  max-width: none;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
