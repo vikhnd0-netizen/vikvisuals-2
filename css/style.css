@@ -751,7 +751,6 @@ body:not(.page-home) .hero__sub {
   color: var(--color-white);
   font-family: var(--font-heading);
   line-height: 1.15;
-  margin-bottom: 1.5rem;
 }
 
 .intro-photo__title {
@@ -785,7 +784,7 @@ body:not(.page-home) .hero__sub {
 
 .intro-photo__accent-banner {
   text-align: center;
-  padding: var(--space-md) var(--space-md) var(--space-md);
+  padding: 0 var(--space-md) var(--space-md);
 }
 
 .intro-photo__accent-banner__text {
