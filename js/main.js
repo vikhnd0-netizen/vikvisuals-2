@@ -248,8 +248,7 @@
       // Reveal gallery after JS has initialised — prevents load flicker
       var galleryMasonry = document.getElementById('gallery-masonry');
       if (galleryMasonry) {
-        galleryMasonry.style.visibility = '';
-        galleryMasonry.style.opacity = '';
+        galleryMasonry.classList.remove('gallery-masonry--loading');
       }
     }
 

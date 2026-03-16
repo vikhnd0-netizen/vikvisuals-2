@@ -1780,6 +1780,12 @@ body:not(.page-home) .hero__sub {
   padding: var(--space-xl) 0;
 }
 
+/* Hide gallery until JS initialises the filter — prevents load flicker */
+.gallery-masonry--loading {
+  visibility: hidden;
+  opacity: 0;
+}
+
 .gallery-masonry__inner {
   columns: 3;
   column-gap: 12px;
