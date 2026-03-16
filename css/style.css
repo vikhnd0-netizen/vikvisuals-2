@@ -1128,7 +1128,7 @@ body:not(.page-home) .hero__sub {
    ============================================================ */
 .work-carousel-section {
   overflow: hidden;
-  padding: var(--space-lg) 0 0;
+  padding: var(--space-md) 0 0;
 }
 
 .work-carousel-section__header {
@@ -1422,12 +1422,12 @@ body:not(.page-home) .hero__sub {
 
 .feature-row__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-md);
   align-items: center;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 var(--space-md);
+  padding: 0 var(--space-sm);
 }
 
 .feature-row--reverse .feature-row__inner {
@@ -1441,8 +1441,8 @@ body:not(.page-home) .hero__sub {
 .feature-row__image {
   overflow: hidden;
   border-radius: var(--radius-lg);
-  aspect-ratio: 4 / 3;
-  min-height: 420px;
+  aspect-ratio: 3 / 2;
+  min-height: 480px;
 }
 
 .feature-row__image img {
