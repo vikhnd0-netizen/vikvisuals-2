@@ -697,8 +697,8 @@ body:not(.page-home) .hero__sub {
   border-radius: var(--radius-lg);
   position: relative;
   width: 100%;
-  min-height: 300px;
-  align-self: stretch;
+  aspect-ratio: 16 / 9;
+  align-self: center;
 }
 
 .intro-photo__image iframe {
@@ -784,7 +784,7 @@ body:not(.page-home) .hero__sub {
 
 .intro-photo__accent-banner {
   text-align: center;
-  padding: 0 var(--space-md) var(--space-md);
+  padding: var(--space-md) var(--space-md);
 }
 
 .intro-photo__accent-banner__text {
@@ -937,7 +937,6 @@ body:not(.page-home) .hero__sub {
 .marquee {
   overflow: hidden;
   padding: var(--space-lg) 0;
-  border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   position: relative;
 }
