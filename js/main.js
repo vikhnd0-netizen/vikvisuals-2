@@ -245,18 +245,11 @@
         });
       });
 
-      // Reveal gallery after a short delay — prevents IntersectionObserver flicker
+      // Reveal gallery immediately — gallery items no longer use fade-in individually
       var galleryMasonry = document.getElementById('gallery-masonry');
       if (galleryMasonry) {
-        // Pre-mark all fade-in children as visible so IntersectionObserver
-        // doesn't fire them one-by-one while the gallery is hidden
-        galleryMasonry.querySelectorAll('.fade-in').forEach(function (el) {
-          el.classList.add('visible');
-        });
-        setTimeout(function () {
-          galleryMasonry.style.visibility = '';
-          galleryMasonry.style.opacity = '1';
-        }, 50);
+        galleryMasonry.style.visibility = 'visible';
+        galleryMasonry.style.opacity = '1';
       }
     }
 
