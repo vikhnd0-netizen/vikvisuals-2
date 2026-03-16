@@ -1128,6 +1128,9 @@ body:not(.page-home) .hero__sub {
    ============================================================ */
 .work-carousel-section {
   overflow: hidden;
+  padding: var(--space-lg) 0 0;
+}
+.page-home .work-carousel-section {
   padding: var(--space-md) 0 0;
 }
 
