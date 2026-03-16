@@ -525,15 +525,15 @@ p {
 }
 
 .hero__sub {
-  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
   color: rgba(255, 255, 255, 0.92);
-  max-width: 50ch;
+  max-width: 52ch;
   margin-top: 0;
   margin-bottom: var(--space-md);
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.6;
   font-family: var(--font-body);
   animation: fadeUp 0.9s 0.2s ease both;
   text-align: center;
@@ -834,7 +834,7 @@ p {
 
 .services__header {
   text-align: center;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
   padding: 0 var(--space-md);
 }
 
@@ -1579,7 +1579,7 @@ p {
   overflow: hidden;
   border-radius: var(--radius-lg);
   height: 100%;
-  min-height: 400px;
+  min-height: 560px;
 }
 
 .services-list__image-wrap img {
