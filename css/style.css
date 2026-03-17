@@ -1779,7 +1779,7 @@ body:not(.page-home) .hero__sub {
 @keyframes galleryItemIn {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(32px);
   }
   to {
     opacity: 1;
@@ -1808,7 +1808,7 @@ body:not(.page-home) .hero__sub {
 }
 
 .gallery-item--visible {
-  animation: galleryItemIn 0.4s ease both;
+  animation: galleryItemIn 0.85s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
 .gallery-item img {
