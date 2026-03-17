@@ -1776,14 +1776,14 @@ body:not(.page-home) .hero__sub {
   color: var(--color-white);
 }
 
-.gallery-masonry {
-  padding: var(--space-xl) 0;
+@keyframes galleryReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Hide gallery until JS initialises the filter — prevents load flicker */
-.gallery-masonry--loading {
-  visibility: hidden;
-  opacity: 0;
+.gallery-masonry {
+  padding: var(--space-xl) 0;
+  animation: galleryReveal 0.5s ease 0.15s both;
 }
 
 .gallery-masonry__inner {
