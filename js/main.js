@@ -303,7 +303,7 @@
 
       Promise.all(imagePromises).then(function () {
         layoutMasonry();
-        staggerReveal(galleryItems, 40);
+        staggerReveal(galleryItems, 80);
       });
 
       // Debounced resize listener
@@ -337,7 +337,7 @@
           if (galleryInner) { layoutMasonry(); }
 
           // Re-stagger the visible set at 30ms per item
-          staggerReveal(galleryItems, 30);
+          staggerReveal(galleryItems, 60);
         });
       });
 
