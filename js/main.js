@@ -222,11 +222,24 @@
       });
     }
 
-    // ── 8. Gallery filter (work.html) ───────────────────────
-    var galleryMasonry = document.querySelector('.gallery-masonry');
+    // ── 8. Gallery filter + staggered reveal (work.html) ────
     var galleryInner   = document.querySelector('.gallery-masonry__inner');
     var filterBtns     = document.querySelectorAll('.filter-btn');
     var galleryItems   = document.querySelectorAll('.gallery-item');
+
+    function staggerReveal(items, delayStep) {
+      var visibleIndex = 0;
+      items.forEach(function (item) {
+        if (!item.classList.contains('hidden')) {
+          item.classList.remove('gallery-item--visible');
+          // Force reflow so animation restarts cleanly
+          void item.offsetWidth;
+          item.style.animationDelay = (visibleIndex * delayStep) + 'ms';
+          item.classList.add('gallery-item--visible');
+          visibleIndex++;
+        }
+      });
+    }
 
     if (galleryInner) {
       var GAP = 12;
@@ -269,8 +282,6 @@
           if (colHeights[i] > maxHeight) { maxHeight = colHeights[i]; }
         }
         galleryInner.style.height = maxHeight + 'px';
-
-        galleryMasonry.classList.add('is-ready');
       }
 
       // Switch lazy images to eager so dimensions are available immediately
@@ -292,6 +303,7 @@
 
       Promise.all(imagePromises).then(function () {
         layoutMasonry();
+        staggerReveal(galleryItems, 40);
       });
 
       // Debounced resize listener
@@ -306,17 +318,26 @@
       filterBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
           var filter = btn.getAttribute('data-filter');
+
           filterBtns.forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
+
+          // Show/hide items
           galleryItems.forEach(function (item) {
             var category = item.getAttribute('data-category');
             if (filter === 'all' || category === filter) {
               item.classList.remove('hidden');
             } else {
               item.classList.add('hidden');
+              item.classList.remove('gallery-item--visible');
+              item.style.animationDelay = '';
             }
           });
+
           if (galleryInner) { layoutMasonry(); }
+
+          // Re-stagger the visible set at 30ms per item
+          staggerReveal(galleryItems, 30);
         });
       });
 

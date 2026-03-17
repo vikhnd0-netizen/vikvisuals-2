@@ -1776,22 +1776,19 @@ body:not(.page-home) .hero__sub {
   color: var(--color-white);
 }
 
-@keyframes galleryReveal {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes galleryItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Gallery is hidden by default; JS reveals it after layout */
 .gallery-masonry {
   padding: var(--space-xl) 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease;
-}
-
-.gallery-masonry.is-ready {
-  opacity: 1;
-  visibility: visible;
 }
 
 .gallery-masonry__inner {
@@ -1807,7 +1804,11 @@ body:not(.page-home) .hero__sub {
   border-radius: var(--radius);
   cursor: pointer;
   box-sizing: border-box;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  opacity: 0;
+}
+
+.gallery-item--visible {
+  animation: galleryItemIn 0.4s ease both;
 }
 
 .gallery-item img {
