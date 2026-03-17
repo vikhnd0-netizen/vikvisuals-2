@@ -1781,26 +1781,33 @@ body:not(.page-home) .hero__sub {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Gallery is hidden by default; JS reveals it after layout */
 .gallery-masonry {
   padding: var(--space-xl) 0;
-  animation: galleryReveal 0.5s ease 0.15s both;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-masonry.is-ready {
+  opacity: 1;
+  visibility: visible;
 }
 
 .gallery-masonry__inner {
-  columns: 3;
-  column-gap: 12px;
+  position: relative;   /* required for absolute-positioned children */
   max-width: 100%;
   margin: 0 auto;
   padding: 0 8px;
 }
 
 .gallery-item {
-  break-inside: avoid;
-  margin-bottom: 12px;
-  position: relative;
+  position: absolute;   /* JS will set left/top/width */
   overflow: hidden;
   border-radius: var(--radius);
   cursor: pointer;
+  box-sizing: border-box;
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .gallery-item img {
@@ -1835,10 +1842,6 @@ body:not(.page-home) .hero__sub {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-white);
-}
-
-.gallery-item[data-category] {
-  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .gallery-item.hidden {
@@ -2199,10 +2202,6 @@ body:not(.page-home) .hero__sub {
     grid-template-columns: 1fr;
   }
 
-  .gallery-masonry__inner {
-    columns: 2;
-  }
-
   .video-grid__grid {
     grid-template-columns: 1fr;
   }
@@ -2246,10 +2245,6 @@ body:not(.page-home) .hero__sub {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-md);
-  }
-
-  .gallery-masonry__inner {
-    columns: 1;
   }
 
   .gallery-filter__inner {

@@ -223,17 +223,91 @@
     }
 
     // ── 8. Gallery filter (work.html) ───────────────────────
-    var filterBtns = document.querySelectorAll('.filter-btn');
-    var galleryItems = document.querySelectorAll('.gallery-item');
+    var galleryMasonry = document.querySelector('.gallery-masonry');
+    var galleryInner   = document.querySelector('.gallery-masonry__inner');
+    var filterBtns     = document.querySelectorAll('.filter-btn');
+    var galleryItems   = document.querySelectorAll('.gallery-item');
+
+    if (galleryInner) {
+      var GAP = 12;
+
+      function layoutMasonry() {
+        var containerWidth = galleryInner.offsetWidth;
+        var cols = containerWidth >= 900 ? 3 : containerWidth >= 540 ? 2 : 1;
+        var colWidth = (containerWidth - GAP * (cols - 1)) / cols;
+        var colHeights = [];
+        var i;
+        for (i = 0; i < cols; i++) { colHeights[i] = 0; }
+
+        var visibleItems = Array.prototype.filter.call(galleryItems, function (item) {
+          return !item.classList.contains('hidden');
+        });
+
+        visibleItems.forEach(function (item) {
+          var img = item.querySelector('img');
+          var naturalW = img ? img.naturalWidth  : 0;
+          var naturalH = img ? img.naturalHeight : 0;
+          var itemHeight = (naturalW > 0 && naturalH > 0)
+            ? Math.round(colWidth * naturalH / naturalW)
+            : Math.round(colWidth * 0.75);
+
+          var shortestCol = 0;
+          for (i = 1; i < cols; i++) {
+            if (colHeights[i] < colHeights[shortestCol]) { shortestCol = i; }
+          }
+
+          item.style.position = 'absolute';
+          item.style.width    = colWidth + 'px';
+          item.style.left     = (shortestCol * (colWidth + GAP)) + 'px';
+          item.style.top      = colHeights[shortestCol] + 'px';
+
+          colHeights[shortestCol] += itemHeight + GAP;
+        });
+
+        var maxHeight = 0;
+        for (i = 0; i < cols; i++) {
+          if (colHeights[i] > maxHeight) { maxHeight = colHeights[i]; }
+        }
+        galleryInner.style.height = maxHeight + 'px';
+
+        galleryMasonry.classList.add('is-ready');
+      }
+
+      // Switch lazy images to eager so dimensions are available immediately
+      var galleryImgs = galleryInner.querySelectorAll('img');
+      galleryImgs.forEach(function (img) {
+        if (img.getAttribute('loading') === 'lazy') {
+          img.setAttribute('loading', 'eager');
+        }
+      });
+
+      // Wait for all images to load then run layout
+      var imagePromises = Array.prototype.map.call(galleryImgs, function (img) {
+        if (img.complete) { return Promise.resolve(); }
+        return new Promise(function (resolve) {
+          img.addEventListener('load',  resolve);
+          img.addEventListener('error', resolve);
+        });
+      });
+
+      Promise.all(imagePromises).then(function () {
+        layoutMasonry();
+      });
+
+      // Debounced resize listener
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(layoutMasonry, 150);
+      });
+    }
 
     if (filterBtns.length > 0 && galleryItems.length > 0) {
       filterBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
           var filter = btn.getAttribute('data-filter');
-
           filterBtns.forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
-
           galleryItems.forEach(function (item) {
             var category = item.getAttribute('data-category');
             if (filter === 'all' || category === filter) {
@@ -242,6 +316,7 @@
               item.classList.add('hidden');
             }
           });
+          if (galleryInner) { layoutMasonry(); }
         });
       });
 
