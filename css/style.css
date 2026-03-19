@@ -774,6 +774,7 @@ body:not(.page-home) .hero__sub {
   color: var(--color-white);
   font-family: var(--font-heading);
   line-height: 1.15;
+  margin-bottom: 1.25rem;
 }
 
 .intro-photo__title {
@@ -1243,7 +1244,7 @@ body:not(.page-home) .hero__sub {
 .carousel-viewall--mobile-wrap {
   display: none;
   text-align: center;
-  padding: var(--space-md) var(--space-md) 0;
+  padding: var(--space-sm) var(--space-md);
 }
 
 @media (max-width: 768px) {
@@ -2040,10 +2041,26 @@ body:not(.page-home) .hero__sub {
 }
 
 /* ============================================================
+   CONTACT HEADING (above the form/info grid)
+   ============================================================ */
+.contact-heading {
+  background: var(--color-bg);
+  padding: calc(var(--nav-height) + var(--space-lg)) var(--space-md) var(--space-sm);
+  text-align: center;
+}
+
+.contact-heading__title {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--color-navy);
+  white-space: nowrap;
+  margin: 0 auto;
+}
+
+/* ============================================================
    CONTACT PAGE
    ============================================================ */
 .contact-section {
-  padding: var(--space-xl) 0;
+  padding: var(--space-md) 0 var(--space-xl);
 }
 
 .contact-section__inner {
@@ -2320,6 +2337,14 @@ body:not(.page-home) .hero__sub {
     margin: 0;
   }
 
+  .contact-heading {
+    padding: calc(var(--nav-height) + var(--space-md)) var(--space-sm) var(--space-xs);
+  }
+  .contact-heading__title {
+    white-space: normal;
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
   .contact-section__inner {
     grid-template-columns: 1fr;
   }
@@ -2396,6 +2421,18 @@ body:not(.page-home) .hero__sub {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-bottom: var(--space-sm);
+    padding-top: var(--space-sm);
+  }
+
+  .carousel-viewall--mobile-wrap {
+    padding: var(--space-sm) var(--space-md) var(--space-sm);
+    display: flex;
+    justify-content: center;
+  }
+
+  .services-list__image-wrap {
+    margin-top: var(--space-sm);
   }
 
   .services-list__inner {
@@ -2660,7 +2697,7 @@ body:not(.page-home) .hero__sub {
 
 .video-examples__header {
   text-align: center;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .video-examples__title {
