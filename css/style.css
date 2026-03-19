@@ -1478,7 +1478,7 @@ body:not(.page-home) .hero__sub {
    ============================================================ */
 .testimonial-strip {
   background: var(--color-bg);
-  padding: 0 var(--space-md) var(--space-sm);
+  padding: var(--space-xs) var(--space-md) var(--space-sm);
   position: relative;
   overflow: hidden;
   width: 100%;
