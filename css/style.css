@@ -1477,7 +1477,7 @@ body:not(.page-home) .hero__sub {
    TESTIMONIAL STRIP
    ============================================================ */
 .testimonial-strip {
-  background: var(--color-navy);
+  background: var(--color-bg);
   padding: var(--space-xl) var(--space-md);
   position: relative;
   overflow: hidden;
@@ -1488,16 +1488,18 @@ body:not(.page-home) .hero__sub {
   max-width: 820px;
   margin: 0 auto;
   padding: 0 var(--space-md);
-  text-align: center;
+  text-align: left;
   position: relative;
 }
 
 .testimonial-strip__quote-mark {
+  display: block;
+  text-align: left;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: clamp(7rem, 14vw, 11rem);
   line-height: 0.75;
-  color: rgba(255, 255, 255, 0.20);
-  margin-bottom: 0.5rem;
+  color: rgba(2, 42, 85, 0.15);
+  margin-bottom: -1.5rem;
   user-select: none;
   pointer-events: none;
 }
@@ -1513,16 +1515,16 @@ body:not(.page-home) .hero__sub {
   font-style: italic;
   font-size: clamp(1.1rem, 2vw, 1.375rem);
   line-height: 1.75;
-  color: var(--color-white);
+  color: var(--color-navy);
   max-width: 100%;
   margin: 0 0 2rem;
-  text-align: center;
+  text-align: left;
 }
 
 .testimonial-strip__attribution {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.75rem;
   margin: 0;
   padding: 0;
@@ -1532,7 +1534,7 @@ body:not(.page-home) .hero__sub {
   display: inline-block;
   width: 32px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(2, 42, 85, 0.35);
   flex-shrink: 0;
 }
 
@@ -1542,13 +1544,13 @@ body:not(.page-home) .hero__sub {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(2, 42, 85, 0.6);
 }
 
 .testimonial-strip__name,
 .testimonial-strip__role,
 .testimonial-strip__company {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(2, 42, 85, 0.6);
   font-weight: 600;
 }
 
