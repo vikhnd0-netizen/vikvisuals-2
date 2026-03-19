@@ -1482,7 +1482,7 @@ body:not(.page-home) .hero__sub {
 
 .testimonial-strip__role {
   font-weight: 400;
-  color: var(--color-muted);
+  color: var(--color-navy);
 }
 
 .testimonial-strip__company {
