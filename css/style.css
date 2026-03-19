@@ -1477,16 +1477,29 @@ body:not(.page-home) .hero__sub {
    TESTIMONIAL STRIP
    ============================================================ */
 .testimonial-strip {
-  background: var(--color-bg);
-  padding: 0.75rem 0 2rem;
-  border-top: none;
+  background: var(--color-navy);
+  padding: var(--space-xl) var(--space-md);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
 .testimonial-strip__inner {
-  max-width: 650px;
+  max-width: 820px;
   margin: 0 auto;
   padding: 0 var(--space-md);
   text-align: center;
+  position: relative;
+}
+
+.testimonial-strip__quote-mark {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: clamp(7rem, 14vw, 11rem);
+  line-height: 0.75;
+  color: rgba(255, 255, 255, 0.20);
+  margin-bottom: 0.5rem;
+  user-select: none;
+  pointer-events: none;
 }
 
 .testimonial-strip__quote {
@@ -1498,36 +1511,45 @@ body:not(.page-home) .hero__sub {
 .testimonial-strip__text {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-style: italic;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: var(--color-text);
+  font-size: clamp(1.1rem, 2vw, 1.375rem);
+  line-height: 1.75;
+  color: var(--color-white);
   max-width: 100%;
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
   text-align: center;
 }
 
 .testimonial-strip__attribution {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.testimonial-strip__rule {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.55);
+  flex-shrink: 0;
+}
+
+.testimonial-strip__attr-text {
   font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: var(--color-muted);
-  text-align: center;
-  display: block;
-}
-
-.testimonial-strip__name {
+  font-size: 0.72rem;
   font-weight: 600;
-  color: var(--color-navy);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
 }
 
-.testimonial-strip__role {
-  font-weight: 400;
-  color: var(--color-navy);
-}
-
+.testimonial-strip__name,
+.testimonial-strip__role,
 .testimonial-strip__company {
+  color: rgba(255, 255, 255, 0.55);
   font-weight: 600;
-  color: var(--color-navy);
 }
 
 /* ============================================================
