@@ -1484,15 +1484,17 @@ body:not(.page-home) .hero__sub {
    TESTIMONIAL STRIP
    ============================================================ */
 .testimonial-strip {
-  background: var(--color-bg);
-  padding: var(--space-sm) var(--space-md) var(--space-md);
+  background: var(--color-navy);
+  padding: var(--space-xl) var(--space-md);
   position: relative;
   overflow: hidden;
   width: 100%;
+  border-top: none;
+  border-bottom: none;
 }
 
 .testimonial-strip__inner {
-  max-width: 850px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 0 var(--space-md);
   text-align: center;
@@ -1500,13 +1502,13 @@ body:not(.page-home) .hero__sub {
 }
 
 .testimonial-strip__quote-mark {
-  display: none;
+  display: block;
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: clamp(4rem, 8vw, 6rem);
-  line-height: 0.75;
-  color: var(--color-navy);
-  margin-bottom: -1rem;
+  font-size: clamp(7rem, 14vw, 11rem);
+  line-height: 0.7;
+  color: rgba(255, 255, 255, 0.20);
+  margin-bottom: 1rem;
   user-select: none;
   pointer-events: none;
 }
@@ -1520,11 +1522,11 @@ body:not(.page-home) .hero__sub {
 .testimonial-strip__text {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-style: italic;
-  font-size: clamp(1rem, 1.8vw, 1.15rem);
-  line-height: 1.75;
-  color: var(--color-navy);
+  font-size: clamp(1.15rem, 2vw, 1.375rem);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.95);
   max-width: 100%;
-  margin: 0 0 2rem;
+  margin: 0 0 2.5rem;
   text-align: center;
 }
 
@@ -1539,26 +1541,28 @@ body:not(.page-home) .hero__sub {
 
 .testimonial-strip__rule {
   display: inline-block;
-  width: 32px;
-  height: 1px;
-  background: rgba(2, 42, 85, 0.35);
+  width: 24px;
+  height: 0.5px;
+  background: rgba(255, 255, 255, 0.40);
   flex-shrink: 0;
 }
 
 .testimonial-strip__attr-text {
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(2, 42, 85, 0.6);
+  color: rgba(255, 255, 255, 0.55);
 }
 
-.testimonial-strip__name,
-.testimonial-strip__role,
-.testimonial-strip__company {
-  color: rgba(2, 42, 85, 0.6);
-  font-weight: 600;
+@media (max-width: 768px) {
+  .testimonial-strip {
+    padding: var(--space-lg) var(--space-sm);
+  }
+  .testimonial-strip__inner {
+    padding: 0 var(--space-sm);
+  }
 }
 
 /* ============================================================
