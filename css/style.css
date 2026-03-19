@@ -1498,7 +1498,7 @@ body:not(.page-home) .hero__sub {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: clamp(4rem, 8vw, 6rem);
   line-height: 0.75;
-  color: rgba(2, 42, 85, 0.15);
+  color: var(--color-navy);
   margin-bottom: -1rem;
   user-select: none;
   pointer-events: none;
