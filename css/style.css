@@ -1473,6 +1473,13 @@ body:not(.page-home) .hero__sub {
   padding-bottom: var(--space-sm);
 }
 
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 0;
+  width: 100%;
+}
+
 /* ============================================================
    TESTIMONIAL STRIP
    ============================================================ */
