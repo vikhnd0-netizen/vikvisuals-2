@@ -2378,7 +2378,25 @@ body:not(.page-home) .hero__sub {
 
   .work-carousel-section__header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+  }
+
+  .services-list__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .services-list--dark .services-list__col,
+  .services-list--dark .services-list__group,
+  .services-list--dark .services-list__group-title,
+  .services-list--dark .services-list__items,
+  .services-list--dark .services-list__item,
+  .services-list--dark h3 {
+    text-align: center;
+  }
+
+  .services-list--dark .services-list__item::before {
+    display: none;
   }
 }
 
@@ -2601,12 +2619,6 @@ body:not(.page-home) .hero__sub {
 
 @media (max-width: 640px) {
   .process-h__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 420px) {
-  .process-h__grid {
     grid-template-columns: 1fr;
   }
 }
@@ -2772,4 +2784,37 @@ body:not(.page-home) .hero__sub {
   .charity-collage__item:last-child {
     grid-column: span 2;
   }
+}
+
+/* ============================================================
+   PAGE HEADER (no-masthead title block)
+   ============================================================ */
+.page-header {
+  background: var(--color-bg);
+  padding: calc(var(--nav-height) + var(--space-lg)) var(--space-md) var(--space-md);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.page-header__inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.page-header__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+}
+
+.page-header__sub {
+  font-size: 1.05rem;
+  color: var(--color-muted);
+  font-weight: 400;
+  max-width: none;
+}
+
+/* About page — no hero, so compensate for fixed nav */
+.about-section--no-hero {
+  padding-top: calc(var(--nav-height) + var(--space-xl));
 }
