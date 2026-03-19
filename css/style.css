@@ -1443,10 +1443,10 @@ body:not(.page-home) .hero__sub {
 }
 
 .testimonial-strip__inner {
-  max-width: 760px;
+  max-width: 620px;
   margin: 0 auto;
   padding: 0 var(--space-md);
-  text-align: left;
+  text-align: center;
 }
 
 .testimonial-strip__quote {
@@ -1463,43 +1463,31 @@ body:not(.page-home) .hero__sub {
   color: var(--color-text);
   max-width: 100%;
   margin: 0 0 1rem;
-  text-align: left;
+  text-align: center;
 }
 
 .testimonial-strip__attribution {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  gap: 0.15rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-muted);
+  text-align: center;
+  display: block;
 }
 
 .testimonial-strip__name {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--color-navy);
 }
 
 .testimonial-strip__role {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
   font-weight: 400;
-  font-style: italic;
-  color: var(--color-text);
-  letter-spacing: 0;
-  text-transform: none;
+  color: var(--color-muted);
 }
 
 .testimonial-strip__company {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-navy);
 }
 
 /* ============================================================
