@@ -1443,7 +1443,7 @@ body:not(.page-home) .hero__sub {
 }
 
 .testimonial-strip__inner {
-  max-width: 620px;
+  max-width: 650px;
   margin: 0 auto;
   padding: 0 var(--space-md);
   text-align: center;
