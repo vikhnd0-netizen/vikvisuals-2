@@ -2092,13 +2092,13 @@ body:not(.page-home) .hero__sub {
 }
 
 .contact-portrait {
-  width: 200px;
-  height: 200px;
+  width: 260px;
+  height: 260px;
   object-fit: cover;
   object-position: top;
   border-radius: 50%;
-  margin-bottom: var(--space-md);
   display: block;
+  margin: 0 auto var(--space-md) auto;
 }
 
 .contact-detail {
@@ -2492,8 +2492,8 @@ body:not(.page-home) .hero__sub {
   }
 
   .contact-portrait {
-    width: 140px;
-    height: 140px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     display: block;
     margin: 0 auto var(--space-sm) auto;
