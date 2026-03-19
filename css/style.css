@@ -1239,6 +1239,22 @@ body:not(.page-home) .hero__sub {
   transform: scale(1.07);
 }
 
+/* Mobile: hide the header button, show the below-carousel button */
+.carousel-viewall--mobile-wrap {
+  display: none;
+  text-align: center;
+  padding: var(--space-md) var(--space-md) 0;
+}
+
+@media (max-width: 768px) {
+  .carousel-viewall--desktop {
+    display: none;
+  }
+  .carousel-viewall--mobile-wrap {
+    display: block;
+  }
+}
+
 /* ============================================================
    CTA BANNER with photo background
    ============================================================ */
@@ -2727,7 +2743,7 @@ body:not(.page-home) .hero__sub {
    CHARITY COLLAGE — 3-top + 1-wide-bottom layout
    ============================================================ */
 .charity-collage {
-  padding: var(--space-lg) 0;
+  padding: var(--space-lg) 0 8px;
   max-width: 100%;
   margin: 0 auto;
   padding-left: 0.5rem;
