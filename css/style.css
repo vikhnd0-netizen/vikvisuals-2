@@ -1538,7 +1538,7 @@ body:not(.page-home) .hero__sub {
 }
 
 .testimonial-strip__rule {
-  display: block;
+  display: none;
   width: 32px;
   height: 1px;
   background: rgba(2, 42, 85, 0.35);
