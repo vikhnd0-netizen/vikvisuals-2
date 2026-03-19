@@ -1494,7 +1494,7 @@ body:not(.page-home) .hero__sub {
 
 .testimonial-strip__quote-mark {
   display: block;
-  text-align: left;
+  text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: clamp(4rem, 8vw, 6rem);
   line-height: 0.75;
