@@ -1428,20 +1428,25 @@ body:not(.page-home) .hero__sub {
   height: 62px !important;
 }
 
+/* Tighter bottom padding on clients strip when adjacent to testimonial */
+.clients.section {
+  padding-bottom: var(--space-sm);
+}
+
 /* ============================================================
    TESTIMONIAL STRIP
    ============================================================ */
 .testimonial-strip {
   background: var(--color-bg);
-  padding: 1.5rem 0 2rem;
-  border-top: 1px solid var(--color-border);
+  padding: 0.75rem 0 2rem;
+  border-top: none;
 }
 
 .testimonial-strip__inner {
   max-width: 760px;
   margin: 0 auto;
   padding: 0 var(--space-md);
-  text-align: center;
+  text-align: left;
 }
 
 .testimonial-strip__quote {
@@ -1457,25 +1462,44 @@ body:not(.page-home) .hero__sub {
   line-height: 1.7;
   color: var(--color-text);
   max-width: 100%;
-  margin: 0 0 0.75rem;
+  margin: 0 0 1rem;
+  text-align: left;
 }
 
 .testimonial-strip__attribution {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 0.15rem;
 }
 
 .testimonial-strip__name {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-navy);
 }
 
 .testimonial-strip__role {
-  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-text);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.testimonial-strip__company {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
 }
 
 /* ============================================================
