@@ -1538,11 +1538,12 @@ body:not(.page-home) .hero__sub {
 }
 
 .testimonial-strip__rule {
-  display: inline-block;
+  display: block;
   width: 32px;
   height: 1px;
   background: rgba(2, 42, 85, 0.35);
   flex-shrink: 0;
+  align-self: center;
 }
 
 .testimonial-strip__attr-text {
