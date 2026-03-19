@@ -2105,7 +2105,7 @@ body:not(.page-home) .hero__sub {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: var(--space-md);
+  margin-top: var(--space-xs);
 }
 
 .contact-detail__item {
