@@ -1478,7 +1478,7 @@ body:not(.page-home) .hero__sub {
    ============================================================ */
 .testimonial-strip {
   background: var(--color-bg);
-  padding: var(--space-sm) var(--space-md);
+  padding: 0 var(--space-md) var(--space-sm);
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -1493,7 +1493,7 @@ body:not(.page-home) .hero__sub {
 }
 
 .testimonial-strip__quote-mark {
-  display: block;
+  display: none;
   text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: clamp(4rem, 8vw, 6rem);
