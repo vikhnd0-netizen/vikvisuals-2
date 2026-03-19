@@ -1524,7 +1524,7 @@ body:not(.page-home) .hero__sub {
 .testimonial-strip__attribution {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 0.75rem;
   margin: 0;
   padding: 0;
