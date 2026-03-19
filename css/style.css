@@ -1463,7 +1463,7 @@ body:not(.page-home) .hero__sub {
   color: var(--color-text);
   max-width: 100%;
   margin: 0 0 1rem;
-  text-align: left;
+  text-align: center;
 }
 
 .testimonial-strip__attribution {
