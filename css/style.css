@@ -1488,7 +1488,7 @@ body:not(.page-home) .hero__sub {
   max-width: 820px;
   margin: 0 auto;
   padding: 0 var(--space-md);
-  text-align: left;
+  text-align: center;
   position: relative;
 }
 
@@ -1518,7 +1518,7 @@ body:not(.page-home) .hero__sub {
   color: var(--color-navy);
   max-width: 100%;
   margin: 0 0 2rem;
-  text-align: left;
+  text-align: center;
 }
 
 .testimonial-strip__attribution {
