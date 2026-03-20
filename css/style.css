@@ -1922,7 +1922,7 @@ body:not(.page-home) .hero__sub {
 }
 
 .gallery-masonry {
-  padding: var(--space-xl) 0;
+  padding: var(--space-md) 0;
 }
 
 .gallery-masonry__inner {
