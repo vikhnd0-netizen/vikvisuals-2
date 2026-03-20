@@ -1875,7 +1875,7 @@ body:not(.page-home) .hero__sub {
    WORK / GALLERY PAGE
    ============================================================ */
 .gallery-filter {
-  padding: var(--space-md) 0;
+  padding: var(--space-sm) 0;
   text-align: center;
   border-bottom: 1px solid var(--color-border);
 }
