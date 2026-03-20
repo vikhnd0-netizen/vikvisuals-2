@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vikvisuals.com/sitemap.xml
