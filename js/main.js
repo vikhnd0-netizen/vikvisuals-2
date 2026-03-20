@@ -206,7 +206,7 @@
             io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.15 });
+      }, { threshold: 0 });
 
       document.querySelectorAll(
         '.fade-in, .slide-in-left, .slide-in-right, .process__card'
