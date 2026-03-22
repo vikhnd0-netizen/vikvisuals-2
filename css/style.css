@@ -498,6 +498,15 @@ p {
   z-index: 0;
 }
 
+/* Desktop: extend slides beyond container to allow translateY parallax */
+@media (min-width: 769px) {
+  .hero__slide {
+    top: -20%;
+    bottom: -20%;
+    will-change: transform;
+  }
+}
+
 .hero__slide.active {
   opacity: 1;
 }
@@ -3006,25 +3015,43 @@ body:not(.page-home) .hero__sub {
    IMAGE REVEAL — Rising mask effect (scroll-triggered)
    ============================================================ */
 
-/* Phase 1: image starts hidden below container */
-.img-reveal img {
+/* Phase 1: image/iframe starts hidden below container */
+.img-reveal img,
+.img-reveal iframe {
   transform: translateY(102%);
   opacity: 0;
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.7s ease;
+  transition: transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.9s ease;
 }
 
 /* Phase 2: JS adds .img-reveal-go to trigger the rise */
-.img-reveal.img-reveal-go img {
+.img-reveal.img-reveal-go img,
+.img-reveal.img-reveal-go iframe {
   transform: translateY(0);
   opacity: 1;
 }
 
 /* Phase 3: after reveal completes JS swaps to .img-revealed for hover */
-.img-revealed img {
+.img-revealed img,
+.img-revealed iframe {
   transform: translateY(0);
   opacity: 1;
   transition: transform 0.4s ease;
+}
+
+/* ============================================================
+   CLIENTS SECTION REVEAL — whole-section slide-up
+   ============================================================ */
+.clients-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.9s ease;
+}
+
+.clients-reveal.clients-reveal-go {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ============================================================
@@ -3037,7 +3064,7 @@ body:not(.page-home) .hero__sub {
   z-index: 9998;
   opacity: 1;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease-out;
 }
 
 #page-fade-overlay.page-loaded {
@@ -3047,4 +3074,5 @@ body:not(.page-home) .hero__sub {
 #page-fade-overlay.page-leaving {
   opacity: 1;
   pointer-events: all;
+  transition: opacity 0.4s ease-out;
 }
