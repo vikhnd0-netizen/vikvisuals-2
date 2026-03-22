@@ -151,6 +151,40 @@ p {
   transform: translateX(0);
 }
 
+/* ── Word-by-word animation (h1/h2/h3) ─────────────────────── */
+.word-animate {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: var(--word-delay, 0s);
+}
+
+.word-animate.word-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Whole-element fade (p, btn) outside hero ───────────────── */
+.element-animate {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.element-animate.element-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero elements: JS-triggered visibility ───────────────────── */
+.hero-el-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
 /* ============================================================
    NAVIGATION
    ============================================================ */
@@ -509,7 +543,9 @@ p {
   max-width: 24ch;
   margin-bottom: var(--space-xs);
   text-align: center;
-  animation: fadeUp 0.9s ease forwards;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero__logo-img {
@@ -534,7 +570,9 @@ p {
   text-transform: none;
   line-height: 1.6;
   font-family: var(--font-body);
-  animation: fadeUp 0.9s 0.2s ease both;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
 }
 .page-service .hero__sub,
@@ -550,7 +588,9 @@ body:not(.page-home) .hero__sub {
   line-height: 1.55;
   font-family: var(--font-body);
   text-align: center;
-  animation: fadeUp 0.9s 0.4s ease both;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero__cta-group {
@@ -558,7 +598,9 @@ body:not(.page-home) .hero__sub {
   gap: var(--space-sm);
   flex-wrap: wrap;
   justify-content: center;
-  animation: fadeUp 0.9s 0.45s ease both;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ============================================================
@@ -608,11 +650,6 @@ body:not(.page-home) .hero__sub {
 
 .hero__dot.active {
   background: white;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================================

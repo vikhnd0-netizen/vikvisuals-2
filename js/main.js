@@ -366,6 +366,178 @@
 
     }
 
+    // ── 9. Hero & Scroll Animations ─────────────────────────────
+
+    // Animation timing constants
+    var WORD_STAGGER_MS       = 100; // ms between each word in a heading
+    var WORD_TRANSITION_MS    = 600; // word fade-up transition duration (must match CSS .word-animate)
+    var HERO_START_DELAY_MS   = 50;  // ms before first hero animation begins
+    var HERO_PHASE_GAP_MS     = 100; // ms gap between hero animation phases
+    var HERO_SUB_DURATION_MS  = 900; // sub/location transition + buffer before CTA phase
+
+    // Check if element is inside zones we never animate
+    function insideExcluded(el) {
+      return !!(el.closest('.hero') || el.closest('#main-nav') ||
+                el.closest('.nav__mobile') || el.closest('.footer'));
+    }
+
+    // Check if element has a .fade-in ancestor
+    function hasFadeInAncestor(el) {
+      var parent = el.parentElement;
+      while (parent) {
+        if (parent.classList && parent.classList.contains('fade-in')) {
+          return true;
+        }
+        parent = parent.parentElement;
+      }
+      return false;
+    }
+
+    // Split an element's text into individual word spans
+    function splitIntoWords(el) {
+      // Clone and replace <br> with spaces before extracting text
+      var clone = el.cloneNode(true);
+      clone.querySelectorAll('br').forEach(function (br) {
+        br.parentNode.replaceChild(document.createTextNode(' '), br);
+      });
+      var text = clone.textContent.trim();
+      if (!text) { return 0; }
+      var words = text.split(/\s+/).filter(function (w) { return w.length > 0; });
+      el.innerHTML = '';
+      words.forEach(function (word, i) {
+        var span = document.createElement('span');
+        span.className = 'word-animate';
+        span.textContent = word;
+        span.style.setProperty('--word-delay', (i * WORD_STAGGER_MS / 1000) + 's');
+        el.appendChild(span);
+        if (i < words.length - 1) {
+          el.appendChild(document.createTextNode(' '));
+        }
+      });
+      return words.length;
+    }
+
+    // Add .word-visible to all word spans inside an element
+    function triggerWordAnimation(el) {
+      el.querySelectorAll('.word-animate').forEach(function (span) {
+        span.classList.add('word-visible');
+      });
+    }
+
+    // ── Hero load animation ──────────────────────────────────────
+    var heroSection = document.querySelector('.hero');
+    if (heroSection) {
+      var heroTitle    = heroSection.querySelector('.hero__title');
+      var heroSub      = heroSection.querySelector('.hero__sub');
+      var heroLocation = heroSection.querySelector('.hero__location');
+      var heroCta      = heroSection.querySelector('.hero__cta-group');
+
+      var h1EndMs; // when h1 phase is done (ms from page load)
+
+      if (heroTitle) {
+        var titleText = heroTitle.textContent.trim();
+        if (titleText.length > 0) {
+          // Text-based h1: split into words, animate word-by-word
+          var wordCount = splitIntoWords(heroTitle);
+          // Make wrapper transparent so only word spans animate
+          heroTitle.style.opacity = '1';
+          heroTitle.style.transform = 'none';
+          heroTitle.style.transition = 'none';
+          setTimeout(function () { triggerWordAnimation(heroTitle); }, HERO_START_DELAY_MS);
+          // last word starts at (wordCount-1)*WORD_STAGGER_MS, finishes after WORD_TRANSITION_MS
+          h1EndMs = HERO_START_DELAY_MS + (wordCount - 1) * WORD_STAGGER_MS + WORD_TRANSITION_MS + 50;
+        } else {
+          // Image-based h1 (e.g. logo on homepage): fade in as whole element
+          setTimeout(function () {
+            heroTitle.classList.add('hero-el-visible');
+          }, HERO_START_DELAY_MS);
+          // 700ms matches the CSS transition on .hero__title
+          h1EndMs = HERO_START_DELAY_MS + 700;
+        }
+      } else {
+        h1EndMs = 0;
+      }
+
+      // Phase 2: sub + location fade in after h1 completes
+      setTimeout(function () {
+        if (heroSub)      { heroSub.classList.add('hero-el-visible'); }
+        if (heroLocation) { heroLocation.classList.add('hero-el-visible'); }
+      }, h1EndMs + HERO_PHASE_GAP_MS);
+
+      // Phase 3: CTA buttons fade in after sub
+      setTimeout(function () {
+        if (heroCta) { heroCta.classList.add('hero-el-visible'); }
+      }, h1EndMs + HERO_PHASE_GAP_MS + HERO_SUB_DURATION_MS);
+    }
+
+    // ── Scroll: word animation for h2/h3 outside hero ───────────
+    if ('IntersectionObserver' in window) {
+      var headingsToAnimate = [];
+
+      document.querySelectorAll('h2, h3').forEach(function (heading) {
+        if (insideExcluded(heading)) { return; }
+        splitIntoWords(heading);
+        headingsToAnimate.push(heading);
+      });
+
+      if (headingsToAnimate.length > 0) {
+        var headingObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var heading = entry.target;
+              // Small delay if inside a .fade-in container so parent starts first
+              var delay = hasFadeInAncestor(heading) ? 150 : 0;
+              if (delay > 0) {
+                setTimeout(function () { triggerWordAnimation(heading); }, delay);
+              } else {
+                triggerWordAnimation(heading);
+              }
+              headingObserver.unobserve(heading);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        headingsToAnimate.forEach(function (heading) {
+          headingObserver.observe(heading);
+        });
+      }
+
+      // ── Scroll: element fade for p/.btn outside hero ──────────
+      var elementsToAnimate = [];
+
+      document.querySelectorAll('p, .btn').forEach(function (el) {
+        if (insideExcluded(el)) { return; }
+        if (el.classList.contains('fade-in')) { return; }
+        if (hasFadeInAncestor(el)) { return; } // parent's .fade-in handles it
+        el.classList.add('element-animate');
+        elementsToAnimate.push(el);
+      });
+
+      if (elementsToAnimate.length > 0) {
+        var elementObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('element-visible');
+              elementObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        elementsToAnimate.forEach(function (el) {
+          elementObserver.observe(el);
+        });
+      }
+
+    } else {
+      // Fallback: no IntersectionObserver — show everything immediately
+      document.querySelectorAll('h2, h3').forEach(function (heading) {
+        if (!insideExcluded(heading)) {
+          splitIntoWords(heading);
+          triggerWordAnimation(heading);
+        }
+      });
+    }
+
   });
 
 }());
