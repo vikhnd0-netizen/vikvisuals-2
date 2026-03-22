@@ -202,21 +202,44 @@
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
+            var el = entry.target;
+            var staggerDelay = 0;
+
+            // Stagger service cards and process cards within their grid
+            if (el.classList.contains('service-card') || el.classList.contains('process-h__card')) {
+              var siblings = el.parentElement
+                ? Array.from(el.parentElement.children)
+                : [];
+              var idx = siblings.indexOf(el);
+              if (idx > 0) {
+                staggerDelay = idx * 0.12;
+              }
+            }
+
+            if (staggerDelay > 0) {
+              el.style.transitionDelay = staggerDelay + 's';
+            }
+            el.classList.add('visible');
+
+            // Reset transition-delay after entrance so hover interactions aren't delayed
+            setTimeout(function () {
+              el.style.transitionDelay = '';
+            }, Math.round((staggerDelay + 0.75) * 1000));
+
+            io.unobserve(el);
           }
         });
-      }, { threshold: 0 });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
       document.querySelectorAll(
-        '.fade-in, .slide-in-left, .slide-in-right, .process__card'
+        '.fade-in, .slide-in-left, .slide-in-right, .process-h__card'
       ).forEach(function (el) {
         io.observe(el);
       });
     } else {
       // Fallback: show all immediately
       document.querySelectorAll(
-        '.fade-in, .slide-in-left, .slide-in-right, .process__card'
+        '.fade-in, .slide-in-left, .slide-in-right, .process-h__card'
       ).forEach(function (el) {
         el.classList.add('visible');
       });
