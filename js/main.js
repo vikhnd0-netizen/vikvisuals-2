@@ -412,6 +412,9 @@
     var HERO_START_DELAY_MS   = 50;  // ms before first hero animation begins
     var HERO_PHASE_GAP_MS     = 100; // ms gap between hero animation phases
     var HERO_SUB_DURATION_MS  = 900; // sub/location transition + buffer before CTA phase
+    var LOGO_FADE_DURATION_MS = 700; // homepage logo fade-in duration (must match CSS .hero__title)
+    var TEXT_SUB_OVERLAP_MS   = 200; // ms after last word starts before subheading begins
+    var REVEAL_DURATION_MS    = 1150; // img-reveal transition (1.1s) + buffer (ms)
 
     // Check if element is inside zones we never animate
     function insideExcluded(el) {
@@ -490,14 +493,26 @@
             heroTitle.classList.add('hero-el-visible');
           }, HERO_START_DELAY_MS);
           // 700ms matches the CSS transition on .hero__title
-          h1EndMs = HERO_START_DELAY_MS + 700;
+          h1EndMs = HERO_START_DELAY_MS + LOGO_FADE_DURATION_MS;
         }
       } else {
         h1EndMs = 0;
       }
 
-      // Phase 2: tagline (heroSub) fades in after h1 completes
-      var heroSubDelay = h1EndMs + HERO_PHASE_GAP_MS;
+      // Phase 2: tagline (heroSub) timing
+      // For image-based h1 (logo): start tagline at ~75% of logo animation so they overlap
+      // For text-based h1: start sub 200ms into the last word's transition (feels connected)
+      var heroSubDelay;
+      if (heroTitle && heroTitle.textContent.trim().length === 0) {
+        // Image-based (logo): overlap — start at 75% of the logo fade duration
+        heroSubDelay = HERO_START_DELAY_MS + Math.round(LOGO_FADE_DURATION_MS * 0.75);
+      } else if (heroTitle) {
+        // Text-based: start TEXT_SUB_OVERLAP_MS after the last word begins animating
+        var _wc = heroTitle.querySelectorAll('.word-animate').length || 1;
+        heroSubDelay = HERO_START_DELAY_MS + (_wc - 1) * WORD_STAGGER_MS + TEXT_SUB_OVERLAP_MS;
+      } else {
+        heroSubDelay = h1EndMs + HERO_PHASE_GAP_MS;
+      }
       setTimeout(function () {
         if (heroSub) { heroSub.classList.add('hero-el-visible'); }
       }, heroSubDelay);
@@ -586,10 +601,21 @@
     }
 
     // ── 10. Hero parallax — desktop only ────────────────────────
+    var isDesktop = window.matchMedia('(min-width: 769px)').matches;
     var heroBgEl = document.querySelector('.hero__bg');
-    if (heroBgEl && window.matchMedia('(min-width: 769px)').matches) {
+    var heroSlideEls = document.querySelectorAll('.hero__slide');
+
+    if (isDesktop && (heroBgEl || heroSlideEls.length)) {
       window.addEventListener('scroll', function () {
-        heroBgEl.style.transform = 'translateY(' + (window.scrollY * 0.4) + 'px)';
+        var offset = window.scrollY * 0.2;
+        if (heroBgEl) {
+          heroBgEl.style.transform = 'translateY(' + offset + 'px)';
+        }
+        if (heroSlideEls.length) {
+          heroSlideEls.forEach(function (slide) {
+            slide.style.transform = 'translateY(' + offset + 'px)';
+          });
+        }
       }, { passive: true });
     }
 
@@ -598,7 +624,9 @@
       '.feature-row__image',
       '.intro-photo__image',
       '.about-portrait',
-      '.services-list__image-wrap'
+      '.services-list__image-wrap',
+      '.video-examples__embed',
+      '.work-carousel__card'
     ];
     var revealContainers = document.querySelectorAll(revealSelectors.join(', '));
 
@@ -616,7 +644,7 @@
             setTimeout(function () {
               el.classList.remove('img-reveal', 'img-reveal-go');
               el.classList.add('img-revealed');
-            }, 950);
+            }, REVEAL_DURATION_MS);
             revealObserver.unobserve(el);
           }
         });
@@ -625,6 +653,25 @@
       revealContainers.forEach(function (container) {
         revealObserver.observe(container);
       });
+    }
+
+    // ── 11b. Clients section reveal — charity & professional pages only ──
+    var currentPath = window.location.pathname;
+    if ((/\/charity(\.html)?$/.test(currentPath) || /\/professional(\.html)?$/.test(currentPath)) &&
+        'IntersectionObserver' in window) {
+      var clientsEl = document.querySelector('.clients');
+      if (clientsEl) {
+        // Remove existing fade-in so we don't double-animate
+        clientsEl.classList.remove('fade-in');
+        clientsEl.classList.add('clients-reveal');
+        var clientsObserver = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) {
+            clientsEl.classList.add('clients-reveal-go');
+            clientsObserver.unobserve(clientsEl);
+          }
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        clientsObserver.observe(clientsEl);
+      }
     }
 
     // ── 12. Page fade transitions ────────────────────────────────
@@ -650,7 +697,7 @@
         fadeOverlay.classList.add('page-leaving');
         setTimeout(function () {
           window.location.href = dest;
-        }, 320);
+        }, 400);
       });
     });
 
