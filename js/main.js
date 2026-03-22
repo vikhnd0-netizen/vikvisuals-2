@@ -5,6 +5,11 @@
 (function () {
   'use strict';
 
+  // ── Page fade overlay — created immediately so it covers page on load ──
+  var fadeOverlay = document.createElement('div');
+  fadeOverlay.id = 'page-fade-overlay';
+  document.body.appendChild(fadeOverlay);
+
   document.addEventListener('DOMContentLoaded', function () {
 
     var nav = document.getElementById('main-nav');
@@ -175,26 +180,29 @@
         carousel.scrollLeft = scrollLeft - walk;
       });
 
-      // Touch support
-      var touchStartX, touchScrollLeft, touchLastX;
-      carousel.addEventListener('touchstart', function (e) {
-        touchStartX = e.touches[0].pageX;
-        touchLastX = touchStartX;
-        touchScrollLeft = carousel.scrollLeft;
-        velX = 0;
-        cancelAnimationFrame(rafId);
-      }, { passive: true });
+      // Touch: only add custom handlers on non-touch devices (pointer-based).
+      // On real touch/mobile, native CSS overflow scroll handles it cleanly.
+      if (!('ontouchstart' in window) && navigator.maxTouchPoints === 0) {
+        var touchStartX, touchScrollLeft, touchLastX;
+        carousel.addEventListener('touchstart', function (e) {
+          touchStartX = e.touches[0].pageX;
+          touchLastX = touchStartX;
+          touchScrollLeft = carousel.scrollLeft;
+          velX = 0;
+          cancelAnimationFrame(rafId);
+        }, { passive: true });
 
-      carousel.addEventListener('touchmove', function (e) {
-        var x = e.touches[0].pageX;
-        velX = x - touchLastX;
-        touchLastX = x;
-        carousel.scrollLeft = touchScrollLeft - (x - touchStartX);
-      }, { passive: true });
+        carousel.addEventListener('touchmove', function (e) {
+          var x = e.touches[0].pageX;
+          velX = x - touchLastX;
+          touchLastX = x;
+          carousel.scrollLeft = touchScrollLeft - (x - touchStartX);
+        }, { passive: true });
 
-      carousel.addEventListener('touchend', function () {
-        requestAnimationFrame(momentumScroll);
-      });
+        carousel.addEventListener('touchend', function () {
+          requestAnimationFrame(momentumScroll);
+        });
+      }
     }
 
     // ── 6. IntersectionObserver — fade & slide animations ────
@@ -205,8 +213,8 @@
             var el = entry.target;
             var staggerDelay = 0;
 
-            // Stagger service cards and process cards within their grid
-            if (el.classList.contains('service-card') || el.classList.contains('process-h__card')) {
+            // Stagger process cards within their grid
+            if (el.classList.contains('process-h__card')) {
               var siblings = el.parentElement
                 ? Array.from(el.parentElement.children)
                 : [];
@@ -234,8 +242,38 @@
       document.querySelectorAll(
         '.fade-in, .slide-in-left, .slide-in-right, .process-h__card'
       ).forEach(function (el) {
-        io.observe(el);
+        // Service cards are handled separately for consistent group stagger
+        if (!el.classList.contains('service-card')) {
+          io.observe(el);
+        }
       });
+
+      // Service cards: observe all as a group so they stagger together
+      // regardless of which card first enters the viewport
+      var serviceCards = Array.from(document.querySelectorAll('.services__grid .service-card'));
+      if (serviceCards.length > 0) {
+        var serviceCardsAnimated = false;
+        var serviceCardObserver = new IntersectionObserver(function (entries) {
+          if (serviceCardsAnimated) { return; }
+          var anyVisible = entries.some(function (e) { return e.isIntersecting; });
+          if (anyVisible) {
+            serviceCardsAnimated = true;
+            serviceCards.forEach(function (card, idx) {
+              card.style.transitionDelay = (idx * 0.12) + 's';
+              card.classList.add('visible');
+              setTimeout(function () {
+                card.style.transitionDelay = '';
+              }, Math.round((idx * 0.12 + 0.75) * 1000));
+              serviceCardObserver.unobserve(card);
+            });
+          }
+        }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+
+        serviceCards.forEach(function (card) {
+          serviceCardObserver.observe(card);
+        });
+      }
+
     } else {
       // Fallback: show all immediately
       document.querySelectorAll(
@@ -458,16 +496,25 @@
         h1EndMs = 0;
       }
 
-      // Phase 2: sub + location fade in after h1 completes
+      // Phase 2: tagline (heroSub) fades in after h1 completes
+      var heroSubDelay = h1EndMs + HERO_PHASE_GAP_MS;
       setTimeout(function () {
-        if (heroSub)      { heroSub.classList.add('hero-el-visible'); }
-        if (heroLocation) { heroLocation.classList.add('hero-el-visible'); }
-      }, h1EndMs + HERO_PHASE_GAP_MS);
+        if (heroSub) { heroSub.classList.add('hero-el-visible'); }
+      }, heroSubDelay);
 
-      // Phase 3: CTA buttons fade in after sub
+      // Phase 3: description (heroLocation) fades in after tagline
+      var heroLocationDelay = heroSubDelay + HERO_SUB_DURATION_MS;
+      if (heroLocation) {
+        setTimeout(function () {
+          heroLocation.classList.add('hero-el-visible');
+        }, heroLocationDelay);
+      }
+
+      // Phase 4: CTA buttons fade in after description (or after sub if no location)
+      var ctaDelay = (heroLocation ? heroLocationDelay : heroSubDelay) + HERO_SUB_DURATION_MS;
       setTimeout(function () {
         if (heroCta) { heroCta.classList.add('hero-el-visible'); }
-      }, h1EndMs + HERO_PHASE_GAP_MS + HERO_SUB_DURATION_MS);
+      }, ctaDelay);
     }
 
     // ── Scroll: word animation for h2/h3 outside hero ───────────
@@ -537,6 +584,75 @@
         }
       });
     }
+
+    // ── 10. Hero parallax — desktop only ────────────────────────
+    var heroBgEl = document.querySelector('.hero__bg');
+    if (heroBgEl && window.matchMedia('(min-width: 769px)').matches) {
+      window.addEventListener('scroll', function () {
+        heroBgEl.style.transform = 'translateY(' + (window.scrollY * 0.4) + 'px)';
+      }, { passive: true });
+    }
+
+    // ── 11. Image reveal — rising mask on scroll ─────────────────
+    var revealSelectors = [
+      '.feature-row__image',
+      '.intro-photo__image',
+      '.about-portrait',
+      '.services-list__image-wrap'
+    ];
+    var revealContainers = document.querySelectorAll(revealSelectors.join(', '));
+
+    if (revealContainers.length > 0 && 'IntersectionObserver' in window) {
+      revealContainers.forEach(function (container) {
+        container.classList.add('img-reveal');
+      });
+
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            void el.offsetHeight; // force reflow so starting state is committed
+            el.classList.add('img-reveal-go');
+            setTimeout(function () {
+              el.classList.remove('img-reveal', 'img-reveal-go');
+              el.classList.add('img-revealed');
+            }, 950);
+            revealObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+      revealContainers.forEach(function (container) {
+        revealObserver.observe(container);
+      });
+    }
+
+    // ── 12. Page fade transitions ────────────────────────────────
+    // Fade in once page is ready
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fadeOverlay.classList.add('page-loaded');
+      });
+    });
+
+    // Fade out on internal link click
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      var href = link.getAttribute('href');
+      // Skip: external links, anchors, mailto, tel, target="_blank"
+      if (!href || href.charAt(0) === '#' || link.hostname !== window.location.hostname ||
+          link.target === '_blank' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) {
+        return;
+      }
+      link.addEventListener('click', function (e) {
+        var dest = link.href;
+        e.preventDefault();
+        fadeOverlay.classList.remove('page-loaded');
+        fadeOverlay.classList.add('page-leaving');
+        setTimeout(function () {
+          window.location.href = dest;
+        }, 320);
+      });
+    });
 
   });
 
