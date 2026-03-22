@@ -502,21 +502,6 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
-  <script>
-    const lenis = new Lenis({
-      duration: 1.0,
-      easing: function (t) { return 1 - Math.pow(1 - t, 4); },
-      smoothTouch: false,
-      syncTouch: false,
-      lerp: 0.1
-    });
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  </script>
 </body>
 </html>
