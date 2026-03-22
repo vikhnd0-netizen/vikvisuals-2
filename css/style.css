@@ -476,11 +476,15 @@ p {
 
 .hero__bg {
   position: absolute;
-  inset: 0;
+  top: -25%;
+  left: 0;
+  right: 0;
+  bottom: -25%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;
+  will-change: transform;
 }
 
 /* Hero slideshow slides */
@@ -780,6 +784,11 @@ body:not(.page-home) .hero__sub {
   object-fit: cover;
   display: block;
   border-radius: var(--radius-lg);
+  transition: transform 0.4s ease;
+}
+
+.intro-photo__image:hover img {
+  transform: scale(1.04);
 }
 
 .intro-photo__inner {
@@ -1222,7 +1231,6 @@ body:not(.page-home) .hero__sub {
   padding: 0 var(--space-md) var(--space-md);
   gap: 1.25rem;
   overflow-x: scroll;
-  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   cursor: grab;
@@ -1782,6 +1790,11 @@ body:not(.page-home) .hero__sub {
   object-fit: cover;
   display: block;
   border-radius: var(--radius-lg);
+  transition: transform 0.4s ease;
+}
+
+.services-list__image-wrap:hover img {
+  transform: scale(1.04);
 }
 
 .services-list__caption {
@@ -2039,6 +2052,8 @@ body:not(.page-home) .hero__sub {
 .about-portrait {
   position: relative;
   display: flex;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
 }
 
 .about-portrait__img {
@@ -2985,4 +3000,51 @@ body:not(.page-home) .hero__sub {
 /* About page — no hero, so compensate for fixed nav */
 .about-section--no-hero {
   padding-top: calc(var(--nav-height) + var(--space-xl));
+}
+
+/* ============================================================
+   IMAGE REVEAL — Rising mask effect (scroll-triggered)
+   ============================================================ */
+
+/* Phase 1: image starts hidden below container */
+.img-reveal img {
+  transform: translateY(102%);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.7s ease;
+}
+
+/* Phase 2: JS adds .img-reveal-go to trigger the rise */
+.img-reveal.img-reveal-go img {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Phase 3: after reveal completes JS swaps to .img-revealed for hover */
+.img-revealed img {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.4s ease;
+}
+
+/* ============================================================
+   PAGE FADE TRANSITIONS
+   ============================================================ */
+#page-fade-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  z-index: 9998;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+#page-fade-overlay.page-loaded {
+  opacity: 0;
+}
+
+#page-fade-overlay.page-leaving {
+  opacity: 1;
+  pointer-events: all;
 }
