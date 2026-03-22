@@ -250,10 +250,11 @@
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
   <script>
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-      smooth: true,
-      smoothTouch: false
+      duration: 1.0,
+      easing: function (t) { return 1 - Math.pow(1 - t, 4); },
+      smoothTouch: false,
+      syncTouch: false,
+      lerp: 0.1
     });
 
     function raf(time) {
