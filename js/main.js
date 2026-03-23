@@ -504,8 +504,8 @@
       // For text-based h1: start sub 200ms into the last word's transition (feels connected)
       var heroSubDelay;
       if (heroTitle && heroTitle.textContent.trim().length === 0) {
-        // Image-based (logo): stagger tagline 150ms after logo starts
-        heroSubDelay = HERO_START_DELAY_MS + 150;
+        // Image-based (logo): stagger tagline 350ms after logo starts for emphasis
+        heroSubDelay = HERO_START_DELAY_MS + 350;
       } else if (heroTitle) {
         // Text-based: start TEXT_SUB_OVERLAP_MS after the last word begins animating
         var _wc = heroTitle.querySelectorAll('.word-animate').length || 1;
