@@ -476,15 +476,12 @@ p {
 
 .hero__bg {
   position: absolute;
-  top: -25%;
-  left: 0;
-  right: 0;
-  bottom: -25%;
+  inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   z-index: 0;
-  will-change: transform;
 }
 
 /* Hero slideshow slides */
@@ -492,19 +489,11 @@ p {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+  background-attachment: fixed;
   opacity: 0;
   transition: opacity 1.2s ease-in-out;
   z-index: 0;
-}
-
-/* Desktop: extend slides beyond container to allow translateY parallax */
-@media (min-width: 769px) {
-  .hero__slide {
-    top: -20%;
-    bottom: -20%;
-    will-change: transform;
-  }
 }
 
 .hero__slide.active {
@@ -512,6 +501,10 @@ p {
 }
 
 @media (max-width: 768px) {
+  .hero__bg,
+  .hero__slide {
+    background-attachment: scroll;
+  }
   .hero__slide--right-mobile {
     background-position: 85% center;
   }
