@@ -500,12 +500,12 @@
       }
 
       // Phase 2: tagline (heroSub) timing
-      // For image-based h1 (logo): start tagline at ~75% of logo animation so they overlap
+      // For image-based h1 (logo): start at same time as logo (no delay between them)
       // For text-based h1: start sub 200ms into the last word's transition (feels connected)
       var heroSubDelay;
       if (heroTitle && heroTitle.textContent.trim().length === 0) {
-        // Image-based (logo): overlap — start at 75% of the logo fade duration
-        heroSubDelay = HERO_START_DELAY_MS + Math.round(LOGO_FADE_DURATION_MS * 0.75);
+        // Image-based (logo): animate tagline at the same time as the logo
+        heroSubDelay = HERO_START_DELAY_MS;
       } else if (heroTitle) {
         // Text-based: start TEXT_SUB_OVERLAP_MS after the last word begins animating
         var _wc = heroTitle.querySelectorAll('.word-animate').length || 1;
@@ -600,33 +600,13 @@
       });
     }
 
-    // ── 10. Hero parallax — desktop only ────────────────────────
-    var isDesktop = window.matchMedia('(min-width: 769px)').matches;
-    var heroBgEl = document.querySelector('.hero__bg');
-    var heroSlideEls = document.querySelectorAll('.hero__slide');
-
-    if (isDesktop && (heroBgEl || heroSlideEls.length)) {
-      window.addEventListener('scroll', function () {
-        var offset = window.scrollY * 0.2;
-        if (heroBgEl) {
-          heroBgEl.style.transform = 'translateY(' + offset + 'px)';
-        }
-        if (heroSlideEls.length) {
-          heroSlideEls.forEach(function (slide) {
-            slide.style.transform = 'translateY(' + offset + 'px)';
-          });
-        }
-      }, { passive: true });
-    }
-
     // ── 11. Image reveal — rising mask on scroll ─────────────────
     var revealSelectors = [
       '.feature-row__image',
       '.intro-photo__image',
       '.about-portrait',
       '.services-list__image-wrap',
-      '.video-examples__embed',
-      '.work-carousel__card'
+      '.video-examples__embed'
     ];
     var revealContainers = document.querySelectorAll(revealSelectors.join(', '));
 
@@ -655,7 +635,26 @@
       });
     }
 
-    // ── 11b. Clients section reveal — charity & professional pages only ──
+    // ── 11b. Carousel container reveal — animate whole carousel as one unit ──
+    var carouselEls = document.querySelectorAll('.work-carousel');
+    if (carouselEls.length > 0 && 'IntersectionObserver' in window) {
+      carouselEls.forEach(function (el) {
+        el.classList.add('fade-in');
+      });
+      var carouselObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            carouselObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      carouselEls.forEach(function (el) {
+        carouselObserver.observe(el);
+      });
+    }
+
+    // ── 11c. Clients section reveal — charity & professional pages only ──
     var currentPath = window.location.pathname;
     if ((/\/charity(\.html)?$/.test(currentPath) || /\/professional(\.html)?$/.test(currentPath)) &&
         'IntersectionObserver' in window) {
