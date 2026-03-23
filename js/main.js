@@ -500,12 +500,12 @@
       }
 
       // Phase 2: tagline (heroSub) timing
-      // For image-based h1 (logo): start at same time as logo (no delay between them)
+      // For image-based h1 (logo): start slightly after logo for a subtle stagger
       // For text-based h1: start sub 200ms into the last word's transition (feels connected)
       var heroSubDelay;
       if (heroTitle && heroTitle.textContent.trim().length === 0) {
-        // Image-based (logo): animate tagline at the same time as the logo
-        heroSubDelay = HERO_START_DELAY_MS;
+        // Image-based (logo): stagger tagline 150ms after logo starts
+        heroSubDelay = HERO_START_DELAY_MS + 150;
       } else if (heroTitle) {
         // Text-based: start TEXT_SUB_OVERLAP_MS after the last word begins animating
         var _wc = heroTitle.querySelectorAll('.word-animate').length || 1;
@@ -606,7 +606,9 @@
       '.intro-photo__image',
       '.about-portrait',
       '.services-list__image-wrap',
-      '.video-examples__embed'
+      '.video-examples__embed',
+      '.work-carousel-section',
+      '.contact-portrait-wrap'
     ];
     var revealContainers = document.querySelectorAll(revealSelectors.join(', '));
 
@@ -633,30 +635,6 @@
       revealContainers.forEach(function (container) {
         revealObserver.observe(container);
       });
-    }
-
-    // ── 11b. Work carousel section fade-up — same settings as image reveal ──
-    var fadeUpSections = document.querySelectorAll('.work-carousel-section.fade-up');
-    if (fadeUpSections.length > 0) {
-      if ('IntersectionObserver' in window) {
-        var fadeUpObserver = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              fadeUpObserver.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-        fadeUpSections.forEach(function (section) {
-          fadeUpObserver.observe(section);
-        });
-      } else {
-        // Fallback: show immediately if IntersectionObserver unsupported
-        fadeUpSections.forEach(function (section) {
-          section.classList.add('is-visible');
-        });
-      }
     }
 
     // ── 11c. Clients section reveal — charity & professional pages only ──
