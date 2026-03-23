@@ -3080,6 +3080,29 @@ body:not(.page-home) .hero__sub {
   transition: none;
 }
 
+/* Contact portrait: animate the circular container as one unit, not the img inside */
+.contact-portrait-wrap.img-reveal {
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.9s ease;
+}
+.contact-portrait-wrap.img-reveal-go {
+  transform: translateY(0);
+  opacity: 1;
+}
+.contact-portrait-wrap.img-revealed {
+  transform: none;
+  opacity: 1;
+}
+/* Prevent the portrait img inside from animating separately */
+.contact-portrait-wrap.img-reveal img,
+.contact-portrait-wrap.img-reveal-go img {
+  transform: none;
+  opacity: 1;
+  transition: none;
+}
+
 /* ============================================================
    FADE-UP — whole-section reveal (work-carousel-section)
    Same timing as img-reveal for editorial consistency
