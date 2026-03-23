@@ -302,10 +302,11 @@
       });
     }
 
-    if (galleryInner) {
-      var GAP = 12;
+    var GAP = 12;
+    var layoutMasonry; // declared here so the filter handler can call it
 
-      function layoutMasonry() {
+    if (galleryInner) {
+      layoutMasonry = function layoutMasonry() {
         var containerWidth = galleryInner.offsetWidth;
         var cols = containerWidth >= 900 ? 3 : containerWidth >= 540 ? 2 : 1;
         var colWidth = (containerWidth - GAP * (cols - 1)) / cols;
@@ -383,22 +384,39 @@
           filterBtns.forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
 
-          // Show/hide items
+          // Separate items into newly-visible, newly-hidden, and unchanged.
+          // Re-animating already-visible items causes them to flash invisible; only
+          // items transitioning from hidden → visible should animate in.
+          var newlyVisible = [];
           galleryItems.forEach(function (item) {
             var category = item.getAttribute('data-category');
-            if (filter === 'all' || category === filter) {
+            var isMatch  = (filter === 'all' || category === filter);
+            var isHidden = item.classList.contains('hidden');
+
+            if (isMatch && isHidden) {
+              // Was hidden, now needs to show – queue for entrance animation
               item.classList.remove('hidden');
-            } else {
+              item.classList.remove('gallery-item--visible');
+              item.style.animationDelay = '';
+              newlyVisible.push(item);
+            } else if (!isMatch && !isHidden) {
+              // Was visible, now needs to hide
               item.classList.add('hidden');
               item.classList.remove('gallery-item--visible');
               item.style.animationDelay = '';
             }
+            // Items that stay visible keep their animation state;
+            // layoutMasonry will smoothly reposition them via CSS transition.
           });
 
           if (galleryInner) { layoutMasonry(); }
 
-          // Re-stagger the visible set at 30ms per item
-          staggerReveal(galleryItems, 60);
+          // Animate in only the items that just became visible
+          newlyVisible.forEach(function (item, idx) {
+            void item.offsetWidth; // force reflow so CSS animation restarts cleanly
+            item.style.animationDelay = (idx * 60) + 'ms';
+            item.classList.add('gallery-item--visible');
+          });
         });
       });
 

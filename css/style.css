@@ -1990,6 +1990,9 @@ body:not(.page-home) .hero__sub {
   cursor: pointer;
   box-sizing: border-box;
   opacity: 0;
+  /* Smooth repositioning when filter changes (doesn't conflict with the
+     galleryItemIn animation which only uses opacity and transform) */
+  transition: top 0.4s ease, left 0.4s ease;
 }
 
 .gallery-item--visible {
