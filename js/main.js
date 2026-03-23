@@ -636,6 +636,8 @@
     }
 
     // ── 11b. Carousel container reveal — animate whole carousel as one unit ──
+    // Only the .work-carousel container is observed; individual cards and images
+    // have no entrance animation and are fully visible once the container animates in.
     var carouselEls = document.querySelectorAll('.work-carousel');
     if (carouselEls.length > 0 && 'IntersectionObserver' in window) {
       carouselEls.forEach(function (el) {
@@ -645,10 +647,10 @@
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            carouselObserver.unobserve(entry.target);
+            carouselObserver.unobserve(entry.target); // trigger only once
           }
         });
-      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
       carouselEls.forEach(function (el) {
         carouselObserver.observe(el);
       });
