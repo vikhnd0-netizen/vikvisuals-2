@@ -635,6 +635,30 @@
       });
     }
 
+    // ── 11b. Work carousel section fade-up — same settings as image reveal ──
+    var fadeUpSections = document.querySelectorAll('.work-carousel-section.fade-up');
+    if (fadeUpSections.length > 0) {
+      if ('IntersectionObserver' in window) {
+        var fadeUpObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              fadeUpObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        fadeUpSections.forEach(function (section) {
+          fadeUpObserver.observe(section);
+        });
+      } else {
+        // Fallback: show immediately if IntersectionObserver unsupported
+        fadeUpSections.forEach(function (section) {
+          section.classList.add('is-visible');
+        });
+      }
+    }
+
     // ── 11c. Clients section reveal — charity & professional pages only ──
     var currentPath = window.location.pathname;
     if ((/\/charity(\.html)?$/.test(currentPath) || /\/professional(\.html)?$/.test(currentPath)) &&
