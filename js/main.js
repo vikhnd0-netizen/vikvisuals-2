@@ -703,4 +703,12 @@
 
   });
 
+  // ── Reset overlay on browser back/forward (bfcache restore) ──
+  // pageshow fires on every page display including bfcache restores,
+  // unlike DOMContentLoaded which does not re-fire for cached pages.
+  window.addEventListener('pageshow', function () {
+    fadeOverlay.classList.remove('page-leaving');
+    fadeOverlay.classList.add('page-loaded');
+  });
+
 }());
