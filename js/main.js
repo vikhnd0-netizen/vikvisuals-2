@@ -675,32 +675,41 @@
     }
 
     // ── 12. Page fade transitions ────────────────────────────────
-    // Fade in once page is ready
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        fadeOverlay.classList.add('page-loaded');
-      });
-    });
+function showPage() {
+  fadeOverlay.classList.remove('page-leaving');
+  fadeOverlay.classList.add('page-loaded');
+}
 
-    // Fade out on internal link click
-    document.querySelectorAll('a[href]').forEach(function (link) {
-      var href = link.getAttribute('href');
-      // Skip: external links, anchors, mailto, tel, target="_blank"
-      if (!href || href.charAt(0) === '#' || link.hostname !== window.location.hostname ||
-          link.target === '_blank' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) {
-        return;
-      }
-      link.addEventListener('click', function (e) {
-        var dest = link.href;
-        e.preventDefault();
-        fadeOverlay.classList.remove('page-loaded');
-        fadeOverlay.classList.add('page-leaving');
-        setTimeout(function () {
-          window.location.href = dest;
-        }, 400);
-      });
-    });
-
+// Fade in once page is ready
+requestAnimationFrame(function () {
+  requestAnimationFrame(function () {
+    showPage();
   });
+});
 
+// Fix browser back/forward cache restore
+window.addEventListener('pageshow', function () {
+  showPage();
+});
+
+// Fade out on internal link click
+document.querySelectorAll('a[href]').forEach(function (link) {
+  var href = link.getAttribute('href');
+
+  if (!href || href.charAt(0) === '#' || link.hostname !== window.location.hostname ||
+      link.target === '_blank' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) {
+    return;
+  }
+
+  link.addEventListener('click', function (e) {
+    var dest = link.href;
+    e.preventDefault();
+    fadeOverlay.classList.remove('page-loaded');
+    fadeOverlay.classList.add('page-leaving');
+
+    setTimeout(function () {
+      window.location.href = dest;
+    }, 400);
+  });
+});
 }());
