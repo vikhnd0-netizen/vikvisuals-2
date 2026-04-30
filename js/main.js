@@ -12,92 +12,26 @@
 
   document.addEventListener('DOMContentLoaded', function () {
 
-    // ── 0. Video Modal ───────────────────────────────────────
-    // Build modal structure with DOM methods to avoid innerHTML/XSS
-    var modalEl = document.createElement('div');
-    modalEl.id = 'video-modal';
-    modalEl.className = 'video-modal';
-    modalEl.setAttribute('role', 'dialog');
-    modalEl.setAttribute('aria-modal', 'true');
-    modalEl.setAttribute('aria-label', 'Video player');
-    modalEl.setAttribute('hidden', '');
-
-    var modalBackdrop = document.createElement('div');
-    modalBackdrop.className = 'video-modal__backdrop';
-
-    var modalContainer = document.createElement('div');
-    modalContainer.className = 'video-modal__container';
-
-    var modalClose = document.createElement('button');
-    modalClose.className = 'video-modal__close';
-    modalClose.setAttribute('aria-label', 'Close video');
-    modalClose.textContent = '\u00D7'; // ×
-
-    var modalRatio = document.createElement('div');
-    modalRatio.className = 'video-modal__ratio';
-
-    modalContainer.appendChild(modalClose);
-    modalContainer.appendChild(modalRatio);
-    modalEl.appendChild(modalBackdrop);
-    modalEl.appendChild(modalContainer);
-    document.body.appendChild(modalEl);
-
-    var lastFocused = null;
-
-    function openVideoModal(videoId, videoTitle) {
-      lastFocused = document.activeElement;
-      // Build iframe via DOM to avoid XSS — videoId comes only from data-video-id attrs on our own markup
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&rel=0';
-      iframe.title = videoTitle || 'Video';
-      iframe.setAttribute('frameborder', '0');
-      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-      iframe.setAttribute('allowfullscreen', '');
-      modalRatio.appendChild(iframe);
-      modalEl.removeAttribute('hidden');
-      document.body.style.overflow = 'hidden';
-      modalClose.focus();
-    }
-
-    function closeVideoModal() {
-      while (modalRatio.firstChild) { modalRatio.removeChild(modalRatio.firstChild); }
-      modalEl.setAttribute('hidden', '');
-      document.body.style.overflow = '';
-      if (lastFocused) { lastFocused.focus(); }
-    }
-
-    modalBackdrop.addEventListener('click', closeVideoModal);
-    modalClose.addEventListener('click', closeVideoModal);
-
-    // Escape key closes modal
-    document.addEventListener('keydown', function (e) {
-      if ((e.key === 'Escape' || e.keyCode === 27) && !modalEl.hasAttribute('hidden')) {
-        closeVideoModal();
-      }
-    });
-
-    // Focus trap inside modal
-    modalEl.addEventListener('keydown', function (e) {
-      if (e.key !== 'Tab') { return; }
-      var focusable = modalEl.querySelectorAll('button, iframe, [tabindex]:not([tabindex="-1"])');
-      var first = focusable[0];
-      var last  = focusable[focusable.length - 1];
-      if (e.shiftKey) {
-        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
-      } else {
-        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
-    });
-
-    // Attach click + keyboard to all YT placeholders
+    // ── 0. Inline video player ───────────────────────────────
+    // On click, replace the placeholder with a YouTube iframe in the same space.
     document.querySelectorAll('.yt-placeholder').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        openVideoModal(btn.getAttribute('data-video-id'), btn.getAttribute('data-video-title'));
-      });
+      function activateInlinePlayer() {
+        var videoId    = btn.getAttribute('data-video-id');
+        var videoTitle = btn.getAttribute('data-video-title');
+        // Build iframe via DOM to avoid XSS
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId) + '?autoplay=1&rel=0';
+        iframe.title = videoTitle || 'Video';
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+        btn.parentNode.replaceChild(iframe, btn);
+      }
+      btn.addEventListener('click', activateInlinePlayer);
       btn.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          openVideoModal(btn.getAttribute('data-video-id'), btn.getAttribute('data-video-title'));
+          activateInlinePlayer();
         }
       });
     });
