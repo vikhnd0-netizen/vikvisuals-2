@@ -12,7 +12,17 @@
 
   document.addEventListener('DOMContentLoaded', function () {
 
-    // ── 0. Inline video player ───────────────────────────────
+    // ── 0a. maxresdefault fallback ───────────────────────────
+    // If a maxresdefault.jpg fails to load, fall back to hqdefault.jpg.
+    document.querySelectorAll('.yt-placeholder img').forEach(function (img) {
+      img.addEventListener('error', function () {
+        if (img.src.indexOf('maxresdefault.jpg') !== -1) {
+          img.src = img.src.replace('maxresdefault.jpg', 'hqdefault.jpg');
+        }
+      }, { once: true });
+    });
+
+    // ── 0b. Inline video player ──────────────────────────────
     // On click, replace the placeholder with a YouTube iframe in the same space.
     document.querySelectorAll('.yt-placeholder').forEach(function (btn) {
       function activateInlinePlayer() {
