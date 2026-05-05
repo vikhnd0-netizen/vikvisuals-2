@@ -1036,6 +1036,7 @@ body:not(.page-home) .hero__sub {
   white-space: nowrap;
   animation: marquee-scroll 60s linear infinite;
   width: max-content;
+  will-change: transform;
 }
 
 @keyframes marquee-scroll {
@@ -1050,10 +1051,6 @@ body:not(.page-home) .hero__sub {
   flex-shrink: 0;
 }
 
-.marquee__item:hover {
-  opacity: 1;
-}
-
 .marquee__logo {
   height: 40px;
   width: auto;
@@ -1064,9 +1061,14 @@ body:not(.page-home) .hero__sub {
   transition: opacity var(--transition), filter var(--transition);
 }
 
-.marquee__item:hover .marquee__logo {
-  opacity: 1;
-  filter: grayscale(0%);
+@media (hover: hover) and (pointer: fine) {
+  .marquee__item:hover {
+    opacity: 1;
+  }
+  .marquee__item:hover .marquee__logo {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
 }
 
 /* ============================================================
