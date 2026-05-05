@@ -1007,27 +1007,9 @@ body:not(.page-home) .hero__sub {
   padding: var(--space-sm) 0 var(--space-lg);
   border-bottom: 1px solid var(--color-border);
   position: relative;
-}
-
-.marquee::before,
-.marquee::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 440px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.marquee::before {
-  left: 0;
-  background: linear-gradient(to right, var(--color-bg), transparent);
-}
-
-.marquee::after {
-  right: 0;
-  background: linear-gradient(to left, var(--color-bg), transparent);
+  min-height: 100px;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black clamp(80px, 12vw, 200px), black calc(100% - clamp(80px, 12vw, 200px)), transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, black clamp(80px, 12vw, 200px), black calc(100% - clamp(80px, 12vw, 200px)), transparent 100%);
 }
 
 .marquee__track {
@@ -1037,11 +1019,15 @@ body:not(.page-home) .hero__sub {
   animation: marquee-scroll 60s linear infinite;
   width: max-content;
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  min-height: 80px;
 }
 
 @keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 
 .marquee__item {
@@ -1528,7 +1514,7 @@ body:not(.page-home) .hero__sub {
    ============================================================ */
 .testimonial-strip {
   background: var(--color-bg);
-  padding: var(--space-sm) var(--space-md) var(--space-md);
+  padding: var(--space-sm) var(--space-md) var(--space-xs);
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -1567,7 +1553,7 @@ body:not(.page-home) .hero__sub {
   line-height: 1.75;
   color: var(--color-navy);
   max-width: 100%;
-  margin: 0 0 2rem;
+  margin: 0 0 1rem;
   text-align: center;
 }
 
@@ -2931,7 +2917,7 @@ body:not(.page-home) .hero__sub {
    CHARITY COLLAGE — 3-top + 1-wide-bottom layout
    ============================================================ */
 .charity-collage {
-  padding: var(--space-lg) 0 8px;
+  padding: var(--space-md) 0 8px;
   max-width: 100%;
   margin: 0 auto;
   padding-left: 0.5rem;

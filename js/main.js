@@ -471,7 +471,8 @@
     // Check if element is inside zones we never animate
     function insideExcluded(el) {
       return !!(el.closest('.hero') || el.closest('#main-nav') ||
-                el.closest('.nav__mobile') || el.closest('.footer'));
+                el.closest('.nav__mobile') || el.closest('.footer') ||
+                el.closest('.marquee'));
     }
 
     // Check if element has a .fade-in ancestor
