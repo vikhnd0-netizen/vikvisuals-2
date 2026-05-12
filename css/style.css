@@ -3032,14 +3032,22 @@ body:not(.page-home) .hero__sub {
 }
 
 @media (max-width: 640px) {
+  .weddings-gallery {
+    padding: var(--space-md) 0.5rem;
+  }
+
   .weddings-gallery__row,
   .weddings-gallery__row--p-l,
   .weddings-gallery__row--l-p {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
     aspect-ratio: auto;
+    gap: 8px;
   }
 
   .weddings-gallery__item {
+    width: 100%;
     aspect-ratio: 4 / 5;
   }
 }
