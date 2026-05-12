@@ -1721,6 +1721,15 @@ body:not(.page-home) .hero__sub {
   margin-bottom: var(--space-md);
 }
 
+.services-list__intro {
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-md);
+  max-width: 38rem;
+}
+
 .services-list__group {
   margin-bottom: var(--space-sm);
 }
@@ -2973,6 +2982,54 @@ body:not(.page-home) .hero__sub {
   }
   .charity-collage__item:last-child {
     grid-column: span 2;
+  }
+}
+
+/* ============================================================
+   WEDDINGS GALLERY — 2-up alternating portrait/landscape
+   ============================================================ */
+.weddings-gallery {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: var(--space-lg) 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.weddings-gallery__item {
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--color-bg);
+}
+
+.weddings-gallery__item--portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.weddings-gallery__item--landscape {
+  aspect-ratio: 3 / 2;
+}
+
+.weddings-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.weddings-gallery__item:hover img {
+  transform: scale(1.03);
+}
+
+@media (max-width: 640px) {
+  .weddings-gallery {
+    grid-template-columns: 1fr;
+  }
+  .weddings-gallery__item--portrait,
+  .weddings-gallery__item--landscape {
+    aspect-ratio: 4 / 5;
   }
 }
 
