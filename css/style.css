@@ -2986,29 +2986,37 @@ body:not(.page-home) .hero__sub {
 }
 
 /* ============================================================
-   WEDDINGS GALLERY — 2-up alternating portrait/landscape
+   WEDDINGS GALLERY - 2-up rows, alternating portrait/landscape
+   Row aspect ratio guarantees both items in a row have equal heights.
+   Portrait = 4:5, landscape = 3:2. Column widths 8fr : 15fr for equal heights.
    ============================================================ */
 .weddings-gallery {
   max-width: 100%;
   margin: 0 auto;
   padding: var(--space-lg) 0.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
+}
+
+.weddings-gallery__row {
+  display: grid;
+  gap: 8px;
+  aspect-ratio: 23 / 10;
+}
+
+.weddings-gallery__row--p-l {
+  grid-template-columns: 8fr 15fr;
+}
+
+.weddings-gallery__row--l-p {
+  grid-template-columns: 15fr 8fr;
 }
 
 .weddings-gallery__item {
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--color-bg);
-}
-
-.weddings-gallery__item--portrait {
-  aspect-ratio: 4 / 5;
-}
-
-.weddings-gallery__item--landscape {
-  aspect-ratio: 3 / 2;
 }
 
 .weddings-gallery__item img {
@@ -3024,11 +3032,14 @@ body:not(.page-home) .hero__sub {
 }
 
 @media (max-width: 640px) {
-  .weddings-gallery {
+  .weddings-gallery__row,
+  .weddings-gallery__row--p-l,
+  .weddings-gallery__row--l-p {
     grid-template-columns: 1fr;
+    aspect-ratio: auto;
   }
-  .weddings-gallery__item--portrait,
-  .weddings-gallery__item--landscape {
+
+  .weddings-gallery__item {
     aspect-ratio: 4 / 5;
   }
 }
