@@ -3288,3 +3288,302 @@ body:not(.page-home) .hero__sub {
   pointer-events: all;
   transition: opacity 0.4s ease-out;
 }
+
+/* ============================================================
+   CASE STUDY — Page layout and components
+   ============================================================ */
+
+/* Project overview metadata grid */
+.cs-overview-section {
+  padding: var(--space-lg) 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cs-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cs-overview__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cs-overview__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+}
+
+.cs-overview__value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  font-family: var(--font-body);
+  max-width: none;
+  line-height: 1.4;
+}
+
+/* Case study body copy sections */
+.cs-section {
+  padding: var(--space-xl) 0;
+  background: var(--color-bg);
+}
+
+.cs-section--alt {
+  background: #ffffff;
+}
+
+.cs-section__inner {
+  max-width: 780px;
+}
+
+.cs-section__inner h2 {
+  margin-bottom: var(--space-md);
+}
+
+.cs-section__inner p + p {
+  margin-top: var(--space-sm);
+}
+
+/* Content bank — dark navy highlights section */
+.cs-highlights {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-navy);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.cs-highlights__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.cs-highlights__text h2 {
+  color: var(--color-white);
+  margin-bottom: var(--space-sm);
+}
+
+.cs-highlights__text p {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: var(--space-sm);
+}
+
+.cs-highlights__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-top: 0.5rem;
+}
+
+.cs-highlights__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.cs-highlights__list li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  margin-top: 0.55em;
+}
+
+@media (max-width: 768px) {
+  .cs-highlights__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+/* Video card meta — title + description below a video embed */
+.cs-video-card__meta {
+  margin-top: 0.75rem;
+}
+
+.cs-video-card__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  font-family: var(--font-body);
+  margin-bottom: 0.2rem;
+  max-width: none;
+}
+
+.cs-video-card__desc {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  max-width: none;
+  line-height: 1.55;
+}
+
+/* Featured case study panel — Professional Services page */
+.cs-featured {
+  padding: var(--space-xl) 0;
+  background: #ffffff;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cs-featured__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.cs-featured__image {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.cs-featured__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+  border-radius: var(--radius-lg);
+}
+
+.cs-featured__image:hover img {
+  transform: scale(1.03);
+}
+
+.cs-featured__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.cs-featured__label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+}
+
+.cs-featured__title {
+  font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+  font-weight: 600;
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.cs-featured__desc {
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 52ch;
+}
+
+@media (max-width: 768px) {
+  .cs-featured__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+/* Featured video tile in video-examples grid — full width */
+.video-examples__featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  align-items: center;
+  padding: var(--space-md);
+  background: #f5f4f1;
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-md);
+}
+
+.video-examples__featured-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.video-examples__featured-embed .yt-placeholder {
+  border-radius: var(--radius);
+}
+
+.video-examples__featured-embed .yt-placeholder img {
+  border-radius: var(--radius);
+}
+
+.video-examples__featured-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.video-examples__featured-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+}
+
+.video-examples__featured-title {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 600;
+  color: var(--color-navy);
+  font-family: var(--font-heading);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.video-examples__featured-desc {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.65;
+  max-width: 48ch;
+}
+
+@media (max-width: 768px) {
+  .video-examples__featured {
+    grid-template-columns: 1fr;
+  }
+}
