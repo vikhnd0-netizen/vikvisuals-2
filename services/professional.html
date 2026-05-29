@@ -92,17 +92,19 @@
         <p class="intro-photo__body">In professional services, trust is everything. Consistent imagery and regular video updates allow clients to see and hear directly from you, building credibility and reassurance in a way written communication alone can’t.</p>
         <p class="intro-photo__body">Based in London and working with accountancy and professional services firms across the city and nationwide, bringing a calm, efficient approach suited to high-trust environments. <span style="font-weight:600;color:rgba(255,255,255,0.9);">You work directly with the person filming and editing your content, with no outsourcing and no layers.</span></p>
         <a href="/contact" class="btn btn--outline-white">Get in touch</a>
-        <div class="intro-photo__case-study-link">
-          <span class="intro-photo__label">Featured case study</span>
-          <p class="intro-photo__body intro-photo__body--semibold">Turning one conversation into a series of LinkedIn videos for HaysMac.</p>
-          <a href="/case-studies/haysmac-linkedin-video-content" class="btn btn--outline-white" style="margin-top: 0.5rem;">View case study</a>
-        </div>
       </div>
       <div class="intro-photo__image fade-in">
-        <button class="yt-placeholder" data-video-id="yBfveYNT0s8" data-video-title="Life as a graduate at Sedulo" aria-label="Play video: Life as a graduate at Sedulo">
-          <img src="https://img.youtube.com/vi/yBfveYNT0s8/maxresdefault.jpg" alt="Life as a graduate at Sedulo video thumbnail" />
-          <span class="yt-placeholder__play" aria-hidden="true"></span>
-        </button>
+        <a href="/case-studies/haysmac-linkedin-video-content" class="cs-intro-card">
+          <div class="cs-intro-card__img-wrap">
+            <!-- Replace haysmac-featured.jpg with the actual image when ready -->
+            <img src="../images/case-studies/haysmac/haysmac-featured.jpg" alt="HaysMac interview in their London office overlooking the Thames" loading="lazy" />
+          </div>
+          <div class="cs-intro-card__body">
+            <span class="cs-intro-card__label">Featured case study</span>
+            <p class="cs-intro-card__title">Turning one conversation into a series of LinkedIn videos for HaysMac.</p>
+            <span class="cs-intro-card__cta">See HaysMac case study &rarr;</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -202,23 +204,32 @@
         <p class="video-examples__subtitle">Leadership, recruitment and business event content</p>
       </div>
       <div class="video-examples__grid">
-        <div class="video-examples__item">
-          <div class="video-examples__embed">
-            <button class="yt-placeholder" data-video-id="HAYSMAC_MAIN_VIDEO_ID" data-video-title="HaysMac LinkedIn video case study" aria-label="Play video: HaysMac LinkedIn video case study">
-              <img src="../images/case-studies/haysmac/haysmac-video-example-thumbnail.jpg" alt="HaysMac LinkedIn video case study thumbnail" />
+
+        <!-- Featured HaysMac video — full width above the grid -->
+        <div class="video-examples__featured-row">
+          <div class="video-examples__featured-embed">
+            <button class="yt-placeholder" data-video-id="HAYSMAC_FEATURED_CLIP_ID" data-video-title="HaysMac LinkedIn edit" aria-label="Play video: HaysMac LinkedIn edit">
+              <img src="../images/case-studies/haysmac/haysmac-linkedin-edit-thumbnail.jpg" alt="HaysMac LinkedIn edit video thumbnail" />
               <span class="yt-placeholder__play" aria-hidden="true"></span>
             </button>
           </div>
-          <p class="video-examples__caption"><a href="/case-studies/haysmac-linkedin-video-content" style="color: inherit; text-decoration: underline; text-underline-offset: 3px;">HaysMac — view full case study</a></p>
+          <div class="video-examples__featured-text">
+            <span class="video-examples__featured-label">HaysMac</span>
+            <h3 class="video-examples__featured-title">HaysMac LinkedIn edit</h3>
+            <p class="video-examples__featured-desc">A short, hook-led clip taken from a longer conversation piece and shaped for LinkedIn.</p>
+            <a href="/case-studies/haysmac-linkedin-video-content" class="btn btn--outline-navy" style="margin-top: var(--space-sm);">See the full case study</a>
+          </div>
         </div>
+
+        <!-- Existing Sedulo examples -->
         <div class="video-examples__item">
           <div class="video-examples__embed">
             <button class="yt-placeholder" data-video-id="i-oWl09wgg0" data-video-title="Sedulo Wealth" aria-label="Play video: Sedulo Wealth">
               <img src="https://img.youtube.com/vi/i-oWl09wgg0/maxresdefault.jpg" alt="Sedulo Wealth video thumbnail" />
               <span class="yt-placeholder__play" aria-hidden="true"></span>
             </button>
+          </div>
         </div>
-      </div>
         <div class="video-examples__item">
           <div class="video-examples__embed">
             <button class="yt-placeholder" data-video-id="6zQsWMlyS6U" data-video-title="Annual Conference 2023 — Sedulo" aria-label="Play video: Annual Conference 2023 — Sedulo">
@@ -227,6 +238,7 @@
             </button>
           </div>
         </div>
+
       </div>
     </div>
   </section>
