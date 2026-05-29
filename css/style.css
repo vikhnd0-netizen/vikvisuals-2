@@ -3453,3 +3453,170 @@ body:not(.page-home) .hero__sub {
   max-width: none;
   line-height: 1.55;
 }
+
+/* ============================================================
+   CS INTRO CARD — featured case study in dark intro section
+   ============================================================ */
+.cs-intro-card {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cs-intro-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+}
+
+.cs-intro-card__img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.cs-intro-card__img-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+  border-radius: 0;
+}
+
+.cs-intro-card:hover .cs-intro-card__img-wrap img {
+  transform: scale(1.04);
+}
+
+.cs-intro-card__body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cs-intro-card__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  font-family: var(--font-body);
+}
+
+.cs-intro-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-white);
+  line-height: 1.4;
+  font-family: var(--font-heading);
+  max-width: none;
+  margin: 0;
+}
+
+.cs-intro-card__cta {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.75);
+  font-family: var(--font-body);
+  transition: color 0.2s ease;
+  margin-top: 0.25rem;
+}
+
+.cs-intro-card:hover .cs-intro-card__cta {
+  color: var(--color-white);
+}
+
+/* ============================================================
+   VIDEO EXAMPLES — featured row (full-width above 2-col grid)
+   ============================================================ */
+.video-examples__featured-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-md);
+  align-items: center;
+  background: var(--color-navy);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.video-examples__featured-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.video-examples__featured-embed .yt-placeholder {
+  border-radius: var(--radius);
+}
+
+.video-examples__featured-embed .yt-placeholder img {
+  border-radius: var(--radius);
+}
+
+.video-examples__featured-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-examples__featured-text {
+  padding: var(--space-sm) 0;
+}
+
+.video-examples__featured-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  font-family: var(--font-body);
+  margin-bottom: 0.5rem;
+}
+
+.video-examples__featured-title {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 600;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.video-examples__featured-desc {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.75);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  max-width: 38ch;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .video-examples__featured-row {
+    grid-template-columns: 1fr;
+  }
+  .video-examples__featured-text {
+    padding: 0;
+  }
+}
