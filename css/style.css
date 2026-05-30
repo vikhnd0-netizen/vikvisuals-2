@@ -847,6 +847,17 @@ body:not(.page-home) .hero__sub {
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* HaysMac case study callout inside intro-photo */
+.intro-photo__case-study-link {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
 .intro-photo__body--accent {
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
@@ -3287,4 +3298,338 @@ body:not(.page-home) .hero__sub {
   opacity: 1;
   pointer-events: all;
   transition: opacity 0.4s ease-out;
+}
+
+/* ============================================================
+   CASE STUDY — Page layout and components
+   ============================================================ */
+
+/* Project overview metadata grid */
+.cs-overview-section {
+  padding: var(--space-md) 0;
+  background: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cs-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cs-overview__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.cs-overview__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+}
+
+.cs-overview__value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  font-family: var(--font-body);
+  max-width: none;
+  line-height: 1.4;
+}
+
+/* Case study body copy sections */
+.cs-section {
+  padding: var(--space-lg) 0;
+  background: var(--color-bg);
+}
+
+.cs-section--alt {
+  background: #ffffff;
+}
+
+.cs-section__inner {
+  max-width: 780px;
+}
+
+.cs-section__inner h2 {
+  margin-bottom: var(--space-md);
+}
+
+.cs-section__inner p + p {
+  margin-top: var(--space-sm);
+}
+
+/* Content bank — dark navy highlights section */
+.cs-highlights {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-navy);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.cs-highlights__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.cs-highlights__text h2 {
+  color: var(--color-white);
+  margin-bottom: var(--space-sm);
+}
+
+.cs-highlights__text p {
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: var(--space-sm);
+}
+
+.cs-highlights__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-top: 0.5rem;
+}
+
+.cs-highlights__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.cs-highlights__list li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  margin-top: 0.55em;
+}
+
+@media (max-width: 768px) {
+  .cs-highlights__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+/* Video card meta — title + description below a video embed */
+.cs-video-card__meta {
+  margin-top: 0.75rem;
+}
+
+.cs-video-card__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  font-family: var(--font-body);
+  margin-bottom: 0.2rem;
+  max-width: none;
+}
+
+.cs-video-card__desc {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  max-width: none;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   CS INTRO CARD — featured case study in dark navy intro section
+   ============================================================ */
+.cs-intro-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cs-intro-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cs-intro-card__header {
+  padding: 1.25rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cs-intro-card__img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cs-intro-card__img-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+  border-radius: 0;
+}
+
+.cs-intro-card:hover .cs-intro-card__img-wrap img {
+  transform: scale(1.04);
+}
+
+.cs-intro-card__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-body);
+}
+
+.cs-intro-card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-white);
+  line-height: 1.45;
+  font-family: var(--font-heading);
+  max-width: none;
+  margin: 0;
+}
+
+.cs-intro-card__footer {
+  padding: 1rem 1.5rem 1.25rem;
+}
+
+.cs-intro-card__cta {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-body);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius);
+  padding: 10px 24px;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.cs-intro-card:hover .cs-intro-card__cta {
+  color: var(--color-navy);
+  background: var(--color-white);
+  border-color: var(--color-white);
+}
+
+/* ============================================================
+   VIDEO EXAMPLES — featured row (full-width above 2-col grid)
+   ============================================================ */
+.video-examples__featured-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-md);
+  align-items: center;
+  background: var(--color-navy);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.video-examples__featured-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.video-examples__featured-embed .yt-placeholder {
+  border-radius: var(--radius);
+}
+
+.video-examples__featured-embed .yt-placeholder img {
+  border-radius: var(--radius);
+}
+
+.video-examples__featured-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-examples__featured-text {
+  padding: var(--space-sm) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.video-examples__featured-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-body);
+  margin-bottom: 0.5rem;
+}
+
+.video-examples__featured-title {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 600;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.video-examples__featured-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  max-width: 38ch;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .video-examples__featured-row {
+    grid-template-columns: 1fr;
+  }
+  .video-examples__featured-text {
+    padding: 0;
+  }
 }

@@ -94,10 +94,19 @@
         <a href="/contact" class="btn btn--outline-white">Get in touch</a>
       </div>
       <div class="intro-photo__image fade-in">
-        <button class="yt-placeholder" data-video-id="yBfveYNT0s8" data-video-title="Life as a graduate at Sedulo" aria-label="Play video: Life as a graduate at Sedulo">
-          <img src="https://img.youtube.com/vi/yBfveYNT0s8/maxresdefault.jpg" alt="Life as a graduate at Sedulo video thumbnail" />
-          <span class="yt-placeholder__play" aria-hidden="true"></span>
-        </button>
+        <a href="/case-studies/haysmac-linkedin-video-content" class="cs-intro-card">
+          <div class="cs-intro-card__header">
+            <span class="cs-intro-card__label">Featured case study</span>
+            <p class="cs-intro-card__title">Turning one conversation into a series of LinkedIn videos for HaysMac.</p>
+          </div>
+          <div class="cs-intro-card__img-wrap">
+            <!-- Replace haysmac-featured.jpg with the actual image when ready -->
+            <img src="../images/case-studies/haysmac/haysmac-featured.jpg" alt="HaysMac interview in their London office overlooking the Thames" loading="lazy" />
+          </div>
+          <div class="cs-intro-card__footer">
+            <span class="cs-intro-card__cta">See HaysMac case study &rarr;</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -197,14 +206,32 @@
         <p class="video-examples__subtitle">Leadership, recruitment and business event content</p>
       </div>
       <div class="video-examples__grid">
+
+        <!-- Featured HaysMac video — full width above the grid -->
+        <div class="video-examples__featured-row">
+          <div class="video-examples__featured-embed">
+            <button class="yt-placeholder" data-video-id="HAYSMAC_FEATURED_CLIP_ID" data-video-title="HaysMac LinkedIn edit" aria-label="Play video: HaysMac LinkedIn edit">
+              <img src="../images/case-studies/haysmac/haysmac-linkedin-edit-thumbnail.jpg" alt="HaysMac LinkedIn edit video thumbnail" />
+              <span class="yt-placeholder__play" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="video-examples__featured-text">
+            <span class="video-examples__featured-label">HaysMac</span>
+            <h3 class="video-examples__featured-title">HaysMac LinkedIn edit</h3>
+            <p class="video-examples__featured-desc">A short, hook-led clip taken from a longer conversation piece and shaped for LinkedIn.</p>
+            <a href="/case-studies/haysmac-linkedin-video-content" class="btn btn--outline-white" style="margin-top: var(--space-sm);">See the full case study</a>
+          </div>
+        </div>
+
+        <!-- Existing Sedulo examples -->
         <div class="video-examples__item">
           <div class="video-examples__embed">
             <button class="yt-placeholder" data-video-id="i-oWl09wgg0" data-video-title="Sedulo Wealth" aria-label="Play video: Sedulo Wealth">
               <img src="https://img.youtube.com/vi/i-oWl09wgg0/maxresdefault.jpg" alt="Sedulo Wealth video thumbnail" />
               <span class="yt-placeholder__play" aria-hidden="true"></span>
             </button>
+          </div>
         </div>
-      </div>
         <div class="video-examples__item">
           <div class="video-examples__embed">
             <button class="yt-placeholder" data-video-id="6zQsWMlyS6U" data-video-title="Annual Conference 2023 — Sedulo" aria-label="Play video: Annual Conference 2023 — Sedulo">
@@ -213,6 +240,7 @@
             </button>
           </div>
         </div>
+
       </div>
     </div>
   </section>
