@@ -2898,6 +2898,23 @@ body:not(.page-home) .hero__sub {
   }
 }
 
+/* 3-column video grid variant */
+.video-examples__grid--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .video-examples__grid--three {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .video-examples__grid--three {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Video caption below embed */
 .video-examples__caption {
   margin-top: 0.75rem;
