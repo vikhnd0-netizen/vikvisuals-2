@@ -742,9 +742,9 @@ body:not(.page-home) .hero__sub {
   grid-template-columns: 1fr 1.4fr;
   gap: var(--space-lg);
   align-items: center;
-  max-width: 1280px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 var(--space-md);
+  padding: 0 var(--space-lg);
 }
 
 .intro-photo__text {
