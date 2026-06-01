@@ -3423,9 +3423,9 @@ body:not(.page-home) .hero__sub {
 }
 
 .cs-page-header__inner--split {
-  max-width: 960px;
+  max-width: 1080px;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 1.3fr 1.2fr;
   align-items: center;
   gap: var(--space-md);
 }
