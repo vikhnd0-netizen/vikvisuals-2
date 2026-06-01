@@ -3423,11 +3423,11 @@ body:not(.page-home) .hero__sub {
 }
 
 .cs-page-header__inner--split {
-  max-width: none;
+  max-width: 960px;
   display: grid;
-  grid-template-columns: 7fr 5fr;
+  grid-template-columns: 1fr 1.2fr;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .cs-page-header__content {
