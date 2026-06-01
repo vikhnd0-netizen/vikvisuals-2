@@ -3425,7 +3425,7 @@ body:not(.page-home) .hero__sub {
 .cs-page-header__inner--split {
   max-width: none;
   display: grid;
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: 7fr 5fr;
   align-items: center;
   gap: var(--space-lg);
 }
