@@ -3426,9 +3426,9 @@ body:not(.page-home) .hero__sub {
 .cs-page-header__inner--split {
   max-width: none;
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-lg);
-  align-items: center;
+  align-items: start;
 }
 
 .cs-page-header__text {
@@ -3437,16 +3437,21 @@ body:not(.page-home) .hero__sub {
 }
 
 .cs-page-header__logo {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  aspect-ratio: 4 / 3;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: var(--space-md);
 }
 
 .cs-page-header__logo-img {
   display: block;
-  max-width: 320px;
-  max-height: 200px;
-  width: 100%;
+  max-width: 80%;
+  max-height: 80%;
+  width: auto;
   height: auto;
   object-fit: contain;
 }
@@ -3454,10 +3459,6 @@ body:not(.page-home) .hero__sub {
 @media (max-width: 768px) {
   .cs-page-header__inner--split {
     grid-template-columns: 1fr;
-  }
-  .cs-page-header__logo-img {
-    max-width: 220px;
-    max-height: 140px;
   }
 }
 
@@ -3658,7 +3659,7 @@ body:not(.page-home) .hero__sub {
 .cs-dark-split__why-image {
   overflow: hidden;
   border-radius: var(--radius-lg);
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 3;
 }
 
 .cs-dark-split__why-image img {
@@ -3676,7 +3677,6 @@ body:not(.page-home) .hero__sub {
   .cs-dark-split__why-image {
     width: 100%;
     max-width: 400px;
-    aspect-ratio: 4 / 3;
   }
 }
 @media (max-width: 768px) {
