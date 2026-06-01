@@ -3382,6 +3382,8 @@ body:not(.page-home) .hero__sub {
 .cs-intro-card__footer {
   padding: 1rem 1.5rem 1.25rem;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .cs-intro-card__cta {
@@ -3410,15 +3412,25 @@ body:not(.page-home) .hero__sub {
 }
 
 /* ============================================================
-   CASE STUDY PAGE HEADER
+   CS PAGE HEADER SPLIT — two-column header for case study pages
    ============================================================ */
 .cs-page-header {
-  padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-md);
+  padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-lg);
   background: var(--color-bg);
 }
 
-.cs-page-header__inner {
-  max-width: 800px;
+.cs-page-header__split {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-lg);
+  align-items: center;
+  max-width: 960px;
+}
+
+.cs-page-header__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .cs-page-header__label {
@@ -3443,30 +3455,42 @@ body:not(.page-home) .hero__sub {
 }
 
 .cs-page-header__intro {
-  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
   color: var(--color-muted);
   font-family: var(--font-body);
   font-weight: 400;
   line-height: 1.65;
-  max-width: 58ch;
+  max-width: 52ch;
   margin: 0;
 }
 
-/* ============================================================
-   CASE STUDY HERO IMAGE
-   ============================================================ */
-.cs-hero-image {
-  padding: 0 0 var(--space-lg);
-  background: var(--color-bg);
+.cs-page-header__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.cs-hero-image__img {
-  width: 100%;
+.cs-page-header__logo-img {
+  max-width: 180px;
+  max-height: 80px;
+  width: auto;
   height: auto;
   display: block;
-  border-radius: var(--radius-lg);
-  object-fit: cover;
-  max-height: 620px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .cs-page-header__split {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+  .cs-page-header__logo {
+    justify-content: flex-start;
+  }
+  .cs-page-header__logo-img {
+    max-width: 140px;
+  }
 }
 
 /* ============================================================
@@ -3634,7 +3658,7 @@ body:not(.page-home) .hero__sub {
 }
 
 /* ============================================================
-   CS OVERVIEW — project metadata row
+   CS OVERVIEW — centred project metadata row
    ============================================================ */
 .cs-overview-section {
   padding: var(--space-md) 0;
@@ -3647,6 +3671,7 @@ body:not(.page-home) .hero__sub {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-md) var(--space-lg);
+  justify-content: center;
 }
 
 .cs-overview__item {
@@ -3654,6 +3679,61 @@ body:not(.page-home) .hero__sub {
   flex-direction: column;
   gap: 0.2rem;
   min-width: 140px;
+  align-items: center;
+  text-align: center;
+}
+
+/* ============================================================
+   CS WHY SPLIT — "Why this works" two-column with photo
+   ============================================================ */
+.cs-why-split {
+  padding: var(--space-xl) 0;
+  background: var(--color-bg);
+}
+
+.cs-why-split__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+.cs-why-split__text h2 {
+  margin-bottom: var(--space-sm);
+}
+
+.cs-why-split__text p {
+  max-width: none;
+  margin-bottom: 0.75rem;
+}
+
+.cs-why-split__image {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  aspect-ratio: 4 / 3;
+  position: relative;
+}
+
+.cs-why-split__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-lg);
+  transition: transform 0.4s ease;
+}
+
+.cs-why-split__image:hover img {
+  transform: scale(1.03);
+}
+
+@media (max-width: 768px) {
+  .cs-why-split__inner {
+    grid-template-columns: 1fr;
+  }
+  .cs-why-split__image {
+    order: -1;
+  }
 }
 
 .cs-overview__label {
