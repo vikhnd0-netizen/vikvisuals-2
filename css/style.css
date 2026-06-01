@@ -3424,27 +3424,29 @@ body:not(.page-home) .hero__sub {
 
 .cs-page-header__inner--split {
   max-width: none;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-lg);
 }
 
 .cs-page-header__content {
-  flex: 1 1 auto;
   min-width: 0;
 }
 
 .cs-page-header__logo {
-  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  aspect-ratio: 4 / 3;
+  position: relative;
 }
 
 .cs-page-header__logo img {
   display: block;
-  width: auto;
-  max-height: 120px;
-  max-width: min(280px, 32vw);
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
 }
 
 .cs-page-header__label {
@@ -3654,18 +3656,13 @@ body:not(.page-home) .hero__sub {
 
 @media (max-width: 768px) {
   .cs-page-header__inner--split {
-    flex-direction: column;
-    align-items: flex-start;
+    grid-template-columns: 1fr;
     gap: var(--space-md);
   }
 
   .cs-page-header__logo {
     order: -1;
-  }
-
-  .cs-page-header__logo img {
-    max-height: 96px;
-    max-width: 220px;
+    aspect-ratio: 4 / 3;
   }
 
   .cs-dark-split__inner {
