@@ -3425,7 +3425,7 @@ body:not(.page-home) .hero__sub {
 .cs-page-header__inner--split {
   max-width: none;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 7fr;
   align-items: center;
   gap: var(--space-lg);
 }
@@ -3437,7 +3437,7 @@ body:not(.page-home) .hero__sub {
 .cs-page-header__logo {
   overflow: hidden;
   border-radius: var(--radius-lg);
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   position: relative;
 }
 
@@ -3662,7 +3662,7 @@ body:not(.page-home) .hero__sub {
 
   .cs-page-header__logo {
     order: -1;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
   }
 
   .cs-dark-split__inner {
