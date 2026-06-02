@@ -3332,6 +3332,7 @@ body:not(.page-home) .hero__sub {
 .cs-intro-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   text-decoration: none;
   background: rgba(255, 255, 255, 0.06);
@@ -3352,6 +3353,8 @@ body:not(.page-home) .hero__sub {
   flex-direction: column;
   gap: 0.4rem;
   flex-shrink: 0;
+  text-align: center;
+  align-items: center;
 }
 
 .cs-intro-card__label {
