@@ -1673,10 +1673,10 @@ body:not(.page-home) .hero__sub {
 }
 
 .feature-row__body {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--color-text);
-  font-weight: 300;
-  line-height: 1.8;
+  font-weight: 400;
+  line-height: 1.65;
   max-width: none;
 }
 
@@ -2363,8 +2363,8 @@ body:not(.page-home) .hero__sub {
 
 .page-cta__body {
   font-size: 1.05rem;
-  font-weight: 600;
-  line-height: 1.8;
+  font-weight: 400;
+  line-height: 1.65;
   color: var(--color-text);
   margin-bottom: var(--space-lg);
   max-width: none;
