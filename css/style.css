@@ -760,8 +760,8 @@ body:not(.page-home) .hero__sub {
   border-radius: var(--radius-lg);
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  align-self: center;
+  align-self: stretch;
+  min-height: 300px;
 }
 
 .intro-photo__image iframe {
@@ -3542,7 +3542,7 @@ body:not(.page-home) .hero__sub {
 .cs-brief-split__image {
   overflow: hidden;
   border-radius: var(--radius-lg);
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   position: relative;
 }
 
