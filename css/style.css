@@ -760,8 +760,8 @@ body:not(.page-home) .hero__sub {
   border-radius: var(--radius-lg);
   position: relative;
   width: 100%;
-  align-self: stretch;
-  min-height: 300px;
+  aspect-ratio: 16 / 9;
+  align-self: center;
 }
 
 .intro-photo__image iframe {
@@ -3519,7 +3519,7 @@ body:not(.page-home) .hero__sub {
    ============================================================ */
 .cs-brief-split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   gap: var(--space-lg);
   align-items: start;
 }
