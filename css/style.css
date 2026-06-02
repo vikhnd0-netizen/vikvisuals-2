@@ -3547,6 +3547,7 @@ body:not(.page-home) .hero__sub {
   border-radius: var(--radius-lg);
   aspect-ratio: 3 / 2;
   position: relative;
+  margin-top: 2rem;
 }
 
 .cs-brief-split__image img {
