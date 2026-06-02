@@ -3332,6 +3332,7 @@ body:not(.page-home) .hero__sub {
 .cs-intro-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   text-decoration: none;
   background: rgba(255, 255, 255, 0.06);
@@ -3347,7 +3348,7 @@ body:not(.page-home) .hero__sub {
 }
 
 .cs-intro-card__header {
-  padding: 1.25rem 1.5rem 1rem;
+  padding: 1.25rem 1.5rem 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
@@ -3397,9 +3398,11 @@ body:not(.page-home) .hero__sub {
 }
 
 .cs-intro-card__footer {
-  padding: 1rem 1.5rem 1.25rem;
-  flex-shrink: 0;
-  text-align: center;
+  padding: 1rem 1.5rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cs-intro-card__cta {
