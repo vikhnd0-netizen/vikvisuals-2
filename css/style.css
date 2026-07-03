@@ -1495,6 +1495,7 @@ body:not(.page-home) .hero__sub {
   justify-content: center;
   gap: clamp(16px, 3vw, 40px);
   overflow-x: auto;
+  padding-top: 8px; /* prevent translateY(-8px) Accenture logo from being clipped */
   padding-bottom: 4px; /* prevent scrollbar overlap */
 }
 
@@ -1554,6 +1555,7 @@ body:not(.page-home) .hero__sub {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: none;
+    padding-top: 6px; /* prevent translateY(-6px) Accenture logo from being clipped */
     padding-inline: var(--space-md);
     /* Offset the container's own padding so logos extend edge-to-edge */
     margin-inline: calc(-1 * var(--space-md));
