@@ -2,9 +2,6 @@
    VikVisuals — Global Stylesheet
    ============================================================ */
 
-/* --- Google Fonts Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
-
 /* --- CSS Custom Properties --- */
 :root {
   --color-bg:        #F9F7F4;
@@ -1057,6 +1054,39 @@ body:not(.page-home) .hero__sub {
   opacity: 0.6;
   transition: opacity var(--transition), filter var(--transition);
 }
+
+/* Client logo sprite */
+.marquee__logo--sprite {
+  display: inline-block;
+  width: 100px;
+  height: 60px;
+  background-image: url('../images/clients/clients-sprite.png');
+  background-repeat: no-repeat;
+  background-size: 1500px 60px;
+  opacity: 0.6;
+  transition: opacity var(--transition);
+  flex-shrink: 0;
+}
+.marquee__item:hover .marquee__logo--sprite {
+  opacity: 1;
+}
+
+/* Individual logo positions */
+.marquee__logo--sprite[data-logo="be-the-standard"]   { background-position: 0 0; }
+.marquee__logo--sprite[data-logo="topaz"]             { background-position: -100px 0; }
+.marquee__logo--sprite[data-logo="everlast"]          { background-position: -200px 0; }
+.marquee__logo--sprite[data-logo="sedulo-foundation"] { background-position: -300px 0; }
+.marquee__logo--sprite[data-logo="sheepscar"]         { background-position: -400px 0; }
+.marquee__logo--sprite[data-logo="velvet"]            { background-position: -500px 0; }
+.marquee__logo--sprite[data-logo="forty-seven"]       { background-position: -600px 0; }
+.marquee__logo--sprite[data-logo="mixala"]            { background-position: -700px 0; }
+.marquee__logo--sprite[data-logo="sedulo"]            { background-position: -800px 0; }
+.marquee__logo--sprite[data-logo="achilles"]          { background-position: -900px 0; }
+.marquee__logo--sprite[data-logo="hba-support"]       { background-position: -1000px 0; }
+.marquee__logo--sprite[data-logo="nexus"]             { background-position: -1100px 0; }
+.marquee__logo--sprite[data-logo="igd-sport"]         { background-position: -1200px 0; }
+.marquee__logo--sprite[data-logo="genetic-alliance"]  { background-position: -1300px 0; }
+.marquee__logo--sprite[data-logo="ippr"]              { background-position: -1400px 0; }
 
 @media (hover: hover) and (pointer: fine) {
   .marquee__item:hover {
@@ -3894,5 +3924,73 @@ body:not(.page-home) .hero__sub {
   }
   .video-examples__featured-text {
     padding: 0;
+  }
+}
+
+/* ============================================================
+   MOBILE TAP TARGET IMPROVEMENTS
+   ============================================================ */
+
+/* Mobile nav links — minimum 48px tap target */
+.nav__mobile-link {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.nav__mobile-sub {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Hamburger — larger tap area */
+.nav__hamburger {
+  padding: 12px;
+  margin: -8px;
+}
+
+/* Hero dots — larger tap area without changing visual */
+.hero__dot {
+  padding: 10px;
+  margin: -10px;
+  box-sizing: content-box;
+}
+
+/* Footer nav links — minimum tap height */
+.footer__nav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+/* ============================================================
+   RESPONSIVE LAYOUT FIXES
+   ============================================================ */
+
+/* Services grid: single column on very small screens */
+@media (max-width: 480px) {
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+  .service-card {
+    height: 320px;
+  }
+}
+
+/* Hero CTA buttons: full width on very small screens */
+@media (max-width: 380px) {
+  .hero__cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero__cta-group .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
   }
 }
