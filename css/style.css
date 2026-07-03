@@ -1543,6 +1543,7 @@ body:not(.page-home) .hero__sub {
 
 .clients__logo-img--accenture {
   height: 48px;
+  transform: translateY(-4px);
 }
 
 /* Mobile: single scrollable row — no wrapping */
@@ -1576,6 +1577,7 @@ body:not(.page-home) .hero__sub {
 
   .clients__logo-img--accenture {
     height: 32px;
+    transform: translateY(-3px);
   }
 }
 
