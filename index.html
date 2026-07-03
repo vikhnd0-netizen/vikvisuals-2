@@ -11,10 +11,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preload" as="image" href="images/hero/hero-slide-01.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.min.css" />
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NNPKZPMC3"></script>
   <script>
@@ -70,9 +71,9 @@
   <!-- HERO SLIDESHOW -->
   <section class="hero">
     <div class="hero__slide active" style="background-image: url('images/hero/hero-slide-01.jpg');"></div>
-    <div class="hero__slide hero__slide--right-mobile" style="background-image: url('images/hero/hero-slide-02.jpg');"></div>
-    <div class="hero__slide" style="background-image: url('images/hero/hero-slide-03.jpg');"></div>
-    <div class="hero__slide" style="background-image: url('images/hero/hero-slide-04.jpg');"></div>
+    <div class="hero__slide hero__slide--right-mobile" data-bg="images/hero/hero-slide-02.jpg"></div>
+    <div class="hero__slide" data-bg="images/hero/hero-slide-03.jpg"></div>
+    <div class="hero__slide" data-bg="images/hero/hero-slide-04.jpg"></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <h1 class="hero__title">
@@ -109,7 +110,7 @@
       </div>
       <div class="intro-photo__image fade-in">
         <button class="yt-placeholder" data-video-id="-pxfY6o0mKQ" data-video-title="Colour ball 2025" aria-label="Play video: Colour ball 2025">
-          <img src="https://img.youtube.com/vi/-pxfY6o0mKQ/maxresdefault.jpg" alt="Colour ball 2025 video thumbnail" />
+          <img src="https://img.youtube.com/vi/-pxfY6o0mKQ/maxresdefault.jpg" alt="Colour ball 2025 video thumbnail" loading="lazy" />
           <span class="yt-placeholder__play" aria-hidden="true"></span>
         </button>
       </div>
@@ -347,7 +348,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.min.js"></script>
 
 </body>
 </html>

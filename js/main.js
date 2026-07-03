@@ -12,6 +12,11 @@
 
   document.addEventListener('DOMContentLoaded', function () {
 
+    // ── Defer non-hero background images ────────────────────
+    document.querySelectorAll('[data-bg]').forEach(function(el) {
+      el.style.backgroundImage = "url('" + el.getAttribute('data-bg') + "')";
+    });
+
     // ── 0a. maxresdefault fallback ───────────────────────────
     // If a maxresdefault.jpg fails to load, fall back to hqdefault.jpg.
     document.querySelectorAll('.yt-placeholder img').forEach(function (img) {
