@@ -1059,10 +1059,10 @@ body:not(.page-home) .hero__sub {
 .marquee__logo--sprite {
   display: inline-block;
   width: 100px;
-  height: 60px;
+  height: 83px;
   background-image: url('../images/clients/clients-sprite.png');
   background-repeat: no-repeat;
-  background-size: 1500px 60px;
+  background-size: 1500px 83px;
   opacity: 0.6;
   transition: opacity var(--transition);
   flex-shrink: 0;
@@ -3951,13 +3951,6 @@ body:not(.page-home) .hero__sub {
 .nav__hamburger {
   padding: 12px;
   margin: -8px;
-}
-
-/* Hero dots — larger tap area without changing visual */
-.hero__dot {
-  padding: 10px;
-  margin: -10px;
-  box-sizing: content-box;
 }
 
 /* Footer nav links — minimum tap height */
