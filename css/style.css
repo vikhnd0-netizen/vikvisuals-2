@@ -1490,10 +1490,12 @@ body:not(.page-home) .hero__sub {
 
 .clients__logos {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: var(--space-md) var(--space-lg);
+  gap: clamp(16px, 3vw, 40px);
+  overflow-x: auto;
+  padding-bottom: 4px; /* prevent scrollbar overlap */
 }
 
 .clients__logo {
@@ -1511,8 +1513,9 @@ body:not(.page-home) .hero__sub {
 }
 
 .clients__logo-img {
-  height: 48px;
+  height: 40px;
   width: auto;
+  flex-shrink: 0;
   display: block;
   opacity: 0.55;
   filter: grayscale(100%);
@@ -1527,15 +1530,47 @@ body:not(.page-home) .hero__sub {
 
 /* Per-logo size overrides */
 .clients__logo-img--sedulo {
-  height: 36px !important;
+  height: 30px;
 }
 
 .clients__logo-img--hba {
-  height: 100px !important;
+  height: 50px;
 }
 
 .clients__logo-img--be-the-standard {
-  height: 62px !important;
+  height: 50px;
+}
+
+.clients__logo-img--accenture {
+  height: 48px;
+}
+
+/* Mobile: allow logos to wrap into neat rows */
+@media (max-width: 768px) {
+  .clients__logos {
+    flex-wrap: wrap;
+    gap: 20px 24px;
+  }
+
+  .clients__logo-img {
+    height: 32px;
+  }
+
+  .clients__logo-img--sedulo {
+    height: 24px;
+  }
+
+  .clients__logo-img--hba {
+    height: 40px;
+  }
+
+  .clients__logo-img--be-the-standard {
+    height: 40px;
+  }
+
+  .clients__logo-img--accenture {
+    height: 36px;
+  }
 }
 
 /* Tighter bottom padding on clients strip when adjacent to testimonial */
