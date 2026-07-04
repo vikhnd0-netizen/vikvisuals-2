@@ -1015,7 +1015,7 @@ body:not(.page-home) .hero__sub {
   padding: var(--space-sm) 0 var(--space-lg);
   border-bottom: 1px solid var(--color-border);
   position: relative;
-  min-height: 100px;
+  min-height: 145px;
   -webkit-mask-image: linear-gradient(to right, transparent 0, black clamp(80px, 12vw, 200px), black calc(100% - clamp(80px, 12vw, 200px)), transparent 100%);
           mask-image: linear-gradient(to right, transparent 0, black clamp(80px, 12vw, 200px), black calc(100% - clamp(80px, 12vw, 200px)), transparent 100%);
 }
@@ -1030,7 +1030,7 @@ body:not(.page-home) .hero__sub {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  min-height: 80px;
+  min-height: 125px;
 }
 
 @keyframes marquee-scroll {
@@ -1058,11 +1058,11 @@ body:not(.page-home) .hero__sub {
 /* Client logo sprite */
 .marquee__logo--sprite {
   display: inline-block;
-  width: 100px;
-  height: 83px;
+  width: 150px;
+  height: 125px;
   background-image: url('../images/clients/clients-sprite.png');
   background-repeat: no-repeat;
-  background-size: 1500px 83px;
+  background-size: 2250px 125px;
   opacity: 0.6;
   transition: opacity var(--transition);
   flex-shrink: 0;
@@ -1073,20 +1073,20 @@ body:not(.page-home) .hero__sub {
 
 /* Individual logo positions */
 .marquee__logo--sprite[data-logo="be-the-standard"]   { background-position: 0 0; }
-.marquee__logo--sprite[data-logo="topaz"]             { background-position: -100px 0; }
-.marquee__logo--sprite[data-logo="everlast"]          { background-position: -200px 0; }
-.marquee__logo--sprite[data-logo="sedulo-foundation"] { background-position: -300px 0; }
-.marquee__logo--sprite[data-logo="sheepscar"]         { background-position: -400px 0; }
-.marquee__logo--sprite[data-logo="velvet"]            { background-position: -500px 0; }
-.marquee__logo--sprite[data-logo="forty-seven"]       { background-position: -600px 0; }
-.marquee__logo--sprite[data-logo="mixala"]            { background-position: -700px 0; }
-.marquee__logo--sprite[data-logo="sedulo"]            { background-position: -800px 0; }
-.marquee__logo--sprite[data-logo="achilles"]          { background-position: -900px 0; }
-.marquee__logo--sprite[data-logo="hba-support"]       { background-position: -1000px 0; }
-.marquee__logo--sprite[data-logo="nexus"]             { background-position: -1100px 0; }
-.marquee__logo--sprite[data-logo="igd-sport"]         { background-position: -1200px 0; }
-.marquee__logo--sprite[data-logo="genetic-alliance"]  { background-position: -1300px 0; }
-.marquee__logo--sprite[data-logo="ippr"]              { background-position: -1400px 0; }
+.marquee__logo--sprite[data-logo="topaz"]             { background-position: -150px 0; }
+.marquee__logo--sprite[data-logo="everlast"]          { background-position: -300px 0; }
+.marquee__logo--sprite[data-logo="sedulo-foundation"] { background-position: -450px 0; }
+.marquee__logo--sprite[data-logo="sheepscar"]         { background-position: -600px 0; }
+.marquee__logo--sprite[data-logo="velvet"]            { background-position: -750px 0; }
+.marquee__logo--sprite[data-logo="forty-seven"]       { background-position: -900px 0; }
+.marquee__logo--sprite[data-logo="mixala"]            { background-position: -1050px 0; }
+.marquee__logo--sprite[data-logo="sedulo"]            { background-position: -1200px 0; }
+.marquee__logo--sprite[data-logo="achilles"]          { background-position: -1350px 0; }
+.marquee__logo--sprite[data-logo="hba-support"]       { background-position: -1500px 0; }
+.marquee__logo--sprite[data-logo="nexus"]             { background-position: -1650px 0; }
+.marquee__logo--sprite[data-logo="igd-sport"]         { background-position: -1800px 0; }
+.marquee__logo--sprite[data-logo="genetic-alliance"]  { background-position: -1950px 0; }
+.marquee__logo--sprite[data-logo="ippr"]              { background-position: -2100px 0; }
 
 @media (hover: hover) and (pointer: fine) {
   .marquee__item:hover {
@@ -1495,6 +1495,7 @@ body:not(.page-home) .hero__sub {
   justify-content: center;
   gap: clamp(16px, 3vw, 40px);
   overflow-x: auto;
+  padding-top: 8px; /* room for Accenture logo offset */
   padding-bottom: 4px; /* prevent scrollbar overlap */
 }
 
@@ -1543,6 +1544,8 @@ body:not(.page-home) .hero__sub {
 
 .clients__logo-img--accenture {
   height: 48px;
+  position: relative;
+  top: -8px;
 }
 
 /* Mobile: single scrollable row — no wrapping */
@@ -1553,6 +1556,7 @@ body:not(.page-home) .hero__sub {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: none;
+    padding-top: 6px; /* room for Accenture logo offset */
     padding-inline: var(--space-md);
     /* Offset the container's own padding so logos extend edge-to-edge */
     margin-inline: calc(-1 * var(--space-md));
@@ -1576,6 +1580,7 @@ body:not(.page-home) .hero__sub {
 
   .clients__logo-img--accenture {
     height: 32px;
+    top: -6px;
   }
 }
 
