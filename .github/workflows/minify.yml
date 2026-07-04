@@ -1,0 +1,36 @@
+name: Minify CSS & JS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'css/style.css'
+      - 'js/main.js'
+
+jobs:
+  minify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install minifiers
+        run: npm install --no-save clean-css-cli uglify-js
+
+      - name: Minify CSS
+        run: npx cleancss -o css/style.min.css css/style.css
+
+      - name: Minify JS
+        run: npx uglifyjs js/main.js -o js/main.min.js -c -m
+
+      - name: Commit minified files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-regenerate minified CSS and JS"
+          file_pattern: "css/style.min.css js/main.min.js"
