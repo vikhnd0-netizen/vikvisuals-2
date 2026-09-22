@@ -3594,6 +3594,10 @@ body:not(.page-home) .hero__sub {
   font-size: clamp(2rem, 4.4vw, 2.9rem);
 }
 
+.haysmac-hero-intro {
+  max-width: 61ch;
+}
+
 .cs-page-header__intro {
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   color: var(--color-muted);
@@ -3810,8 +3814,12 @@ body:not(.page-home) .hero__sub {
   line-height: 1.8;
 }
 
+.haysmac-why-refinement .cs-dark-split__why {
+  align-items: stretch;
+}
+
 .haysmac-why-refinement .cs-dark-split__why-text p {
-  font-size: clamp(1rem, 1.1vw, 1.06rem);
+  font-size: clamp(1.02rem, 1.12vw, 1.08rem);
   line-height: 1.88;
   margin-bottom: 0.65rem;
 }
@@ -3820,8 +3828,12 @@ body:not(.page-home) .hero__sub {
   margin-bottom: 0;
 }
 
+.haysmac-why-refinement .cs-dark-split__why-image {
+  display: flex;
+}
+
 .haysmac-cta-refinement .page-cta__inner {
-  max-width: 780px;
+  max-width: 860px;
 }
 
 @media (max-width: 768px) {
