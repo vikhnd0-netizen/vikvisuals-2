@@ -3700,7 +3700,7 @@ body:not(.page-home) .hero__sub {
 }
 
 .haysmac-aim-content {
-  gap: 0.875rem;
+  gap: 0.65rem;
 }
 
 .haysmac-aim-content h2 {
@@ -3709,10 +3709,20 @@ body:not(.page-home) .hero__sub {
 
 .haysmac-aim-content p {
   margin-bottom: 0;
+  line-height: 1.72;
 }
 
 .haysmac-aim-content ul {
-  margin-top: 0.25rem !important;
+  margin-top: 0 !important;
+}
+
+.haysmac-aim-image {
+  align-self: center;
+}
+
+.haysmac-aim-stat-label {
+  display: flex;
+  align-items: center;
 }
 
 .cs-dark-split__left p {
