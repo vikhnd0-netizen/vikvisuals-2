@@ -15,6 +15,44 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.min.css" />
+  <style>
+    .cs-page-header__meta {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      max-width: 58ch;
+      line-height: 1.6;
+    }
+    .cs-page-header__meta--tight {
+      margin-top: 0.65rem;
+    }
+    .cs-dark-split__metrics {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-self: center;
+    }
+    .cs-dark-split__metric-number {
+      display: block;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+      color: rgba(255, 255, 255, 0.95);
+    }
+    .cs-dark-split__metric-label {
+      margin: 0 0 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .cs-dark-split__metric-label:last-child {
+      margin-bottom: 0;
+    }
+  </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NNPKZPMC3"></script>
   <script>
@@ -72,8 +110,8 @@
         <span class="cs-page-header__label">Case study</span>
         <h1 class="cs-page-header__title">HaysMac LinkedIn video content</h1>
         <p class="cs-page-header__intro">I have worked with HaysMac across multiple filmed conversations, capturing natural expert-led discussions with HaysMac partners and external business leaders.</p>
-        <p class="cs-page-header__meta" style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--color-muted); max-width: 58ch; line-height: 1.6;">From each discussion, I build a bank of LinkedIn-first content including the full conversation, longer standalone thought-leadership edits and short social clips.</p>
-        <p class="cs-page-header__meta" style="margin-top: 0.65rem; font-size: 0.9rem; color: var(--color-muted); max-width: 58ch; line-height: 1.6;">Latest example: a conversation with Marcus Stuttard, Head of AIM at the London Stock Exchange.</p>
+        <p class="cs-page-header__meta">From each discussion, I build a bank of LinkedIn-first content including the full conversation, longer standalone thought-leadership edits and short social clips.</p>
+        <p class="cs-page-header__meta cs-page-header__meta--tight">Latest example: a conversation with Marcus Stuttard, Head of AIM at the London Stock Exchange.</p>
       </div>
       <div class="cs-page-header__logo">
         <img src="../images/case-studies/haysmac/haysmac-logo.jpg" alt="HaysMac logo" loading="eager" />
@@ -156,12 +194,16 @@
         <h2>One conversation. Thirteen pieces of content.</h2>
         <p>For the AIM project, the aim was not simply to capture one full interview. It was to create a structured set of assets that HaysMac could use across LinkedIn and wider marketing without needing a separate shoot for every idea.</p>
       </div>
-      <ul class="cs-dark-split__list">
-        <li><strong style="display: block; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; line-height: 1; margin-bottom: 0.35rem;">1</strong><span style="display: block; font-size: 0.95rem; font-weight: 500;">Full conversation</span></li>
-        <li><strong style="display: block; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; line-height: 1; margin-bottom: 0.35rem;">3</strong><span style="display: block; font-size: 0.95rem; font-weight: 500;">Hero videos</span></li>
-        <li><strong style="display: block; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; line-height: 1; margin-bottom: 0.35rem;">9</strong><span style="display: block; font-size: 0.95rem; font-weight: 500;">Social clips</span></li>
-        <li><strong style="display: block; font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 700; line-height: 1; margin-bottom: 0.35rem;">13</strong><span style="display: block; font-size: 0.95rem; font-weight: 500;">Pieces of video content</span></li>
-      </ul>
+      <dl class="cs-dark-split__metrics">
+        <dt class="cs-dark-split__metric-number">1</dt>
+        <dd class="cs-dark-split__metric-label">Full conversation</dd>
+        <dt class="cs-dark-split__metric-number">3</dt>
+        <dd class="cs-dark-split__metric-label">Hero videos</dd>
+        <dt class="cs-dark-split__metric-number">9</dt>
+        <dd class="cs-dark-split__metric-label">Social clips</dd>
+        <dt class="cs-dark-split__metric-number">13</dt>
+        <dd class="cs-dark-split__metric-label">Pieces of video content</dd>
+      </dl>
     </div>
   </section>
 
