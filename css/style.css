@@ -3814,6 +3814,10 @@ body:not(.page-home) .hero__sub {
   line-height: 1.8;
 }
 
+.haysmac-why-refinement .cs-dark-split__why {
+  align-items: stretch;
+}
+
 .haysmac-why-refinement .cs-dark-split__why-text p {
   font-size: clamp(1.02rem, 1.12vw, 1.08rem);
   line-height: 1.88;
@@ -3822,6 +3826,10 @@ body:not(.page-home) .hero__sub {
 
 .haysmac-why-refinement .cs-dark-split__why-text p:last-child {
   margin-bottom: 0;
+}
+
+.haysmac-why-refinement .cs-dark-split__why-image {
+  display: flex;
 }
 
 .haysmac-cta-refinement .page-cta__inner {
