@@ -2593,6 +2593,11 @@ body:not(.page-home) .hero__sub {
     gap: var(--space-md);
   }
 
+  .footer__nav {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
   .gallery-filter__inner {
     gap: 6px;
   }
