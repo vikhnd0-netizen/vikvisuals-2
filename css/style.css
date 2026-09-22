@@ -3344,6 +3344,11 @@ body:not(.page-home) .hero__sub {
   border-radius: var(--radius-lg);
 }
 
+.yt-placeholder--social-custom img {
+  object-fit: cover;
+  object-position: center top;
+}
+
 .yt-placeholder:hover img {
   transform: scale(1.04);
   opacity: 0.85;
@@ -3585,6 +3590,10 @@ body:not(.page-home) .hero__sub {
   margin-bottom: 1rem;
 }
 
+.haysmac-major-heading {
+  font-size: clamp(2rem, 4.4vw, 2.9rem);
+}
+
 .cs-page-header__intro {
   font-size: clamp(1rem, 1.8vw, 1.2rem);
   color: var(--color-muted);
@@ -3688,6 +3697,22 @@ body:not(.page-home) .hero__sub {
 .cs-dark-split__left h2 {
   color: var(--color-white);
   margin-bottom: var(--space-sm);
+}
+
+.haysmac-aim-content {
+  gap: 0.875rem;
+}
+
+.haysmac-aim-content h2 {
+  margin-bottom: 0;
+}
+
+.haysmac-aim-content p {
+  margin-bottom: 0;
+}
+
+.haysmac-aim-content ul {
+  margin-top: 0.25rem !important;
 }
 
 .cs-dark-split__left p {
