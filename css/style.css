@@ -3810,6 +3810,20 @@ body:not(.page-home) .hero__sub {
   line-height: 1.8;
 }
 
+.haysmac-why-refinement .cs-dark-split__why-text p {
+  font-size: clamp(1rem, 1.1vw, 1.06rem);
+  line-height: 1.88;
+  margin-bottom: 0.65rem;
+}
+
+.haysmac-why-refinement .cs-dark-split__why-text p:last-child {
+  margin-bottom: 0;
+}
+
+.haysmac-cta-refinement .page-cta__inner {
+  max-width: 780px;
+}
+
 @media (max-width: 768px) {
   .cs-page-header__inner--split {
     grid-template-columns: 1fr;
