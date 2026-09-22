@@ -3832,6 +3832,55 @@ body:not(.page-home) .hero__sub {
   display: flex;
 }
 
+.haysmac-why-refinement .haysmac-secondary-cta {
+  text-align: center;
+  margin-top: var(--space-xl);
+}
+
+.haysmac-secondary-cta__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15em;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.haysmac-secondary-cta__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.18em;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 240ms ease;
+}
+
+.haysmac-secondary-cta__arrow {
+  display: inline-block;
+  min-width: 1ch;
+  transition: transform 240ms ease;
+}
+
+.haysmac-secondary-cta__link:hover::after,
+.haysmac-secondary-cta__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.haysmac-secondary-cta__link:hover .haysmac-secondary-cta__arrow,
+.haysmac-secondary-cta__link:focus-visible .haysmac-secondary-cta__arrow {
+  transform: translateX(4px);
+}
+
 .haysmac-cta-refinement .page-cta__inner {
   max-width: 860px;
 }
