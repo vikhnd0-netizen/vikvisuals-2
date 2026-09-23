@@ -2238,14 +2238,14 @@ body:not(.page-home) .hero__sub {
    CONTACT PAGE
    ============================================================ */
 .contact-section {
-  padding: var(--space-md) 0 var(--space-xl);
+  padding: var(--space-sm) 0 var(--space-xl);
 }
 
 .contact-section__inner {
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: var(--space-xl);
-  align-items: center;
+  align-items: start;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--space-md);
@@ -2265,12 +2265,12 @@ body:not(.page-home) .hero__sub {
   font-size: 1.05rem;
   font-weight: 300;
   line-height: 1.8;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
   max-width: none;
 }
 
 .contact-trust-line {
-  margin: 0 0 var(--space-sm);
+  margin: var(--space-sm) 0 0;
   font-size: 0.85rem;
   line-height: 1.6;
   color: var(--color-muted);
@@ -2341,6 +2341,10 @@ body:not(.page-home) .hero__sub {
   gap: 0.75rem;
 }
 
+.contact-success[hidden] {
+  display: none !important;
+}
+
 .contact-success__icon {
   width: 2.4rem;
   height: 2.4rem;
@@ -2381,6 +2385,16 @@ body:not(.page-home) .hero__sub {
   text-transform: uppercase;
   color: var(--color-navy);
   font-family: var(--font-body);
+}
+
+.form-label-optional {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--color-muted);
 }
 
 .form-group input,
