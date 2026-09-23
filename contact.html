@@ -25,7 +25,7 @@
   </script>
   <style>
     .contact-section--aligned {
-      padding-top: var(--space-xs);
+      padding-top: 0;
     }
 
     .contact-section__inner--top {
@@ -78,11 +78,28 @@
     }
 
     .contact-clients-heading--compact {
-      margin: 0 auto var(--space-xs);
+      margin: -0.2rem auto 0.35rem;
     }
 
     .contact-marquee--compact {
-      padding: 0 0 var(--space-sm);
+      padding: 0 0 var(--space-xs);
+      min-height: auto;
+      border-bottom: none;
+    }
+
+    .contact-marquee--compact .marquee__track {
+      min-height: 84px;
+      gap: 2.25rem;
+    }
+
+    .contact-marquee--compact .marquee__item {
+      padding: 0 var(--space-sm);
+    }
+
+    .contact-marquee--compact .marquee__logo--sprite {
+      width: 102px;
+      height: 85px;
+      background-size: 1530px 85px;
     }
   </style>
 </head>
