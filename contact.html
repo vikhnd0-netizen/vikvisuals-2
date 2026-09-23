@@ -191,9 +191,9 @@
           <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Start the conversation</button>
           <p id="form-status" style="display:none;margin-top:1rem;"></p>
         </form>
-        <div id="contact-success" role="status" aria-live="polite" aria-atomic="true" aria-labelledby="contact-success-title" tabindex="-1" class="contact-success-panel">
+        <div id="contact-success" role="status" aria-live="polite" aria-atomic="true" aria-labelledby="contact-success-title" class="contact-success-panel">
           <p class="contact-success-check">✓</p>
-          <h3 id="contact-success-title" class="contact-success-title">Thanks for getting in touch.</h3>
+          <h3 id="contact-success-title" class="contact-success-title" tabindex="-1">Thanks for getting in touch.</h3>
           <p class="contact-success-message">I’ll get back to you within 24 hours.</p>
         </div>
         <script>
@@ -203,6 +203,7 @@
             var status = document.getElementById('form-status');
             var replyto = document.getElementById('replyto-field');
             var successPanel = document.getElementById('contact-success');
+            var successTitle = document.getElementById('contact-success-title');
 
             form.addEventListener('submit', function (e) {
               var succeeded = false;
@@ -228,10 +229,12 @@
                   succeeded = true;
                   form.style.display = 'none';
                   successPanel.style.display = 'flex';
-                  successPanel.focus();
+                  successTitle.focus();
                 } else {
                   return response.json().then(function (json) {
                     throw new Error(json.error || 'Unknown error occurred');
+                  }).catch(function () {
+                    throw new Error('Unknown error occurred');
                   });
                 }
               })
