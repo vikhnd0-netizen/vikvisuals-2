@@ -139,7 +139,7 @@
           <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Start the conversation</button>
           <p id="form-status" role="alert" style="display:none;margin-top:1rem;"></p>
         </form>
-        <div class="contact-success" id="contact-success" role="status" aria-live="polite" aria-atomic="true" hidden>
+        <div class="contact-success" id="contact-success" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden>
           <div class="contact-success__icon" aria-hidden="true">✓</div>
           <h3 class="contact-success__title">Thanks for getting in touch.</h3>
           <p class="contact-success__copy">I'll get back to you within 24 hours.</p>
@@ -198,12 +198,16 @@
                   submissionSucceeded = true;
                   form.style.display = 'none';
                   successState.hidden = false;
+                  successState.focus();
                   announcer.textContent = 'Thanks for getting in touch. I\u2019ll get back to you within 24 hours.';
                 } else {
                   var contentType = response.headers.get('content-type') || '';
                   if (contentType.indexOf('application/json') !== -1) {
                     return response.json().then(function (json) {
                       var jsonError = json.error;
+                      if (jsonError && typeof jsonError === 'object') {
+                        jsonError = jsonError.message || jsonError.error || '';
+                      }
                       if (!jsonError && Array.isArray(json.errors) && json.errors.length > 0) {
                         jsonError = json.errors[0].message || json.errors[0].field || '';
                       }
