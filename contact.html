@@ -99,6 +99,7 @@
 
       <div class="fade-in">
         <p class="contact-trust-line" id="contact-trust-line">Trusted by HaysMac, Accenture, Genetic Alliance UK and GOAT.</p>
+        <p id="form-announcer" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
         <div id="contact-form-state" role="region" aria-label="Contact form">
           <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line" action="https://formspree.io/f/mpqydbez" method="POST">
             <input type="hidden" name="_replyto" id="replyto-field" />
@@ -137,9 +138,9 @@
               <textarea id="message" name="message" placeholder="Tell me about your project&hellip;" required></textarea>
             </div>
             <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Start the conversation</button>
-            <p id="form-status" role="alert" class="visually-hidden" style="margin-top:1rem;"></p>
+            <p id="form-status" class="visually-hidden" style="margin-top:1rem;"></p>
           </form>
-          <div class="contact-success" id="contact-success" role="status" aria-atomic="true" tabindex="-1" hidden>
+          <div class="contact-success" id="contact-success" tabindex="-1" hidden>
             <div class="contact-success__icon" aria-hidden="true">✓</div>
             <h3 class="contact-success__title">Thanks for getting in touch.</h3>
             <p class="contact-success__copy">I'll get back to you within 24 hours.</p>
@@ -150,6 +151,7 @@
             var form = document.getElementById('contact-form');
             var btn = document.getElementById('submit-btn');
             var status = document.getElementById('form-status');
+            var announcer = document.getElementById('form-announcer');
             var successState = document.getElementById('contact-success');
             var replyto = document.getElementById('replyto-field');
             var FORM_ERROR_MESSAGE_RULES = [
@@ -206,6 +208,7 @@
               btn.textContent = 'Sending\u2026';
               status.classList.add('visually-hidden');
               status.textContent = '';
+              announcer.textContent = '';
 
               var data = new FormData(form);
 
@@ -222,6 +225,7 @@
                   form.hidden = true;
                   successState.hidden = false;
                   successState.focus();
+                  announcer.textContent = 'Thanks for getting in touch. I\u2019ll get back to you within 24 hours.';
                 } else {
                   return parseSubmissionError(response);
                 }
@@ -232,6 +236,7 @@
                 status.classList.remove('visually-hidden');
                 status.style.color = '#c0392b';
                 status.textContent = errorMessage;
+                announcer.textContent = errorMessage;
               })
               .finally(function () {
                 if (!submissionSucceeded) {
