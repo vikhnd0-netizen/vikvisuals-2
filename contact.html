@@ -176,6 +176,7 @@
               e.preventDefault();
               replyto.value = form.elements['email'].value;
               var submissionSucceeded = false;
+              var submissionFailed = false;
 
               btn.disabled = true;
               btn.textContent = 'Sending\u2026';
@@ -216,6 +217,8 @@
               })
               .catch(function (error) {
                 var errorMessage = getUserFacingError(error && error.message);
+                submissionFailed = true;
+                status.style.display = 'block';
                 status.style.color = '#c0392b';
                 status.textContent = errorMessage;
                 announcer.textContent = errorMessage;
@@ -224,7 +227,9 @@
                 if (!submissionSucceeded) {
                   btn.disabled = false;
                   btn.textContent = 'Start the conversation';
-                  status.style.display = 'block';
+                  if (!submissionFailed) {
+                    status.style.display = 'none';
+                  }
                 }
               });
             });
