@@ -191,9 +191,15 @@
                   });
                 }
               })
-              .catch(function () {
+              .catch(function (error) {
+                var fallbackMessage = 'Something went wrong. Please email me directly at hello@vikvisuals.com.';
+                var errorMessage = error && error.message ? error.message : fallbackMessage;
+                if (errorMessage === 'Unknown error occurred') {
+                  errorMessage = fallbackMessage;
+                }
                 status.style.color = '#c0392b';
-                status.textContent = 'Something went wrong. Please email me directly at hello@vikvisuals.com.';
+                status.textContent = errorMessage;
+                announcer.textContent = errorMessage;
               })
               .finally(function () {
                 if (!submissionSucceeded) {
