@@ -100,49 +100,51 @@
       <div class="fade-in">
         <p class="contact-trust-line" id="contact-trust-line">Trusted by HaysMac, Accenture, Genetic Alliance UK and GOAT.</p>
         <p id="form-announcer" aria-live="polite" aria-atomic="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"></p>
-        <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line" action="https://formspree.io/f/mpqydbez" method="POST">
-          <input type="hidden" name="_replyto" id="replyto-field" />
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
+        <div id="contact-form-state" aria-live="polite" aria-atomic="true">
+          <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line" action="https://formspree.io/f/mpqydbez" method="POST">
+            <input type="hidden" name="_replyto" id="replyto-field" />
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="project-type">Type of Project</label>
+              <select id="project-type" name="project_type">
+                <option value="" disabled selected>Select a service&hellip;</option>
+                <option value="professional">Professional Services</option>
+                <option value="charity">Charity</option>
+                <option value="events">Events &amp; Hospitality</option>
+                <option value="food">Food &amp; Restaurant</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="project-timeline">Project timeline</label>
+              <select id="project-timeline" name="project_timeline">
+                <option value="" selected>Not specified</option>
+                <option value="As soon as possible">As soon as possible</option>
+                <option value="Within the next month">Within the next month</option>
+                <option value="1 to 3 months">1 to 3 months</option>
+                <option value="3+ months">3+ months</option>
+                <option value="Just exploring">Just exploring</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me about your project&hellip;" required></textarea>
+            </div>
+            <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Start the conversation</button>
+            <p id="form-status" role="alert" style="display:none;margin-top:1rem;"></p>
+          </form>
+          <div class="contact-success" id="contact-success" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden>
+            <div class="contact-success__icon" aria-hidden="true">✓</div>
+            <h3 class="contact-success__title">Thanks for getting in touch.</h3>
+            <p class="contact-success__copy">I'll get back to you within 24 hours.</p>
           </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required />
-          </div>
-          <div class="form-group">
-            <label for="project-type">Type of Project</label>
-            <select id="project-type" name="project_type">
-              <option value="" disabled selected>Select a service&hellip;</option>
-              <option value="professional">Professional Services</option>
-              <option value="charity">Charity</option>
-              <option value="events">Events &amp; Hospitality</option>
-              <option value="food">Food &amp; Restaurant</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="project-timeline">Project timeline</label>
-            <select id="project-timeline" name="project_timeline">
-              <option value="" selected>Not specified</option>
-              <option value="As soon as possible">As soon as possible</option>
-              <option value="Within the next month">Within the next month</option>
-              <option value="1 to 3 months">1 to 3 months</option>
-              <option value="3+ months">3+ months</option>
-              <option value="Just exploring">Just exploring</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell me about your project&hellip;" required></textarea>
-          </div>
-          <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Start the conversation</button>
-          <p id="form-status" role="alert" style="display:none;margin-top:1rem;"></p>
-        </form>
-        <div class="contact-success" id="contact-success" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden>
-          <div class="contact-success__icon" aria-hidden="true">✓</div>
-          <h3 class="contact-success__title">Thanks for getting in touch.</h3>
-          <p class="contact-success__copy">I'll get back to you within 24 hours.</p>
         </div>
         <script>
           (function () {
@@ -152,24 +154,43 @@
             var announcer = document.getElementById('form-announcer');
             var successState = document.getElementById('contact-success');
             var replyto = document.getElementById('replyto-field');
+            var errorMessageRules = [
+              { pattern: /email/, message: 'Please enter a valid email address and try again.' },
+              { pattern: /required|missing|must not be blank|invalid input/, message: 'Please complete all required fields and try again.' },
+              { pattern: /rate|too many/, message: 'Too many attempts right now. Please try again shortly.' }
+            ];
+            var fallbackErrorMessage = 'Something went wrong. Please email me directly at hello@vikvisuals.com.';
 
             function getUserFacingError(message) {
               var normalized = (message || '').toLowerCase();
-              if (normalized.indexOf('email') !== -1) {
-                return 'Please enter a valid email address and try again.';
+              for (var i = 0; i < errorMessageRules.length; i += 1) {
+                if (errorMessageRules[i].pattern.test(normalized)) {
+                  return errorMessageRules[i].message;
+                }
               }
-              if (
-                normalized.indexOf('required') !== -1 ||
-                normalized.indexOf('missing') !== -1 ||
-                normalized.indexOf('must not be blank') !== -1 ||
-                normalized.indexOf('invalid input') !== -1
-              ) {
-                return 'Please complete all required fields and try again.';
-              }
-              if (normalized.indexOf('rate') !== -1 || normalized.indexOf('too many') !== -1) {
-                return 'Too many attempts right now. Please try again shortly.';
-              }
-              return 'Something went wrong. Please email me directly at hello@vikvisuals.com.';
+              return fallbackErrorMessage;
+            }
+
+            function parseSubmissionError(response) {
+              return response.text().then(function (text) {
+                var errorText = text;
+                if (text) {
+                  try {
+                    var json = JSON.parse(text);
+                    var jsonError = json.error;
+                    if (jsonError && typeof jsonError === 'object') {
+                      jsonError = jsonError.message || jsonError.error || '';
+                    }
+                    if (!jsonError && Array.isArray(json.errors) && json.errors.length > 0) {
+                      jsonError = json.errors[0].message || json.errors[0].field || '';
+                    }
+                    errorText = jsonError || errorText;
+                  } catch (parseError) {
+                    errorText = text;
+                  }
+                }
+                throw new Error(errorText || 'Unknown error occurred');
+              });
             }
 
             form.addEventListener('submit', function (e) {
@@ -200,25 +221,7 @@
                   successState.hidden = false;
                   successState.focus();
                 } else {
-                  return response.text().then(function (text) {
-                    var errorText = text;
-                    if (text) {
-                      try {
-                        var json = JSON.parse(text);
-                        var jsonError = json.error;
-                        if (jsonError && typeof jsonError === 'object') {
-                          jsonError = jsonError.message || jsonError.error || '';
-                        }
-                        if (!jsonError && Array.isArray(json.errors) && json.errors.length > 0) {
-                          jsonError = json.errors[0].message || json.errors[0].field || '';
-                        }
-                        errorText = jsonError || errorText;
-                      } catch (parseError) {
-                        errorText = text;
-                      }
-                    }
-                    throw new Error(errorText || 'Unknown error occurred');
-                  });
+                  return parseSubmissionError(response);
                 }
               })
               .catch(function (error) {
