@@ -100,8 +100,8 @@
       <div class="fade-in">
         <p class="contact-trust-line" id="contact-trust-line">Trusted by HaysMac, Accenture, Genetic Alliance UK and GOAT.</p>
         <p id="form-announcer" aria-live="polite" aria-atomic="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"></p>
-        <div id="contact-form-state" aria-live="polite" aria-atomic="true" role="region" aria-label="Contact form">
-          <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line" aria-controls="contact-success" action="https://formspree.io/f/mpqydbez" method="POST">
+        <div id="contact-form-state" role="region" aria-label="Contact form">
+          <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line form-status" aria-controls="contact-success" action="https://formspree.io/f/mpqydbez" method="POST">
             <input type="hidden" name="_replyto" id="replyto-field" />
             <div class="form-group">
               <label for="name">Name</label>
@@ -154,7 +154,7 @@
             var announcer = document.getElementById('form-announcer');
             var successState = document.getElementById('contact-success');
             var replyto = document.getElementById('replyto-field');
-            var errorMessageRules = [
+            var FORM_ERROR_MESSAGE_RULES = [
               { pattern: /email/, message: 'Please enter a valid email address and try again.' },
               { pattern: /required|missing|must not be blank|invalid input/, message: 'Please complete all required fields and try again.' },
               { pattern: /rate|too many/, message: 'Too many attempts right now. Please try again shortly.' }
@@ -163,9 +163,9 @@
 
             function getUserFacingError(message) {
               var normalized = (message || '').toLowerCase();
-              for (var i = 0; i < errorMessageRules.length; i += 1) {
-                if (errorMessageRules[i].pattern.test(normalized)) {
-                  return errorMessageRules[i].message;
+              for (var i = 0; i < FORM_ERROR_MESSAGE_RULES.length; i += 1) {
+                if (FORM_ERROR_MESSAGE_RULES[i].pattern.test(normalized)) {
+                  return FORM_ERROR_MESSAGE_RULES[i].message;
                 }
               }
               return fallbackErrorMessage;
