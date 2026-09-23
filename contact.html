@@ -78,28 +78,13 @@
     }
 
     .contact-clients-heading--compact {
-      margin: -0.2rem auto 0.35rem;
+      margin: 0 auto 0.35rem;
     }
 
     .contact-marquee--compact {
-      padding: 0 0 var(--space-xs);
+      padding: var(--space-xs) 0 var(--space-sm);
       min-height: auto;
       border-bottom: none;
-    }
-
-    .contact-marquee--compact .marquee__track {
-      min-height: 84px;
-      gap: 2.25rem;
-    }
-
-    .contact-marquee--compact .marquee__item {
-      padding: 0 var(--space-sm);
-    }
-
-    .contact-marquee--compact .marquee__logo--sprite {
-      width: 102px;
-      height: 85px;
-      background-size: 1530px 85px;
     }
   </style>
 </head>
@@ -144,11 +129,6 @@
     <a href="/contact" class="nav__mobile-link">Contact</a>
   </div>
 
-  <!-- CONTACT HEADING -->
-  <div class="contact-heading">
-    <h2 class="contact-heading__title">Let's talk about your project</h2>
-  </div>
-
   <h3 class="clients__label contact-clients-heading contact-clients-heading--compact" id="selected-clients-heading">Selected clients</h3>
   <section class="marquee contact-marquee--compact" aria-labelledby="selected-clients-heading">
     <div class="marquee__track">
@@ -184,6 +164,11 @@
       <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="ippr" aria-hidden="true"></span></span>
     </div>
   </section>
+
+  <!-- CONTACT HEADING -->
+  <div class="contact-heading">
+    <h2 class="contact-heading__title">Let's talk about your project</h2>
+  </div>
 
   <!-- CONTACT SECTION -->
   <section class="contact-section contact-section--aligned">
