@@ -23,6 +23,60 @@
     gtag('js', new Date());
     gtag('config', 'G-3NNPKZPMC3');
   </script>
+  <style>
+    .contact-section--aligned {
+      padding-top: var(--space-xs);
+    }
+
+    .contact-section__inner--top {
+      align-items: flex-start;
+    }
+
+    .form-label-optional {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--color-muted);
+      text-transform: none;
+      letter-spacing: 0.02em;
+      margin-left: 0.35rem;
+    }
+
+    .contact-success-panel {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.5rem;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-white);
+      max-width: 520px;
+    }
+
+    .contact-success-check {
+      margin: 0;
+      color: var(--color-navy);
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .contact-success-title {
+      margin: 0;
+      color: var(--color-navy);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .contact-success-message {
+      margin: 0;
+      color: var(--color-muted);
+    }
+
+    .contact-clients-heading {
+      text-align: center;
+      padding: 0 var(--space-md);
+      margin: 0 0 var(--space-sm);
+    }
+  </style>
 </head>
 <body>
 
@@ -71,8 +125,8 @@
   </div>
 
   <!-- CONTACT SECTION -->
-  <section class="contact-section" style="padding-top:var(--space-xs);">
-    <div class="contact-section__inner" style="align-items:flex-start;">
+  <section class="contact-section contact-section--aligned">
+    <div class="contact-section__inner contact-section__inner--top">
 
       <div class="contact-info">
         <div class="contact-portrait-wrap">
@@ -120,7 +174,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="project-timeline">Project timeline <span style="font-size:0.7rem;font-weight:400;color:var(--color-muted);text-transform:none;letter-spacing:0.02em;margin-left:0.35rem;">Optional</span></label>
+            <label for="project-timeline">Project timeline <span class="form-label-optional">Optional</span></label>
             <select id="project-timeline" name="project_timeline">
               <option value="" selected>Select a timeframe...</option>
               <option value="asap">As soon as possible</option>
@@ -137,10 +191,10 @@
           <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Start the conversation</button>
           <p id="form-status" style="display:none;margin-top:1rem;"></p>
         </form>
-        <div id="contact-success" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" style="display:none;flex-direction:column;gap:0.5rem;padding:1.5rem;border:1.5px solid var(--color-border);border-radius:var(--radius);background:var(--color-white);max-width:520px;">
-          <p style="margin:0;color:var(--color-navy);font-size:1.25rem;line-height:1;">✓</p>
-          <p style="margin:0;color:var(--color-navy);font-weight:600;">Thanks for getting in touch.</p>
-          <p style="margin:0;color:var(--color-muted);">I’ll get back to you within 24 hours.</p>
+        <div id="contact-success" role="status" aria-live="polite" aria-atomic="true" aria-labelledby="contact-success-title" tabindex="-1" class="contact-success-panel">
+          <p class="contact-success-check">✓</p>
+          <h3 id="contact-success-title" class="contact-success-title">Thanks for getting in touch.</h3>
+          <p class="contact-success-message">I’ll get back to you within 24 hours.</p>
         </div>
         <script>
           (function () {
@@ -200,8 +254,8 @@
     </div>
   </section>
 
-  <p class="clients__label" style="text-align:center; padding: 0 var(--space-md); margin: 0 0 var(--space-sm);">Selected clients</p>
-  <section class="marquee" aria-label="Clients">
+  <h3 class="clients__label contact-clients-heading" id="selected-clients-heading">Selected clients</h3>
+  <section class="marquee" aria-labelledby="selected-clients-heading">
     <div class="marquee__track">
       <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="be-the-standard" role="img" aria-label="Be The Standard"></span></span>
       <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="topaz" role="img" aria-label="Topaz Detailing"></span></span>
