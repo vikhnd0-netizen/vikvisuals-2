@@ -100,7 +100,7 @@
       <div class="fade-in">
         <p class="contact-trust-line" id="contact-trust-line">Trusted by HaysMac, Accenture, Genetic Alliance UK and GOAT.</p>
         <div id="contact-form-state" role="region" aria-label="Contact form">
-          <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line" aria-controls="contact-success" action="https://formspree.io/f/mpqydbez" method="POST">
+          <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line" action="https://formspree.io/f/mpqydbez" method="POST">
             <input type="hidden" name="_replyto" id="replyto-field" />
             <div class="form-group">
               <label for="name">Name</label>
@@ -137,9 +137,9 @@
               <textarea id="message" name="message" placeholder="Tell me about your project&hellip;" required></textarea>
             </div>
             <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Start the conversation</button>
-            <p id="form-status" role="alert" style="display:none;margin-top:1rem;"></p>
+            <p id="form-status" role="alert" class="visually-hidden" style="margin-top:1rem;"></p>
           </form>
-          <div class="contact-success" id="contact-success" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden>
+          <div class="contact-success" id="contact-success" role="status" aria-atomic="true" tabindex="-1" hidden>
             <div class="contact-success__icon" aria-hidden="true">✓</div>
             <h3 class="contact-success__title">Thanks for getting in touch.</h3>
             <p class="contact-success__copy">I'll get back to you within 24 hours.</p>
@@ -204,7 +204,7 @@
 
               btn.disabled = true;
               btn.textContent = 'Sending\u2026';
-              status.style.display = 'none';
+              status.classList.add('visually-hidden');
               status.textContent = '';
 
               var data = new FormData(form);
@@ -229,7 +229,7 @@
               .catch(function (error) {
                 var errorMessage = getUserFacingError(error && error.message);
                 submissionFailed = true;
-                status.style.display = 'block';
+                status.classList.remove('visually-hidden');
                 status.style.color = '#c0392b';
                 status.textContent = errorMessage;
               })
@@ -238,7 +238,7 @@
                   btn.disabled = false;
                   btn.textContent = 'Start the conversation';
                   if (!submissionFailed) {
-                    status.style.display = 'none';
+                    status.classList.add('visually-hidden');
                   }
                 }
               });
