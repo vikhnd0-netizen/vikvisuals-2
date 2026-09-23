@@ -183,7 +183,11 @@
                   var contentType = response.headers.get('content-type') || '';
                   if (contentType.indexOf('application/json') !== -1) {
                     return response.json().then(function (json) {
-                      throw new Error(json.error || 'Unknown error occurred');
+                      var jsonError = json.error;
+                      if (!jsonError && Array.isArray(json.errors) && json.errors.length > 0) {
+                        jsonError = json.errors[0].message || json.errors[0].field || '';
+                      }
+                      throw new Error(jsonError || 'Unknown error occurred');
                     });
                   }
                   return response.text().then(function (text) {
