@@ -100,8 +100,8 @@
       <div class="fade-in">
         <p class="contact-trust-line" id="contact-trust-line">Trusted by HaysMac, Accenture, Genetic Alliance UK and GOAT.</p>
         <p id="form-announcer" aria-live="polite" aria-atomic="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"></p>
-        <div id="contact-form-state" aria-live="polite" aria-atomic="true">
-          <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line" action="https://formspree.io/f/mpqydbez" method="POST">
+        <div id="contact-form-state" aria-live="polite" aria-atomic="true" role="region" aria-label="Contact form">
+          <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line" aria-controls="contact-success" action="https://formspree.io/f/mpqydbez" method="POST">
             <input type="hidden" name="_replyto" id="replyto-field" />
             <div class="form-group">
               <label for="name">Name</label>
@@ -182,7 +182,12 @@
                       jsonError = jsonError.message || jsonError.error || '';
                     }
                     if (!jsonError && Array.isArray(json.errors) && json.errors.length > 0) {
-                      jsonError = json.errors[0].message || json.errors[0].field || '';
+                      var fieldErrors = json.errors.map(function (entry) {
+                        return entry.message || entry.field || '';
+                      }).filter(function (entry) {
+                        return Boolean(entry);
+                      });
+                      jsonError = fieldErrors.join('. ');
                     }
                     errorText = jsonError || errorText;
                   } catch (parseError) {
