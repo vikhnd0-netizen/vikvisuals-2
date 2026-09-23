@@ -161,8 +161,8 @@
               if (
                 normalized.indexOf('required') !== -1 ||
                 normalized.indexOf('missing') !== -1 ||
-                normalized.indexOf('name') !== -1 ||
-                normalized.indexOf('message') !== -1
+                normalized.indexOf('must not be blank') !== -1 ||
+                normalized.indexOf('invalid input') !== -1
               ) {
                 return 'Please complete all required fields and try again.';
               }
