@@ -153,6 +153,25 @@
             var successState = document.getElementById('contact-success');
             var replyto = document.getElementById('replyto-field');
 
+            function getUserFacingError(message) {
+              var normalized = (message || '').toLowerCase();
+              if (normalized.indexOf('email') !== -1) {
+                return 'Please enter a valid email address and try again.';
+              }
+              if (
+                normalized.indexOf('required') !== -1 ||
+                normalized.indexOf('missing') !== -1 ||
+                normalized.indexOf('name') !== -1 ||
+                normalized.indexOf('message') !== -1
+              ) {
+                return 'Please complete all required fields and try again.';
+              }
+              if (normalized.indexOf('rate') !== -1 || normalized.indexOf('too many') !== -1) {
+                return 'Too many attempts right now. Please try again shortly.';
+              }
+              return 'Something went wrong. Please email me directly at hello@vikvisuals.com.';
+            }
+
             form.addEventListener('submit', function (e) {
               e.preventDefault();
               replyto.value = form.elements['email'].value;
@@ -196,11 +215,7 @@
                 }
               })
               .catch(function (error) {
-                var fallbackMessage = 'Something went wrong. Please email me directly at hello@vikvisuals.com.';
-                var errorMessage = error && error.message ? error.message : fallbackMessage;
-                if (errorMessage === 'Unknown error occurred') {
-                  errorMessage = fallbackMessage;
-                }
+                var errorMessage = getUserFacingError(error && error.message);
                 status.style.color = '#c0392b';
                 status.textContent = errorMessage;
                 announcer.textContent = errorMessage;
