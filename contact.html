@@ -98,6 +98,7 @@
       </div>
 
       <div class="fade-in">
+        <p class="contact-trust-line">Trusted by HaysMac, Accenture, Genetic Alliance UK and GOAT.</p>
         <form class="contact-form" id="contact-form" action="https://formspree.io/f/mpqydbez" method="POST">
           <input type="hidden" name="_replyto" id="replyto-field" />
           <div class="form-group">
@@ -120,26 +121,45 @@
             </select>
           </div>
           <div class="form-group">
+            <label for="project-timeline">Project timeline</label>
+            <select id="project-timeline" name="project_timeline">
+              <option value="" selected>Not specified</option>
+              <option value="As soon as possible">As soon as possible</option>
+              <option value="Within the next month">Within the next month</option>
+              <option value="1 to 3 months">1 to 3 months</option>
+              <option value="3+ months">3+ months</option>
+              <option value="Just exploring">Just exploring</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="message">Message</label>
             <textarea id="message" name="message" placeholder="Tell me about your project&hellip;" required></textarea>
           </div>
-          <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Send message</button>
+          <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Start the conversation</button>
           <p id="form-status" style="display:none;margin-top:1rem;"></p>
         </form>
+        <div class="contact-success" id="contact-success" hidden>
+          <div class="contact-success__icon" aria-hidden="true">✓</div>
+          <h3 class="contact-success__title">Thanks for getting in touch.</h3>
+          <p class="contact-success__copy">I'll get back to you within 24 hours.</p>
+        </div>
         <script>
           (function () {
             var form = document.getElementById('contact-form');
             var btn = document.getElementById('submit-btn');
             var status = document.getElementById('form-status');
+            var successState = document.getElementById('contact-success');
             var replyto = document.getElementById('replyto-field');
 
             form.addEventListener('submit', function (e) {
               e.preventDefault();
               replyto.value = form.elements['email'].value;
+              var submissionSucceeded = false;
 
               btn.disabled = true;
               btn.textContent = 'Sending\u2026';
               status.style.display = 'none';
+              status.textContent = '';
 
               var data = new FormData(form);
 
@@ -152,8 +172,9 @@
                 if (response.ok) {
                   form.reset();
                   replyto.value = '';
-                  status.style.color = 'var(--color-navy)';
-                  status.textContent = 'Thanks for getting in touch, I\u2019ll get back to you within 24 hours.';
+                  submissionSucceeded = true;
+                  form.style.display = 'none';
+                  successState.hidden = false;
                 } else {
                   return response.json().then(function (json) {
                     throw new Error(json.error || 'Unknown error occurred');
@@ -165,9 +186,11 @@
                 status.textContent = 'Something went wrong. Please email me directly at hello@vikvisuals.com.';
               })
               .finally(function () {
-                btn.disabled = false;
-                btn.textContent = 'Send message';
-                status.style.display = 'block';
+                if (!submissionSucceeded) {
+                  btn.disabled = false;
+                  btn.textContent = 'Start the conversation';
+                  status.style.display = 'block';
+                }
               });
             });
           }());
