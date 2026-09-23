@@ -180,8 +180,14 @@
                   successState.hidden = false;
                   announcer.textContent = 'Thanks for getting in touch. I\u2019ll get back to you within 24 hours.';
                 } else {
-                  return response.json().then(function (json) {
-                    throw new Error(json.error || 'Unknown error occurred');
+                  var contentType = response.headers.get('content-type') || '';
+                  if (contentType.indexOf('application/json') !== -1) {
+                    return response.json().then(function (json) {
+                      throw new Error(json.error || 'Unknown error occurred');
+                    });
+                  }
+                  return response.text().then(function (text) {
+                    throw new Error(text || 'Unknown error occurred');
                   });
                 }
               })
