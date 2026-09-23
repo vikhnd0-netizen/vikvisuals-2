@@ -3534,7 +3534,7 @@ body:not(.page-home) .hero__sub {
    CASE STUDY PAGE HEADER
    ============================================================ */
 .cs-page-header {
-  padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-md);
+  padding: calc(var(--nav-height) + var(--space-md)) 0 var(--space-md);
   background: var(--color-bg);
 }
 
