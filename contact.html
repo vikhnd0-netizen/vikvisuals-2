@@ -15,6 +15,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.min.css" />
+  <style>
+    /* Contact page refinements — scoped, loaded after the main stylesheet */
+
+    /* Fix: [hidden] was being overridden by the .contact-success display rule,
+       which caused the success card to render under the form at all times. */
+    [hidden] { display: none !important; }
+
+    /* Vertical balance between the two columns */
+    .contact-heading { padding-bottom: 0; }
+    .contact-section { padding-top: var(--space-sm); }
+    .contact-section__inner { align-items: start; }
+    .contact-info__body { width: 100%; }
+
+    /* Trust line, now in the left column under the contact details */
+    .contact-trust-line {
+      margin-top: var(--space-md);
+      margin-bottom: 0;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--color-muted);
+      font-weight: 300;
+    }
+
+    .form-label-optional {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--color-muted);
+      margin-left: 6px;
+    }
+  </style>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NNPKZPMC3"></script>
   <script>
@@ -78,7 +108,7 @@
         <div class="contact-portrait-wrap">
           <img src="images/about/about-portrait.jpg" alt="Vik — VikVisuals" class="contact-portrait" loading="lazy" />
         </div>
-        <div class="fade-in">
+        <div class="fade-in contact-info__body">
         <p>Whether you have a brief ready or just an idea, I'd love to hear about it. Fill in the form and I'll reply within 24 hours.</p>
         <div class="contact-detail">
           <div class="contact-detail__item">
@@ -94,11 +124,11 @@
             <span>London, UK. Available nationwide and internationally.</span>
           </div>
         </div>
+        <p class="contact-trust-line" id="contact-trust-line">Trusted by HaysMac, Accenture, Genetic Alliance UK and GOAT.</p>
         </div>
       </div>
 
       <div class="fade-in">
-        <p class="contact-trust-line" id="contact-trust-line">Trusted by HaysMac, Accenture, Genetic Alliance UK and GOAT.</p>
         <p id="form-announcer" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
         <div id="contact-form-state" role="region" aria-label="Contact form">
           <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line" action="https://formspree.io/f/mpqydbez" method="POST">
@@ -123,9 +153,9 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="project-timeline">Project timeline</label>
+              <label for="project-timeline">Project timeline<span class="form-label-optional">Optional</span></label>
               <select id="project-timeline" name="project_timeline">
-                <option value="" selected>Not specified</option>
+                <option value="" selected>Select a timeframe&hellip;</option>
                 <option value="As soon as possible">As soon as possible</option>
                 <option value="Within the next month">Within the next month</option>
                 <option value="1 to 3 months">1 to 3 months</option>
