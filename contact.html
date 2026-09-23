@@ -202,20 +202,24 @@
                   announcer.textContent = 'Thanks for getting in touch. I\u2019ll get back to you within 24 hours.';
                 } else {
                   var contentType = response.headers.get('content-type') || '';
-                  if (contentType.indexOf('application/json') !== -1) {
-                    return response.json().then(function (json) {
-                      var jsonError = json.error;
-                      if (jsonError && typeof jsonError === 'object') {
-                        jsonError = jsonError.message || jsonError.error || '';
-                      }
-                      if (!jsonError && Array.isArray(json.errors) && json.errors.length > 0) {
-                        jsonError = json.errors[0].message || json.errors[0].field || '';
-                      }
-                      throw new Error(jsonError || 'Unknown error occurred');
-                    });
-                  }
                   return response.text().then(function (text) {
-                    throw new Error(text || 'Unknown error occurred');
+                    var errorText = text;
+                    if (contentType.indexOf('application/json') !== -1 && text) {
+                      try {
+                        var json = JSON.parse(text);
+                        var jsonError = json.error;
+                        if (jsonError && typeof jsonError === 'object') {
+                          jsonError = jsonError.message || jsonError.error || '';
+                        }
+                        if (!jsonError && Array.isArray(json.errors) && json.errors.length > 0) {
+                          jsonError = json.errors[0].message || json.errors[0].field || '';
+                        }
+                        errorText = jsonError || errorText;
+                      } catch (parseError) {
+                        errorText = text;
+                      }
+                    }
+                    throw new Error(errorText || 'Unknown error occurred');
                   });
                 }
               })
