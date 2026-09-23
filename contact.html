@@ -25,7 +25,7 @@
   </script>
   <style>
     .contact-section--aligned {
-      padding-top: 0;
+      padding-top: var(--space-xs);
     }
 
     .contact-section__inner--top {
@@ -71,24 +71,14 @@
       color: var(--color-muted);
     }
 
-    .contact-clients-heading {
-      text-align: center;
-      padding: 0 var(--space-md);
-      margin: 0 0 var(--space-sm);
-    }
-
-    .contact-clients-heading--compact {
-      margin: calc(var(--nav-height) + var(--space-xs)) auto 0.35rem;
-    }
-
     .contact-marquee--compact {
-      padding: var(--space-xs) 0 var(--space-sm);
+      padding: var(--space-xs) 0 1.5rem;
       min-height: auto;
       border-bottom: none;
     }
 
-    .contact-heading--after-marquee {
-      padding: var(--space-xs) var(--space-md) var(--space-xs);
+    .contact-heading--top {
+      padding: calc(var(--nav-height) + var(--space-xs)) var(--space-md) var(--space-sm);
     }
   </style>
 </head>
@@ -133,8 +123,12 @@
     <a href="/contact" class="nav__mobile-link">Contact</a>
   </div>
 
-  <h3 class="clients__label contact-clients-heading contact-clients-heading--compact" id="selected-clients-heading">Selected clients</h3>
-  <section class="marquee contact-marquee--compact" aria-labelledby="selected-clients-heading">
+  <!-- CONTACT HEADING -->
+  <div class="contact-heading contact-heading--top">
+    <h2 class="contact-heading__title">Let's talk about your project</h2>
+  </div>
+
+  <section class="marquee contact-marquee--compact" aria-label="Selected clients">
     <div class="marquee__track">
       <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="be-the-standard" role="img" aria-label="Be The Standard"></span></span>
       <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="topaz" role="img" aria-label="Topaz Detailing"></span></span>
@@ -168,11 +162,6 @@
       <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="ippr" aria-hidden="true"></span></span>
     </div>
   </section>
-
-  <!-- CONTACT HEADING -->
-  <div class="contact-heading contact-heading--after-marquee">
-    <h2 class="contact-heading__title">Let's talk about your project</h2>
-  </div>
 
   <!-- CONTACT SECTION -->
   <section class="contact-section contact-section--aligned">
