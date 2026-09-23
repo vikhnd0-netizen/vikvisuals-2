@@ -99,9 +99,8 @@
 
       <div class="fade-in">
         <p class="contact-trust-line" id="contact-trust-line">Trusted by HaysMac, Accenture, Genetic Alliance UK and GOAT.</p>
-        <p id="form-announcer" aria-live="polite" aria-atomic="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"></p>
         <div id="contact-form-state" role="region" aria-label="Contact form">
-          <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line form-status" aria-controls="contact-success" action="https://formspree.io/f/mpqydbez" method="POST">
+          <form class="contact-form" id="contact-form" aria-describedby="contact-trust-line" aria-controls="contact-success" action="https://formspree.io/f/mpqydbez" method="POST">
             <input type="hidden" name="_replyto" id="replyto-field" />
             <div class="form-group">
               <label for="name">Name</label>
@@ -151,7 +150,6 @@
             var form = document.getElementById('contact-form');
             var btn = document.getElementById('submit-btn');
             var status = document.getElementById('form-status');
-            var announcer = document.getElementById('form-announcer');
             var successState = document.getElementById('contact-success');
             var replyto = document.getElementById('replyto-field');
             var FORM_ERROR_MESSAGE_RULES = [
@@ -208,7 +206,6 @@
               btn.textContent = 'Sending\u2026';
               status.style.display = 'none';
               status.textContent = '';
-              announcer.textContent = '';
 
               var data = new FormData(form);
 
@@ -235,7 +232,6 @@
                 status.style.display = 'block';
                 status.style.color = '#c0392b';
                 status.textContent = errorMessage;
-                announcer.textContent = errorMessage;
               })
               .finally(function () {
                 if (!submissionSucceeded) {
