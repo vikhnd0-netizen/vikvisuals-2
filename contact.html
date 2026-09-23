@@ -99,6 +99,7 @@
 
       <div class="fade-in">
         <p class="contact-trust-line">Trusted by HaysMac, Accenture, Genetic Alliance UK and GOAT.</p>
+        <p id="form-announcer" aria-live="polite" aria-atomic="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"></p>
         <form class="contact-form" id="contact-form" action="https://formspree.io/f/mpqydbez" method="POST">
           <input type="hidden" name="_replyto" id="replyto-field" />
           <div class="form-group">
@@ -148,6 +149,7 @@
             var form = document.getElementById('contact-form');
             var btn = document.getElementById('submit-btn');
             var status = document.getElementById('form-status');
+            var announcer = document.getElementById('form-announcer');
             var successState = document.getElementById('contact-success');
             var replyto = document.getElementById('replyto-field');
 
@@ -160,6 +162,7 @@
               btn.textContent = 'Sending\u2026';
               status.style.display = 'none';
               status.textContent = '';
+              announcer.textContent = '';
 
               var data = new FormData(form);
 
@@ -175,6 +178,7 @@
                   submissionSucceeded = true;
                   form.style.display = 'none';
                   successState.hidden = false;
+                  announcer.textContent = 'Thanks for getting in touch. I\u2019ll get back to you within 24 hours.';
                 } else {
                   return response.json().then(function (json) {
                     throw new Error(json.error || 'Unknown error occurred');
