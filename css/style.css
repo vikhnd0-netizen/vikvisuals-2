@@ -3534,14 +3534,8 @@ body:not(.page-home) .hero__sub {
    CASE STUDY PAGE HEADER
    ============================================================ */
 .cs-page-header {
-  padding: calc(var(--nav-height) + var(--space-lg)) 0 var(--space-md);
+  padding: calc(var(--nav-height) + var(--space-md)) 0 var(--space-md);
   background: var(--color-bg);
-}
-
-@media (max-width: 768px) {
-  .cs-page-header {
-    padding-top: calc(var(--nav-height) + var(--space-md));
-  }
 }
 
 .cs-page-header__inner {
