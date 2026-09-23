@@ -231,10 +231,10 @@
                   successPanel.style.display = 'flex';
                   successTitle.focus();
                 } else {
-                  return response.json().then(function (json) {
+                  return response.json().catch(function () {
+                    return {};
+                  }).then(function (json) {
                     throw new Error(json.error || 'Unknown error occurred');
-                  }).catch(function () {
-                    throw new Error('Unknown error occurred');
                   });
                 }
               })
