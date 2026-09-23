@@ -23,6 +23,64 @@
     gtag('js', new Date());
     gtag('config', 'G-3NNPKZPMC3');
   </script>
+  <style>
+    .contact-section--aligned {
+      padding-top: 0;
+    }
+
+    .contact-section__inner--top {
+      align-items: flex-start;
+    }
+
+    .form-label-optional {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--color-muted);
+      text-transform: none;
+      letter-spacing: 0.02em;
+      margin-left: 0.35rem;
+    }
+
+    .contact-success-panel {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.5rem;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-white);
+      max-width: 520px;
+    }
+
+    .contact-success-check {
+      margin: 0;
+      color: var(--color-navy);
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .contact-success-title {
+      margin: 0;
+      color: var(--color-navy);
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .contact-success-message {
+      margin: 0;
+      color: var(--color-muted);
+    }
+
+    .contact-marquee--compact {
+      padding: 0.25rem 0 0.5rem;
+      min-height: auto;
+      border-bottom: none;
+    }
+
+    .contact-heading--top {
+      padding: calc(var(--nav-height) + var(--space-xs)) var(--space-md) 0.5rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -66,13 +124,48 @@
   </div>
 
   <!-- CONTACT HEADING -->
-  <div class="contact-heading">
+  <div class="contact-heading contact-heading--top">
     <h2 class="contact-heading__title">Let's talk about your project</h2>
   </div>
 
+  <section class="marquee contact-marquee--compact" aria-label="Selected clients">
+    <div class="marquee__track">
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="be-the-standard" role="img" aria-label="Be The Standard"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="topaz" role="img" aria-label="Topaz Detailing"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="everlast" role="img" aria-label="Everlast"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="sedulo-foundation" role="img" aria-label="Sedulo Foundation"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="sheepscar" role="img" aria-label="Sheepscar Bar &amp; Grill"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="velvet" role="img" aria-label="Velvet"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="forty-seven" role="img" aria-label="47"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="mixala" role="img" aria-label="Mixala"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="sedulo" role="img" aria-label="Sedulo"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="achilles" role="img" aria-label="Achilles Clean &amp; Protect"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="hba-support" role="img" aria-label="HBA Support"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="nexus" role="img" aria-label="Nexus"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="igd-sport" role="img" aria-label="iGD Sport"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="genetic-alliance" role="img" aria-label="Genetic Alliance UK"></span></span>
+      <span class="marquee__item"><span class="marquee__logo marquee__logo--sprite" data-logo="ippr" role="img" aria-label="IPPR"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="be-the-standard" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="topaz" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="everlast" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="sedulo-foundation" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="sheepscar" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="velvet" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="forty-seven" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="mixala" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="sedulo" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="achilles" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="hba-support" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="nexus" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="igd-sport" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="genetic-alliance" aria-hidden="true"></span></span>
+      <span class="marquee__item" aria-hidden="true"><span class="marquee__logo marquee__logo--sprite" data-logo="ippr" aria-hidden="true"></span></span>
+    </div>
+  </section>
+
   <!-- CONTACT SECTION -->
-  <section class="contact-section">
-    <div class="contact-section__inner">
+  <section class="contact-section contact-section--aligned">
+    <div class="contact-section__inner contact-section__inner--top">
 
       <div class="contact-info">
         <div class="contact-portrait-wrap">
@@ -120,26 +213,46 @@
             </select>
           </div>
           <div class="form-group">
+            <label for="project-timeline">Project timeline <span class="form-label-optional">Optional</span></label>
+            <select id="project-timeline" name="project_timeline">
+              <option value="" selected>Select a timeframe...</option>
+              <option value="asap">As soon as possible</option>
+              <option value="next-month">Within the next month</option>
+              <option value="1-3-months">1 to 3 months</option>
+              <option value="3-plus-months">3+ months</option>
+              <option value="exploring">Just exploring</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="message">Message</label>
             <textarea id="message" name="message" placeholder="Tell me about your project&hellip;" required></textarea>
           </div>
-          <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Send message</button>
+          <button type="submit" class="btn btn--navy" id="submit-btn" style="align-self:flex-start;">Start the conversation</button>
           <p id="form-status" style="display:none;margin-top:1rem;"></p>
         </form>
+        <div id="contact-success" role="status" aria-live="polite" aria-atomic="true" aria-labelledby="contact-success-title" class="contact-success-panel">
+          <p class="contact-success-check">✓</p>
+          <h3 id="contact-success-title" class="contact-success-title" tabindex="-1">Thanks for getting in touch.</h3>
+          <p class="contact-success-message">I’ll get back to you within 24 hours.</p>
+        </div>
         <script>
           (function () {
             var form = document.getElementById('contact-form');
             var btn = document.getElementById('submit-btn');
             var status = document.getElementById('form-status');
             var replyto = document.getElementById('replyto-field');
+            var successPanel = document.getElementById('contact-success');
+            var successTitle = document.getElementById('contact-success-title');
 
             form.addEventListener('submit', function (e) {
+              var succeeded = false;
               e.preventDefault();
               replyto.value = form.elements['email'].value;
 
               btn.disabled = true;
               btn.textContent = 'Sending\u2026';
               status.style.display = 'none';
+              status.textContent = '';
 
               var data = new FormData(form);
 
@@ -152,10 +265,14 @@
                 if (response.ok) {
                   form.reset();
                   replyto.value = '';
-                  status.style.color = 'var(--color-navy)';
-                  status.textContent = 'Thanks for getting in touch, I\u2019ll get back to you within 24 hours.';
+                  succeeded = true;
+                  form.style.display = 'none';
+                  successPanel.style.display = 'flex';
+                  successTitle.focus();
                 } else {
-                  return response.json().then(function (json) {
+                  return response.json().catch(function () {
+                    return {};
+                  }).then(function (json) {
                     throw new Error(json.error || 'Unknown error occurred');
                   });
                 }
@@ -165,9 +282,11 @@
                 status.textContent = 'Something went wrong. Please email me directly at hello@vikvisuals.com.';
               })
               .finally(function () {
-                btn.disabled = false;
-                btn.textContent = 'Send message';
-                status.style.display = 'block';
+                if (!succeeded) {
+                  btn.disabled = false;
+                  btn.textContent = 'Start the conversation';
+                  status.style.display = 'block';
+                }
               });
             });
           }());
