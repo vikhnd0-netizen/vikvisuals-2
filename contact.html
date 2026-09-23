@@ -78,13 +78,17 @@
     }
 
     .contact-clients-heading--compact {
-      margin: 0 auto 0.35rem;
+      margin: calc(var(--nav-height) + var(--space-xs)) auto 0.35rem;
     }
 
     .contact-marquee--compact {
       padding: var(--space-xs) 0 var(--space-sm);
       min-height: auto;
       border-bottom: none;
+    }
+
+    .contact-heading--after-marquee {
+      padding: var(--space-xs) var(--space-md) var(--space-xs);
     }
   </style>
 </head>
@@ -166,7 +170,7 @@
   </section>
 
   <!-- CONTACT HEADING -->
-  <div class="contact-heading">
+  <div class="contact-heading contact-heading--after-marquee">
     <h2 class="contact-heading__title">Let's talk about your project</h2>
   </div>
 
